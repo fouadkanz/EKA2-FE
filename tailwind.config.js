@@ -17,7 +17,18 @@ module.exports = {
       },
     },
     extend: {
+      scrollbarWidth: {
+        thin: '6px',
+      },
       colors: {
+        'scrollbar-track': '#f1f1f1',
+        'scrollbar-thumb': '#888',
+        'scrollbar-thumb-hover': '#555',
+        tomato: '#ff6347',
+        coral: '#ff7f50',
+        moccasin: '#ffe4b5',
+        sandybrown: '#f4a460',
+        slategray: '#708090',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -56,6 +67,7 @@ module.exports = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        
       },
       keyframes: {
         "accordion-down": {
@@ -73,5 +85,23 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-track': {
+          'scrollbar-color': 'var(--scrollbar-thumb) var(--scrollbar-track)',
+        },
+        '.scrollbar-thumb': {
+          'scrollbar-width': 'thin',
+          'background-color': 'var(--scrollbar-thumb)',
+          borderRadius: '10px',
+        },
+        '.scrollbar-thumb:hover': {
+          'background-color': 'var(--scrollbar-thumb-hover)',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 }
