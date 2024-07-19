@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MessageList from './MessageList';
-import MessageInput from './MessageInput';
+import MessageInput from './chatInput/MessageInput';
 import ChatSessionList from './ChatSessionList';
 import { useChatSession } from './useChatSession';
 

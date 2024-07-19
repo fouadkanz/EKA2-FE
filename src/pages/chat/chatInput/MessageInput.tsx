@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import { useChatInput } from "./useChatInput";
+export type OnSendMessageType = (text: string) => void;
 
-interface MessageInputProps {
-  onSendMessage: (text: string) => void;
+export interface MessageInputProps {
+  onSendMessage: OnSendMessageType;
 }
 
 const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage }) => {
-  const [text, setText] = useState('');
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (text.trim()) {
-      onSendMessage(text);
-      setText('');
-    }
-  };
-
+const {handleSubmit,setText,text} = useChatInput(onSendMessage)
   return (
     <form onSubmit={handleSubmit} className="message-input">
       <input

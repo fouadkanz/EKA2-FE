@@ -38,4 +38,24 @@ body {
   .message-input button:hover {
     background-color: #0056b3;
   }
+  .first-message {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .first-message-bubble {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   

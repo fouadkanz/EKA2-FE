@@ -12,7 +12,7 @@ export const groupSessionsByWeek = (sessions: ChatSession[]) => {
 
   sessions.forEach(session => {
     const date = new Date(session.id);
-    const week = `${date.getFullYear()}-W${Math.ceil(
+    const week = `${date.getMonth()}-Week-${Math.ceil(
       (date.getDate() + 6 - date.getDay()) / 7
     )}`;
 
@@ -20,8 +20,16 @@ export const groupSessionsByWeek = (sessions: ChatSession[]) => {
       weeks[week] = [];
     }
 
-    weeks[week].push(session);
+    weeks[week].unshift(session);
   });
 
   return weeks;
 };
+
+interface WordObject {
+  text: string;
+}
+
+export function convertStringToWordObjects(input: string): WordObject[] {
+  return input.split(' ').map(word => ({ text: word }));
+}
