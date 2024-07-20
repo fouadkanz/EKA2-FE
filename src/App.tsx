@@ -3,7 +3,8 @@ import { MenuIcon, MessageCircle } from "lucide-react";
 import ChatSessionList from "./pages/chat/ChatSessionList";
 import { useChatSession } from "./pages/chat/useChatSession";
 import MessageList from "./pages/chat/MessageList";
-import MessageInput from "./pages/chat/chatInput/MessageInput";
+// import MessageInput from "./pages/chat/chatInput/MessageInput";
+import ChatMessageInput from "./pages/chat/chatInput/ChatMessageInput";
 function App() {
   const {
     handleSendMessage,
@@ -54,7 +55,8 @@ function App() {
         </aside>
       </div>
       <div className="h-25 p-3 text-center">
-        {activeSession && <MessageInput onSendMessage={handleSendMessage} />}
+        {/* {activeSession &&  <ChatMessageInput onSendMessage={handleSendMessage} /> */}
+        {activeSession && <ChatMessageInput onSendMessage={handleSendMessage} /> }
       </div>
       <nav className="h-25 p-3 text-center md:hidden block">Navigation</nav>
     </>
