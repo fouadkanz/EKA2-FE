@@ -46,7 +46,9 @@ const ChatInput: React.FC<InputProps> = ({
 
 
   return (
-    <div className="flex items-center border rounded-full px-4 shadow-sm">
+    <div className={`flex items-center border rounded-full shadow-sm ${
+            isHovered ? 'pl-4' : ''
+          }`}>
       <div
         className="relative mr-2 p-2 rounded-full"
         onMouseEnter={() => setIsHovered(true)}

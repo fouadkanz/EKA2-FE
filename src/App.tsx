@@ -20,7 +20,7 @@ function App() {
         <nav className=" md:flex-shrink-0 md:w-24 p-3 md:text-center hidden md:block">
           JERA eka2
         </nav>
-        <main className="flex-grow p-3">
+        <main className="flex-grow p-2">
           <div className="text-3xl font-bold md:hidden md:w-24 p-3 flex flex-row space-x-10">
             <div
               className="pt-2 hover:cursor-pointer"
@@ -45,6 +45,9 @@ function App() {
               </div>
             )}
           </div>
+          <div className="">
+        {activeSession && <ChatMessageInput onSendMessage={handleSendMessage} /> }
+      </div>
         </main>
         <aside className="md:flex-shrink-0 md:w-1/4 md:p-3 md:text-center hidden md:block">
           <ChatSessionList
@@ -54,10 +57,7 @@ function App() {
           />
         </aside>
       </div>
-      <div className="h-25 p-3 text-center">
-        {/* {activeSession &&  <ChatMessageInput onSendMessage={handleSendMessage} /> */}
-        {activeSession && <ChatMessageInput onSendMessage={handleSendMessage} /> }
-      </div>
+      
       <nav className="h-25 p-3 text-center md:hidden block">Navigation</nav>
     </>
   );
