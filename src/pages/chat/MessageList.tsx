@@ -25,7 +25,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
   }, [messages]);
   return (
     <div
-      className="md:h-[775px] h-[580px] w-full rounded-md p-4 overflow-auto"
+      className="md:h-[800px] h-[620px] w-full rounded-md p-4 overflow-auto"
       ref={scrollRef}
     >
       {messages.map((message, index) => (
