@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <div className="flex flex-grow">
+      <div className="flex flex-grow md:space-x-20">
         <nav className="hidden md:block">
           <SideBar />
         </nav>
@@ -34,7 +34,7 @@ function App() {
               </div>
               <span>JERA EKA2</span>
             </header>
-            <header className="md:h-20 md:pt-12 pl-3 pb-2 flex flex-row space-x-6 md:justify-start">
+            <header className="md:h-20 h-10 md:pl-3 pl-2 md:pb-2 pb-2 flex flex-row space-x-6 md:items-center">
               <div>
                 <MessageCircle className="md:size-9 size-7" />
               </div>
