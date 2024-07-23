@@ -11,7 +11,7 @@ export interface Message {
 }
 
 interface MessageListProps {
-  messages: Message[];
+  messages: Message[] | undefined;
 }
 
 const MessageList: React.FC<MessageListProps> = ({ messages }) => {
@@ -23,7 +23,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
   }, [messages]);
   return (
     <div className="grow w-full rounded-md p-4 overflow-auto" ref={scrollRef}>
-      {messages.map((message, index) => (
+      {messages?.map((message, index) => (
         <>
           {messages.length === 1 && index === 0 ? (
             <>
