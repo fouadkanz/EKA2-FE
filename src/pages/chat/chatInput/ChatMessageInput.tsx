@@ -9,7 +9,7 @@ export interface MessageInputProps {
 const ChatMessageInput: React.FC<MessageInputProps> = ({ onSendMessage }) => {
     const { handleSubmit, setText, text } = useChatInput(onSendMessage)
     return (
-        <div className="p-4">
+        <div className="p-3">
             <ChatInput
                 value={text}
                 onChange={(e) => setText(e.target.value)}

@@ -16,7 +16,6 @@ import { ChatSession, Message } from "./ChatWindow";
   const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
 
   useEffect(() => {
-    // Load chat sessions from local storage
     const savedSessions = localStorage.getItem('chatSessions');
     if (savedSessions) {
       setSessions(JSON.parse(savedSessions));

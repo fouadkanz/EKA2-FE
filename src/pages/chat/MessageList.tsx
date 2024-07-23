@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from "react";
 
 import MessageBubble from "./MessageBubble";
-import {
-  TypewriterEffect} from "@/components/ui/typewriter-effect";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { convertStringToWordObjects } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
 export interface Message {
   id: number;
   text: string;
@@ -24,16 +22,13 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
     }
   }, [messages]);
   return (
-    <div
-      className="md:h-[800px] h-[620px] w-full rounded-md p-4 overflow-auto"
-      ref={scrollRef}
-    >
+    <div className="grow w-full rounded-md p-4 overflow-auto" ref={scrollRef}>
       {messages.map((message, index) => (
         <>
           {messages.length === 1 && index === 0 ? (
             <>
-              <div className="flex flex-col justify-center h-full">
-                <div className="flex items-start gap-4">
+              <div className="flex justify-start items-center h-full w-full p-3">
+                <div className="flex items-center space-x-4 pl-4">
                   <Avatar className="w-10 h-10 bg-slate-900 rounded-md mt-[5.5px]">
                     <AvatarFallback className="text-slate-50">
                       {message.sender}
@@ -46,10 +41,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
               </div>
             </>
           ) : (
-            <MessageBubble
-              message={message}
-              index={index}
-            />
+            <MessageBubble message={message} index={index} />
           )}
         </>
       ))}

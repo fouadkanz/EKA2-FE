@@ -7,14 +7,14 @@ function SideBar() {
     <div className="flex md:flex-col md:justify-between md:h-screen justify-center">
       <div className="hidden md:block">JERA eka2</div>
       <div className="hidden md:block">
-        <Home className="size-12 rounded-xl m-3 p-3 bg-slate-900 text-white" />
-        <BotIcon className="size-12 rounded-xl m-3 p-3  text-slate-900" />
-        <Settings className="size-12 rounded-xl m-3 p-3  text-slate-900" />
+        <Home className="size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
+        <BotIcon className="size-12 rounded-xl m-3 p-3  hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
+        <Settings className="size-12 rounded-xl m-3 p-3  hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
       </div>
       <div className="md:hidden flex flex-row">
-        <Home className="size-12 rounded-xl m-3 p-3 bg-slate-900 text-white" />
-        <BotIcon className="size-12 rounded-xl m-3 p-3  text-slate-900" />
-        <Settings className="size-12 rounded-xl m-3 p-3  text-slate-900" />
+        <Home className="size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
+        <BotIcon className="size-12 rounded-xl m-3 p-3  hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
+        <Settings className="size-12 rounded-xl m-3 p-3  hover:bg-slate-900 hover:text-white hover:cursor-pointer" />
       </div>
       <div className="hidden md:block">
         <Avatar className="h-64 w-16 rounded-xl m-3 p-3  bg-slate-900">
@@ -22,7 +22,7 @@ function SideBar() {
             CV
           </AvatarFallback>
         </Avatar>
-        <LogOut className="size-12 rounded-xl m-3 p-3  text-slate-900" />
+        <LogOut className="size-12 rounded-xl m-3 p-3  hover:bg-slate-900 hover:text-white" />
       </div>
     </div>
   );
