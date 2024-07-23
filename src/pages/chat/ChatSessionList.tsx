@@ -16,7 +16,7 @@ interface ChatSession {
   messages: Message[];
 }
 
-interface ChatSessionListProps {
+export interface ChatSessionListProps {
   sessions: ChatSession[];
   onSelectSession: (sessionId: number) => void;
   onNewChat: () => void;
