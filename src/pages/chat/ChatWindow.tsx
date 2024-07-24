@@ -22,7 +22,7 @@ const ChatWindow: React.FC = () => {
       <ChatSessionList sessions={sessions} onSelectSession={handleSelectSession} onNewChat={handleNewChat} />
       {activeSession ? (
         <div className="chat-window">
-          <MessageList messages={activeSession.messages} />
+          {/* <MessageList messages={activeSession.messages} /> */}
           <MessageInput onSendMessage={handleSendMessage} />
         </div>
       ) : (

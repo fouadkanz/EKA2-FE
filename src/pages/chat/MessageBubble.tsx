@@ -4,18 +4,23 @@ import React, { useState } from "react";
 import MessageMenu from "./MessageMenu";
 import { Message } from "./MessageList";
 import Typewriter from "@/components/ui/typeWriter";
+import { Comment } from "react-loader-spinner";
 
 interface MessageBubbleProps {
   message: Message;
   index: number;
+  setLoading: any;
+  isLoading:Boolean
 }
 const MessageBubble: React.FC<MessageBubbleProps> = ({
   message,
   index,
+  setLoading,
+  isLoading
 }) => {
   const [userTyping, setUserTyping] = useState(false);
   return (
-    <div className="flex items-start gap-1">
+    <div className="flex items-start gap-1 space-x-1">
       <Avatar className="w-10 h-10 bg-slate-900 rounded-md">
         <AvatarFallback className=" text-slate-50">CN</AvatarFallback>
       </Avatar>
@@ -43,7 +48,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
               {message.sender === "ai" ? (
                 <Typewriter
                   userTyping={userTyping}
-                  setUserTyping={setUserTyping}
+                  setLoading={setLoading}
                   text={message.text}
                   speed={20}
                 />

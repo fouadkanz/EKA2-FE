@@ -3,7 +3,8 @@ import { ChatSession, Message } from "./ChatWindow";
 
 
  export function useChatSession(){
-  const [sessions, setSessions] = useState<ChatSession[]>([{
+  const [isLoading, setLoading] = useState<boolean>(false)
+    const [sessions, setSessions] = useState<ChatSession[]>([{
     id: Date.now(),
     messages: [
       {
@@ -43,7 +44,7 @@ import { ChatSession, Message } from "./ChatWindow";
 
   const handleSendMessage = (text: string) => {
     if (activeSessionId === null) return;
-
+    setLoading(true)
     const newMessage: Message = { id: Date.now(), text, sender: 'user' };
     setSessions((prevSessions) =>
       prevSessions.map((session) =>
@@ -51,6 +52,7 @@ import { ChatSession, Message } from "./ChatWindow";
           ? { ...session, messages: [...session.messages, newMessage] }
           : session
       )
+      
     );
 
     // Simulate AI response
@@ -65,7 +67,6 @@ import { ChatSession, Message } from "./ChatWindow";
       );
     }, 1000);
   };
-
   const handleNewChat = () => {
     const newSession: ChatSession = { id: Date.now(), messages: [{
       id: Date.now(),
@@ -75,7 +76,6 @@ import { ChatSession, Message } from "./ChatWindow";
     setSessions((prevSessions) => [...prevSessions, newSession]);
     setActiveSessionId(newSession.id);
   };
-
   const handleSelectSession = (sessionId: number) => {
     setActiveSessionId(sessionId);
   };
@@ -91,6 +91,8 @@ import { ChatSession, Message } from "./ChatWindow";
         sessions,
         setSessions,
         activeSessionId,
-        setActiveSessionId
+        setActiveSessionId,
+        isLoading, 
+        setLoading
     }
 }

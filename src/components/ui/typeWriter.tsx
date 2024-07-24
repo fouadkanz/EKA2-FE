@@ -6,10 +6,10 @@ interface TypewriterProps {
   text: string;
   speed?: number; // Optional prop to control typing speed
   userTyping:boolean,
-  setUserTyping:SetUserTyping
+  setLoading:SetUserTyping
 }
 
-const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100, setUserTyping }) => {
+const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100, setLoading }) => {
   const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100, setUserTypin
       setDisplayedText((prev) => prev + text[currentIndex]);
       currentIndex++;
       if (currentIndex === text.length) {
-        setUserTyping(false)
+        setLoading(false)
         clearInterval(interval);
       }
     }, speed);

@@ -12,9 +12,11 @@ export interface Message {
 
 interface MessageListProps {
   messages: Message[] | undefined;
+  setLoading:any,
+  isLoading:boolean
 }
 
-const MessageList: React.FC<MessageListProps> = ({ messages }) => {
+const MessageList: React.FC<MessageListProps> = ({ messages,setLoading,isLoading }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (scrollRef.current) {
@@ -41,7 +43,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
               </div>
             </>
           ) : (
-            <MessageBubble message={message} index={index} />
+            <MessageBubble message={message} index={index} setLoading={setLoading} isLoading={isLoading}/>
           )}
         </>
       ))}
