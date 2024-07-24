@@ -1,5 +1,5 @@
 import "./App.css";
-import { MenuIcon, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import ChatSessionList from "./pages/chat/ChatSessionList";
 import { useChatSession } from "./pages/chat/useChatSession";
 import MessageList from "./pages/chat/MessageList";
@@ -7,8 +7,10 @@ import MessageList from "./pages/chat/MessageList";
 import ChatMessageInput from "./pages/chat/chatInput/ChatMessageInput";
 import SideBar from "./components/ui/sidebar";
 import ChatSuggestion from "./pages/chat/ChatSuggestion";
-import logoJera from "@/assets/images/top-logo-JERA.png"
+// import logoJera from "@/assets/images/top-logo-JERA.png"
 import PageMenu from "./components/ui/pageMenu";
+import jeraLogo from './assets/jera_logo.svg';
+
 function App() {
   const {
     handleSendMessage,
@@ -37,7 +39,10 @@ function App() {
                  onNewChat={handleNewChat}
                 />
               </div>
-              <span>JERA EKA2</span>
+              <div className="flex items-center">
+          <img src={jeraLogo} alt="JERA Logo" className="h-8 w-12" />
+          <span className="text-[#8096A3] text-sm ml-2 mt-2">EKA2</span>
+        </div>
             </header>
             <header className="md:h-20 h-10 md:pl-3 pl-2 md:pb-2 pb-2 flex flex-row space-x-6 md:items-center">
               <div>
