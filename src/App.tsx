@@ -9,10 +9,9 @@ import ChatSideMenu from "./pages/chat/ChatSessionList";
 import NavBar from "./components/ui/sidebar";
 
 const appName = import.meta.env.VITE_APP_NAME; // This should be set to 'symbiosis' or 'eka2'
-const config = loadConfig(appName || "symbiosis");
+const config = loadConfig(appName);
 
 function App() {
-  console.log(appName);
   const {
     handleSendMessage,
     handleNewChat,
@@ -24,8 +23,7 @@ function App() {
   } = useChatSession();
 
   return (
-    <>
-      <div className="flex flex-grow">
+      <div className="md:flex md:flex-grow">
         <nav className="hidden md:block">
           <SideBar appName={appName} />
         </nav>
@@ -60,15 +58,6 @@ function App() {
           />
         </aside>
       </div>
-      <div>
-        {/* {config.components.sideMenu && (
-        <div className="side-menu">
-          {config.components.sideMenu.agentListTab && <AgentListTab />}
-          {config.components.sideMenu.sessionHistoryTab && <SessionHistoryTab />}
-        </div>
-      )} */}
-      </div>
-    </>
   );
 }
 
