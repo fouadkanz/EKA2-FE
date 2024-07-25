@@ -24,14 +24,14 @@ const MessageList: React.FC<MessageListProps> = ({ messages,setLoading,isLoading
     }
   }, [messages]);
   return (
-    <div className="grow w-full rounded-md p-4 overflow-auto" ref={scrollRef}>
+    <div className="grow w-full rounded-md md:p-4 overflow-auto" ref={scrollRef}>
       {messages?.map((message, index) => (
         <>
           {messages.length === 1 && index === 0 ? (
             <>
-              <div className="flex justify-start items-center h-full w-full p-3">
-                <div className="flex items-center space-x-4 pl-4">
-                  <Avatar className="w-10 h-10 bg-slate-900 rounded-md mt-[5.5px]">
+              <div className="flex justify-start items-center h-full w-full md:p-3">
+                <div className="flex items-center md:space-x-4 md:pl-4">
+                  <Avatar className="w-10 h-10 bg-slate-900 rounded-md">
                     <AvatarFallback className="text-slate-50">
                       {message.sender}
                     </AvatarFallback>

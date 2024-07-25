@@ -1,11 +1,14 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { TabsContent } from '@/components/ui/tabs'
 import { groupSessionsByWeek } from '@/lib/utils'
 import { MessageSquare, PlusIcon, Search } from 'lucide-react'
-import { ChatSessionListProps } from '../ChatSessionList'
-
+import { ChatSession } from '../ChatWindow'
+export interface ChatSessionListProps {
+  sessions: ChatSession[];
+  onSelectSession: (sessionId: number) => void;
+  onNewChat: () => void;
+}
 const SessionList: React.FC<ChatSessionListProps> = ({
     sessions,
     onSelectSession,
@@ -13,7 +16,7 @@ const SessionList: React.FC<ChatSessionListProps> = ({
   }) => {
     const groupedSessions = groupSessionsByWeek(sessions);
   return (
-    <TabsContent value="chats" className="flex flex-col gap-2">
+    <>
       <div className="flex flex-row gap-2">
         <Button
           className="relative md:hover:w-28 flex transition-all duration-300 overflow-hidden"
@@ -31,16 +34,16 @@ const SessionList: React.FC<ChatSessionListProps> = ({
           />
         </div>
       </div>
-      <Accordion className="border p-5 rounded-lg" type="multiple">
+      <Accordion className="border p-5 rounded-lg w-full" type="multiple">
         {Object.keys(groupedSessions).map((week) => (
-          <AccordionItem key={week} value={week}>
+          <AccordionItem key={week} value={week} className='w-full'>
             <AccordionTrigger>{week}</AccordionTrigger>
             <AccordionContent className="flex flex-col space-y-1">
               {groupedSessions[week].map((session) => (
                 <div
                   key={session.id}
                   onClick={() => onSelectSession(session.id)}
-                  className="flex flex-col gap-1 cursor-pointer p-2 hover:bg-gray-100 rounded-md text-slate-800"
+                  className="flex flex-col gap-1 cursor-pointer p-2 hover:bg-gray-100 rounded-md text-slate-800 w-full"
                 >
                   <div className="flex flex-row justify-between">
                     <div className="flex flex-1 gap-1">
@@ -59,7 +62,7 @@ const SessionList: React.FC<ChatSessionListProps> = ({
           </AccordionItem>
         ))}
       </Accordion>
-  </TabsContent>
+  </>
   )
 }
 

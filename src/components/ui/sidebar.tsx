@@ -2,13 +2,13 @@ import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { BotIcon, Home, LogOut, Settings } from "lucide-react";
 import jeraLogo from '../../assets/jera_logo.svg';
 
-function SideBar() {
+function NavBar({appName}) {
   return (
     <div className="flex md:flex-col md:justify-between md:h-screen justify-center">
       <div className="hidden md:block">
-        <div className="flex items-center m-3">
+        <div className="flex flex-col m-3">
           <img src={jeraLogo} alt="JERA Logo" className="h-8 w-12" />
-          <span className="text-[#8096A3] text-sm ml-2 mt-2">EKA2</span>
+          <span className="text-[#8096A3] text-sm uppercase">{appName}</span>
         </div>
       </div>
       <div className="hidden md:block">
@@ -29,11 +29,8 @@ function SideBar() {
         </Avatar>
         <LogOut className="size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white" />
       </div>
-      <div className="md:hidden flex justify-center mt-4">
-        <span className="text-slate-50 text-xs">EKA2</span>
-      </div>
     </div>
   );
 }
 
-export default SideBar;
+export default NavBar;

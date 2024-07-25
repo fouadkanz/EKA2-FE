@@ -1,0 +1,12 @@
+{
+  "components": {
+    "chatWindow": true,
+    "sideMenu": [
+      {
+        "tabName": "chats"
+      }
+    ],
+    "navbar": true
+  },
+  "apiBaseUrl": "https://api.eka2.com"
+}

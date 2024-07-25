@@ -1,0 +1,15 @@
+{
+  "components": {
+    "chatWindow": true,
+    "sideMenu": [
+      {
+        "tabName":"Chats"
+      },
+      {
+        "tabName":"Agents"
+      }
+    ],
+    "navbar": true
+  },
+  "apiBaseUrl": "https://api.symbiosis.com"
+}

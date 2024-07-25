@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import MessageList from './MessageList';
-import MessageInput from './chatInput/MessageInput';
-import ChatSessionList from './ChatSessionList';
-import { useChatSession } from './useChatSession';
+import MessageList from "./MessageList";
+import ChatSuggestion from "./ChatSuggestion";
+import ChatMessageInput from "./chatInput/ChatMessageInput";
 
 export interface Message {
   id: number;
   text: string;
-  sender: 'user' | 'ai';
+  sender: "user" | "ai";
 }
 
 export interface ChatSession {
@@ -15,19 +13,27 @@ export interface ChatSession {
   messages: Message[];
 }
 
-const ChatWindow: React.FC = () => {
- const {activeSession,sessions,handleSelectSession,handleNewChat,handleSendMessage} = useChatSession()
+const ChatWindow = ({
+  activeSession,
+  setLoading,
+  isLoading,
+  handleSendMessage,
+  config
+}) => {
   return (
     <>
-      <ChatSessionList sessions={sessions} onSelectSession={handleSelectSession} onNewChat={handleNewChat} />
-      {activeSession ? (
-        <div className="chat-window">
-          {/* <MessageList messages={activeSession.messages} /> */}
-          <MessageInput onSendMessage={handleSendMessage} />
-        </div>
-      ) : (
-        <div className="select-chat-prompt">Please select or create a new chat session</div>
-      )}
+      <MessageList
+        messages={activeSession?.messages}
+        setLoading={setLoading}
+        isLoading={isLoading}
+      />
+        {activeSession && activeSession.messages.length === 1 && (
+          <ChatSuggestion />
+        )}
+        <ChatMessageInput
+          isLaoding={isLoading}
+          onSendMessage={handleSendMessage}
+        />
     </>
   );
 };

@@ -8,11 +8,15 @@ import {
 } from "@/components/ui/sheet";
 import ChatSessionList, { ChatSessionListProps } from "@/pages/chat/ChatSessionList";
 import { MenuIcon } from "lucide-react";
-
-const PageMenu : React.FC<ChatSessionListProps> = ({
+import { Config } from "@/lib/configLoader";
+interface PageMenuTypeProps {
+    config:Config
+}
+const PageMenu : React.FC<ChatSessionListProps&PageMenuTypeProps> = ({
     sessions,
     onSelectSession,
     onNewChat,
+    config
   }) => {
   return (
     <Sheet>
@@ -20,6 +24,7 @@ const PageMenu : React.FC<ChatSessionListProps> = ({
       <SheetContent>
         <SheetHeader>
           <ChatSessionList
+          config={config}
           sessions={sessions}
           onSelectSession={onSelectSession}
           onNewChat={onNewChat}
