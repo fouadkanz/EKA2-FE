@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChatSession, Message } from "./ChatWindow";
+import { useToast } from "@/components/ui/use-toast";
 
 
  export function useChatSession(){
@@ -41,7 +42,7 @@ import { ChatSession, Message } from "./ChatWindow";
     // Save chat sessions to local storage whenever they change
     localStorage.setItem('chatSessions', JSON.stringify(sessions));
   }, [sessions]);
-
+  const { toast } = useToast()
   const handleSendMessage = (text: string) => {
     if (activeSessionId === null) return;
     setLoading(true)
@@ -93,6 +94,7 @@ import { ChatSession, Message } from "./ChatWindow";
         activeSessionId,
         setActiveSessionId,
         isLoading, 
-        setLoading
+        setLoading,
+        toast
     }
 }

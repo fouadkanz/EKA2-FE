@@ -1,10 +1,10 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Clipboard } from "lucide-react";
 import React, { useState } from "react";
 import MessageMenu from "./MessageMenu";
 import { Message } from "./MessageList";
 import Typewriter from "@/components/ui/typeWriter";
-import { Comment } from "react-loader-spinner";
+import Clipboard from "@/components/ui/clipboard";
+import FileReader from "@/components/ui/fileReader";
 
 interface MessageBubbleProps {
   message: Message;
@@ -36,9 +36,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
           </span>
           {index !== 0 && message.sender !== "user" && (
             <span>
-              <Clipboard className="text-gray-500 size-[18px]" />
+              <Clipboard text={message.text}/>
             </span>
           )}
+      
         </div>
         <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white text-left pl-3">
           {index === 0 ? (
@@ -52,6 +53,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
                   text={message.text}
                   speed={20}
                 />
+                
               ) : (
                 message.text
               )}

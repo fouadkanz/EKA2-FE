@@ -1,9 +1,5 @@
 body {
-    @apply font-sans text-xs font-bold m-0 min-h-screen;
-  }
-  
-  * {
-    @apply box-border;
+    @apply font-normal text-xs font-bold m-0 min-h-screen;
   }
   
   #root {

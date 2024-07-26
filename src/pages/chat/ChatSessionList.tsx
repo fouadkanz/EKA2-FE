@@ -45,13 +45,11 @@ const ChatSideMenu: React.FC<ChatSideMenuProps> = ({
           </TabsContent>
         </Tabs>
       ) : (
-        <div className="flex flex-col gap-2 w-full">
           <SessionList
             sessions={sessions}
             onSelectSession={onSelectSession}
             onNewChat={onNewChat}
           />
-        </div>
       )}
     </>
   );
