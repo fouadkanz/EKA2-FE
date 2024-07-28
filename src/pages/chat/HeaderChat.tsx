@@ -1,9 +1,18 @@
 import PageMenu from "@/components/ui/pageMenu";
-import { BotIcon, MessageCircle } from "lucide-react";
+import {  MessageCircle } from "lucide-react";
 import jeraLogo from "../../assets/jera_logo.svg";
-import { Badge } from "@/components/ui/badge";
 import { convertToMMDDYY } from "@/lib/utils";
-const HeaderChat = ({
+import { ChatSession } from "./ChatWindow";
+import { Config } from "@/lib/configLoader";
+export interface HeaderChatProps {
+  sessions: ChatSession[];
+  config: Config;
+  handleNewChat: () => void;
+  handleSelectSession: (sessionId: number) => void
+  activeSession:ChatSession | undefined;
+  appName:string
+}
+const HeaderChat:React.FC<HeaderChatProps> = ({
   sessions,
   handleSelectSession,
   handleNewChat,
@@ -35,7 +44,7 @@ const HeaderChat = ({
       <header className="md:h-20 h-10 md:pl-3 md:py-5 my-2">
         <span className="flex flex-row gap-3 text-xl">
           <MessageCircle className="md:size-9 size-7" /> Chat Session
-          {` ${activeSession ? convertToMMDDYY(activeSession.id) : ""}`}
+          {` ${activeSession ? convertToMMDDYY(`${activeSession.id}`) : ""}`}
         </span>
       </header>
     </div>

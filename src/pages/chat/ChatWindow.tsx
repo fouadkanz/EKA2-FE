@@ -1,6 +1,7 @@
 import MessageList from "./MessageList";
 import ChatSuggestion from "./ChatSuggestion";
 import ChatMessageInput from "./chatInput/ChatMessageInput";
+import { Dispatch } from "react";
 
 export interface Message {
   id: number;
@@ -12,13 +13,17 @@ export interface ChatSession {
   id: number;
   messages: Message[];
 }
-
-const ChatWindow = ({
+export interface ChatWindowProps {
+  handleSendMessage: (text: string) => void;
+  activeSession:ChatSession | undefined;
+  setLoading:Dispatch<React.SetStateAction<boolean>>,
+  isLoading:boolean,
+}
+const ChatWindow:React.FC<ChatWindowProps> = ({
   activeSession,
   setLoading,
   isLoading,
   handleSendMessage,
-  config
 }) => {
   return (
     <>

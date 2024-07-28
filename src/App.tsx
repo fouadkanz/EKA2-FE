@@ -1,17 +1,17 @@
 import "./App.css";
-import ChatSessionList from "./pages/chat/ChatSessionList";
 import { useChatSession } from "./pages/chat/useChatSession";
 import ChatWindow from "./pages/chat/ChatWindow";
 import HeaderChat from "./pages/chat/HeaderChat";
 import SideBar from "./components/ui/sidebar";
-import loadConfig from "./lib/configLoader";
 import ChatSideMenu from "./pages/chat/ChatSessionList";
 import NavBar from "./components/ui/sidebar";
+import loadConfig from "./lib/configLoader";
 
-const appName = import.meta.env.VITE_APP_NAME; // This should be set to 'symbiosis' or 'eka2'
+const appName = process.env.VITE_APP_NAME|| 'eka2'; // This should be set to 'symbiosis' or 'eka2'
 const config = loadConfig(appName);
 
 function App() {
+
   const {
     handleSendMessage,
     handleNewChat,
@@ -38,7 +38,6 @@ function App() {
           />
           {config.components.chatWindow && (
             <ChatWindow
-              config={config}
               activeSession={activeSession}
               setLoading={setLoading}
               isLoading={isLoading}
@@ -46,7 +45,7 @@ function App() {
             />
           )}
           <nav className="h-20 text-center md:hidden block">
-            <NavBar/>
+            <NavBar appName={appName}/>
           </nav>
         </main>
         <aside className="h-[100vh] md:flex-shrink-0 w-1/4 md:p-3 md:text-center hidden md:block">

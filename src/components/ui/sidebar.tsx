@@ -1,8 +1,10 @@
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { BotIcon, Home, LogOut, Settings } from "lucide-react";
 import jeraLogo from '../../assets/jera_logo.svg';
-
-function NavBar({appName}) {
+interface NavBarProps{
+  appName:string
+}
+const NavBar:React.FC<NavBarProps>=({appName})=> {
   return (
     <div className="flex md:flex-col md:justify-between md:h-screen justify-center">
       <div className="hidden md:block">

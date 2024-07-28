@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { OnSendMessageType } from "./MessageInput";
+import { OnSendMessageType } from "./ChatMessageInput";
 
 export function useChatInput(onSendMessage:OnSendMessageType){
     const [text, setText] = useState('');

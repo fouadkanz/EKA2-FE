@@ -1,12 +1,10 @@
 // src/Typewriter.tsx
 import React, { Dispatch, SetStateAction, useState,useEffect } from 'react';
 
-type SetUserTyping = Dispatch<SetStateAction<boolean>>;
 interface TypewriterProps {
   text: string;
   speed?: number; // Optional prop to control typing speed
-  userTyping:boolean,
-  setLoading:SetUserTyping
+  setLoading:Dispatch<SetStateAction<boolean>>
 }
 
 const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100, setLoading }) => {
@@ -24,7 +22,7 @@ const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100, setLoading }
     }, speed);
 
     return () => clearInterval(interval);
-  }, [text, speed]);
+  }, [setLoading, speed, text]);
   return <div className="text-sm">{displayedText.split("undefined")[0]}</div>;
 };
 

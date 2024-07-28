@@ -1,7 +1,9 @@
 import { StopCircle } from 'lucide-react'
-import React from 'react'
 
-const LoadingBar=({isLaoding})=> {
+interface LoadingBarProps {
+  isLaoding:boolean
+}
+const LoadingBar: React.FC<LoadingBarProps>=({isLaoding})=> {
   return (
     <div className={`flex items-center border rounded-full shadow-sm p-1`}>
           <div

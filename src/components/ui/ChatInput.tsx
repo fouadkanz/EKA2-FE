@@ -35,7 +35,7 @@ const ChatInput: React.FC<InputProps> = ({
     }
     setIsHovered(false);
     setDragOver(false);
-    setDropped(true);
+    setDropped(!isDropped);
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
