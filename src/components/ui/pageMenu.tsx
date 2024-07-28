@@ -1,14 +1,13 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import ChatSessionList, { ChatSessionListProps } from "@/pages/chat/ChatSessionList";
+import ChatSessionList from "@/pages/chat/ChatSessionList";
 import { MenuIcon } from "lucide-react";
 import { Config } from "@/lib/configLoader";
+import { ChatSessionListProps } from "@/pages/chat/sideMenu/SessionList";
 interface PageMenuTypeProps {
     config:Config
 }
