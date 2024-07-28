@@ -10840,7 +10840,7 @@ const MessageBubble = ({
         ] }),
         index !== 0 && message.sender !== "user" && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Clipboard, { text: message.text }) })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-normal py-2.5 text-gray-900 dark:text-white text-left pl-3", children: index === 0 ? message.text : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: message.sender === "ai" ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm font-normal py-2.5 text-gray-900 dark:text-white text-left pl-3", children: index === 0 ? message.text : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: message.sender === "ai" ? /* @__PURE__ */ jsxRuntimeExports.jsx(
         Typewriter,
         {
           setLoading,
@@ -18265,7 +18265,7 @@ const MessageList = ({ messages, setLoading, isLoading }) => {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grow w-full rounded-md md:p-4 overflow-auto", ref: scrollRef, children: messages == null ? void 0 : messages.map((message, index) => /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: messages.length === 1 && index === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-start items-center h-full w-full md:p-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center md:space-x-4 md:pl-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grow w-full rounded-md md:p-4 overflow-auto", ref: scrollRef, children: messages == null ? void 0 : messages.map((message, index) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: messages.length === 1 && index === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-start items-center h-full w-full md:p-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center md:space-x-4 md:pl-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { className: "w-10 h-10 bg-slate-900 rounded-md", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AvatarFallback, { className: "text-slate-50", children: message.sender }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       TypewriterEffect,
@@ -18273,7 +18273,7 @@ const MessageList = ({ messages, setLoading, isLoading }) => {
         words: convertStringToWordObjects(message.text)
       }
     )
-  ] }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(MessageBubble, { message, index, setLoading, isLoading }) })) });
+  ] }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(MessageBubble, { message, index, setLoading, isLoading }) }, index)) });
 };
 function isObject$1(subject) {
   return Object.prototype.toString.call(subject) === "[object Object]";
