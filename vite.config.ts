@@ -7,7 +7,7 @@ export default ({ mode }: ConfigEnv) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return defineConfig({
     plugins: [react()],
- 
+
     server: {
       port: parseInt(process.env.VITE_PORT||"5173"),
     },
@@ -19,6 +19,9 @@ export default ({ mode }: ConfigEnv) => {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
+    },
+    define: {
+      "process.env": process.env,
     },
   })
 }
