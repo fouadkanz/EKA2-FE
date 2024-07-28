@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { Dispatch, useEffect, useRef } from "react";
 
 import MessageBubble from "./MessageBubble";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
@@ -12,7 +12,7 @@ export interface Message {
 
 interface MessageListProps {
   messages: Message[] | undefined;
-  setLoading:any,
+  setLoading:Dispatch<React.SetStateAction<boolean>>,
   isLoading:boolean
 }
 
@@ -26,7 +26,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages,setLoading,isLoading
   return (
     <div className="grow w-full rounded-md md:p-4 overflow-auto" ref={scrollRef}>
       {messages?.map((message, index) => (
-        <>
+        <div key={index}>
           {messages.length === 1 && index === 0 ? (
             <>
               <div className="flex justify-start items-center h-full w-full md:p-3">
@@ -45,7 +45,7 @@ const MessageList: React.FC<MessageListProps> = ({ messages,setLoading,isLoading
           ) : (
             <MessageBubble message={message} index={index} setLoading={setLoading} isLoading={isLoading}/>
           )}
-        </>
+        </div>
       ))}
     </div>
   );

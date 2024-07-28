@@ -37,7 +37,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
           )}
       
         </div>
-        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white text-left pl-3">
+        <div className="text-sm font-normal py-2.5 text-gray-900 dark:text-white text-left pl-3">
           {index === 0 ? (
             message.text
           ) : (
@@ -53,7 +53,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
               )}
             </>
           )}
-        </p>
+        </div>
         {index !== 0 && message.sender !== "user" && <MessageMenu />}
       </div>
     </div>
