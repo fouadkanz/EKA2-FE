@@ -38,7 +38,7 @@ export const convertToMMDDYY=(dateString: string): string=> {
   const date = new Date(dateString);
   
   if (isNaN(date.getTime())) {
-      throw new Error('Invalid date string');
+      return ''
   }
 
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
