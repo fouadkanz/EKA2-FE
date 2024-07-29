@@ -7,9 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-export const groupSessionsByWeek = (sessions: ChatSession[]) => {
+export const groupSessionsByWeek = (sessions: ChatSession[]|undefined) => {
   const weeks: { [week: string]: ChatSession[] } = {};
-
+if(!sessions){
+  return weeks
+}
   sessions.forEach(session => {
     const date = new Date(session.id);
     const week = `${date.getMonth()}-Week-${Math.ceil(

@@ -1,25 +1,16 @@
 import PageMenu from "@/components/ui/pageMenu";
-import {  MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import jeraLogo from "../../assets/jera_logo.svg";
 import { convertToMMDDYY } from "@/lib/utils";
-import { ChatSession } from "./ChatWindow";
+import { FC, useContext } from "react";
+import { ChatSessionContext } from "./core/context/MessageContext";
 import { Config } from "@/lib/configLoader";
 export interface HeaderChatProps {
-  sessions: ChatSession[];
-  config: Config;
-  handleNewChat: () => void;
-  handleSelectSession: (sessionId: number) => void
-  activeSession:ChatSession | undefined;
-  appName:string
+  appName:string;
+  config:Config
 }
-const HeaderChat:React.FC<HeaderChatProps> = ({
-  sessions,
-  handleSelectSession,
-  handleNewChat,
-  activeSession,
-  appName,
-  config,
-}) => {
+const HeaderChat:FC<HeaderChatProps> = ({appName,config}) => {
+  const headerContext = useContext(ChatSessionContext);
   return (
     <div>
       <header className="text-3xl font-bold md:hidden md:w-24 p-3 flex flex-row space-x-10">
@@ -28,10 +19,7 @@ const HeaderChat:React.FC<HeaderChatProps> = ({
           onClick={() => console.log("click")}
         >
           <PageMenu
-            config={config}
-            sessions={sessions}
-            onSelectSession={handleSelectSession}
-            onNewChat={handleNewChat}
+          config={config}
           />
         </div>
         <div className="flex items-center">
@@ -44,7 +32,7 @@ const HeaderChat:React.FC<HeaderChatProps> = ({
       <header className="md:h-20 h-10 md:pl-3 md:py-5 my-2">
         <span className="flex flex-row gap-3 text-xl">
           <MessageCircle className="md:size-9 size-7" /> Chat Session
-          {` ${activeSession ? convertToMMDDYY(`${activeSession.id}`) : ""}`}
+          {` ${headerContext?.activeSession ? convertToMMDDYY(`${headerContext.activeSession.id}`) : ""}`}
         </span>
       </header>
     </div>

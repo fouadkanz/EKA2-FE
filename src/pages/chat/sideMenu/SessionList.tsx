@@ -3,24 +3,18 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { groupSessionsByWeek } from '@/lib/utils'
 import { MessageSquare, PlusIcon, Search } from 'lucide-react'
-import { ChatSession } from '../ChatWindow'
-export interface ChatSessionListProps {
-  sessions: ChatSession[];
-  onSelectSession: (sessionId: number) => void;
-  onNewChat: () => void;
-}
-const SessionList: React.FC<ChatSessionListProps> = ({
-    sessions,
-    onSelectSession,
-    onNewChat,
-  }) => {
-    const groupedSessions = groupSessionsByWeek(sessions);
+import { ChatSessionContext } from '../core/context/MessageContext'
+import { useContext } from 'react'
+const SessionList= () => {
+    const sessionListCopntext = useContext(ChatSessionContext)
+    const groupedSessions = groupSessionsByWeek(sessionListCopntext?.sessions);
+
   return (
     <div className='flex flex-col gap-2 w-full'>
       <div className="flex flex-row gap-2">
         <Button
           className="relative md:hover:w-28 flex transition-all duration-300 overflow-hidden"
-          onClick={onNewChat}
+          onClick={sessionListCopntext?.handleNewChat}
           size="icon"
           variant={'secondary'}
         >
@@ -42,7 +36,7 @@ const SessionList: React.FC<ChatSessionListProps> = ({
               {groupedSessions[week].map((session) => (
                 <div
                   key={session.id}
-                  onClick={() => onSelectSession(session.id)}
+                  onClick={() => sessionListCopntext?.handleSelectSession(session.id)}
                   className="flex flex-col gap-2 cursor-pointer p-2 hover:bg-gray-100 rounded-md text-slate-800 w-full"
                 >
                   <div className="flex flex-row justify-between">

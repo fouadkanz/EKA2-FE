@@ -1,7 +1,8 @@
-import MessageList from "./MessageList";
+import MessageList, { Review } from "./MessageList";
 import ChatSuggestion from "./ChatSuggestion";
 import ChatMessageInput from "./chatInput/ChatMessageInput";
 import { Dispatch } from "react";
+import { useChatSessionContext } from "./core/context/useChatSessionContext";
 
 export interface Message {
   id: number;
@@ -18,26 +19,20 @@ export interface ChatWindowProps {
   activeSession:ChatSession | undefined;
   setLoading:Dispatch<React.SetStateAction<boolean>>,
   isLoading:boolean,
+  handleThumbsUpDown: (messageID:number,review:Review) => void
 }
-const ChatWindow:React.FC<ChatWindowProps> = ({
-  activeSession,
-  setLoading,
-  isLoading,
-  handleSendMessage,
-}) => {
+const ChatWindow=() => {
+  const {
+    activeSession
+  } = useChatSessionContext();
   return (
     <>
       <MessageList
-        messages={activeSession?.messages}
-        setLoading={setLoading}
-        isLoading={isLoading}
       />
         {activeSession && activeSession.messages.length === 1 && (
           <ChatSuggestion />
         )}
         <ChatMessageInput
-          isLaoding={isLoading}
-          onSendMessage={handleSendMessage}
         />
     </>
   );

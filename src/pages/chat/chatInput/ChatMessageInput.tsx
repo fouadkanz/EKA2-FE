@@ -1,19 +1,12 @@
 import ChatInput from "@/components/ui/ChatInput";
 import { useChatInput } from "./useChatInput";
 import LoadingBar from "@/components/ui/loadingBar";
+import { useChatSessionContext } from "../core/context/useChatSessionContext";
 export type OnSendMessageType = (text: string) => void;
 
-export interface MessageInputProps {
-  onSendMessage: OnSendMessageType;
-  isLaoding: boolean;
-}
-
-const ChatMessageInput: React.FC<MessageInputProps> = ({
-  onSendMessage,
-  isLaoding
-}) => {
-
-  const { handleSubmit, setText, text } = useChatInput(onSendMessage);
+const ChatMessageInput=() => {
+  const { handleSendMessage,isLoading } = useChatSessionContext();
+  const { handleSubmit, setText, text } = useChatInput(handleSendMessage);
   const handleFileDrop = (files: FileList) => {
     // Handle the dropped files here
     console.log('Files dropped:', files);
@@ -21,7 +14,7 @@ const ChatMessageInput: React.FC<MessageInputProps> = ({
 };
   return (
     <div className="md:p-3">
-      {!isLaoding ? (
+      {!isLoading ? (
         <ChatInput
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -30,7 +23,7 @@ const ChatMessageInput: React.FC<MessageInputProps> = ({
           onFileDrop={handleFileDrop}
         />
       ) : (
-       <LoadingBar isLaoding={isLaoding}/>
+       <LoadingBar isLaoding={isLoading}/>
       )}
     </div>
   );

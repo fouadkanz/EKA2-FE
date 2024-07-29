@@ -1,20 +1,22 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import MessageMenu from "./MessageMenu";
 import { Message } from "./MessageList";
 import Typewriter from "@/components/ui/typeWriter";
 import Clipboard from "@/components/ui/clipboard";
+import { useChatSessionContext } from "./core/context/useChatSessionContext";
 interface MessageBubbleProps {
   message: Message;
   index: number;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  isLoading:boolean
 }
 const MessageBubble: React.FC<MessageBubbleProps> = ({
   message,
-  index,
-  setLoading
+  index
 }) => {
+  const {
+    setLoading,
+    handleThumbsUpDown
+  } = useChatSessionContext();
   return (
     <div className="flex items-start gap-1 space-x-1">
       <Avatar className="w-10 h-10 bg-slate-900 rounded-md">
@@ -54,7 +56,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
             </>
           )}
         </div>
-        {index !== 0 && message.sender !== "user" && <MessageMenu />}
+        {index !== 0 && message.sender !== "user" && <MessageMenu 
+        message={message}
+        handleThumbsUpDown={handleThumbsUpDown}
+        />}
       </div>
     </div>
   );

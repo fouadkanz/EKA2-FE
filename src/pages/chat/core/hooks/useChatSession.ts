@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ChatSession, Message } from "./ChatWindow";
-import { useToast } from "@/components/ui/use-toast";
+import { ChatSession, Message } from "../../ChatWindow";
+import { Review } from "../../MessageList";
 
 
  export function useChatSession(){
@@ -16,7 +16,11 @@ import { useToast } from "@/components/ui/use-toast";
     ]
   }]);
   const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
-
+  
+  const handleThumbsUpDown=(messageID:number|undefined,review:Review,upDown:string)=>{
+if(messageID){console.log(review)}
+   
+  }
   useEffect(() => {
     const savedSessions = localStorage.getItem('chatSessions');
     if (savedSessions) {
@@ -42,7 +46,6 @@ import { useToast } from "@/components/ui/use-toast";
     // Save chat sessions to local storage whenever they change
     localStorage.setItem('chatSessions', JSON.stringify(sessions));
   }, [sessions]);
-  const { toast } = useToast()
   const handleSendMessage = (text: string) => {
     if (activeSessionId === null) return;
     setLoading(true)
@@ -95,6 +98,6 @@ import { useToast } from "@/components/ui/use-toast";
         setActiveSessionId,
         isLoading, 
         setLoading,
-        toast
+        handleThumbsUpDown,
     }
 }

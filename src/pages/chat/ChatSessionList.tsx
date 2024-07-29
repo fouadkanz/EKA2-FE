@@ -1,5 +1,4 @@
-import React from "react";
-import { Message } from "./ChatWindow";
+import { FC } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -7,22 +6,10 @@ import AgentsList from "./sideMenu/AgentsList";
 import SessionList from "./sideMenu/SessionList";
 import { Config } from "@/lib/configLoader";
 
-interface ChatSession {
-  id: number;
-  messages: Message[];
-}
 export interface ChatSideMenuProps {
-  sessions: ChatSession[];
-  onSelectSession: (sessionId: number) => void;
-  onNewChat: () => void;
   config: Config;
 }
-const ChatSideMenu: React.FC<ChatSideMenuProps> = ({
-  sessions,
-  onSelectSession,
-  onNewChat,
-  config,
-}) => {
+const ChatSideMenu:FC<ChatSideMenuProps>= ({config}) => {
   return (
     <>
       {config.components.sideMenu.length > 1 ? (
@@ -37,19 +24,11 @@ const ChatSideMenu: React.FC<ChatSideMenuProps> = ({
           </TabsList>
           <AgentsList />
           <TabsContent value="chats" className="flex flex-col gap-2 w-full">
-            <SessionList
-              sessions={sessions}
-              onSelectSession={onSelectSession}
-              onNewChat={onNewChat}
-            />
+            <SessionList />
           </TabsContent>
         </Tabs>
       ) : (
-          <SessionList
-            sessions={sessions}
-            onSelectSession={onSelectSession}
-            onNewChat={onNewChat}
-          />
+        <SessionList />
       )}
     </>
   );
