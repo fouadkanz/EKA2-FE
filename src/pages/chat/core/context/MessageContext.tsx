@@ -15,7 +15,7 @@ export interface ChatSessionContextType {
   setActiveSessionId:Dispatch<SetStateAction<number| null>>
   isLoading: boolean;
   setLoading:Dispatch<SetStateAction<boolean>>
-  handleThumbsUpDown: (messageID: number|undefined, isThumbsUp: Review,upDown:string) => void;
+  handleThumbsUpDown: (messageID: number|undefined, isThumbsUp: Review,direction:"up" | "down") => void;
 }
 
 export const ChatSessionContext = createContext<ChatSessionContextType | undefined>(undefined);

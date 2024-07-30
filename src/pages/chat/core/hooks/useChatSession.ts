@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { ChatSession, Message } from "../../ChatWindow";
-import { Review } from "../../MessageList";
+import { ChatSession } from "../../ChatWindow";
+import { Message, Review } from "../../MessageList";
 
 
- export function useChatSession(){
+export function useChatSession() {
   const [isLoading, setLoading] = useState<boolean>(false)
-    const [sessions, setSessions] = useState<ChatSession[]>([{
+  const [sessions, setSessions] = useState<ChatSession[]>([{
     id: Date.now(),
     messages: [
       {
@@ -16,11 +16,29 @@ import { Review } from "../../MessageList";
     ]
   }]);
   const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
+
+  const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down") => {
+    if (!messageID) {
+      return
+    }
   
-  const handleThumbsUpDown=(messageID:number|undefined,review:Review,upDown:string)=>{
-if(messageID){console.log(review)}
-   
-  }
+    setSessions((prevSessions) =>
+      prevSessions.map((session) => {
+        if (session.id === activeSessionId) {
+          const message = session.messages.find((msg) => msg.id === messageID);
+          if (message) {
+            if (direction === "up") {
+              message.thumbsUp = review;
+            } else if (direction === "down") {
+              message.thumbsDown = review;
+            }
+          }
+        }
+        return session;
+      })
+    );
+  };
+  
   useEffect(() => {
     const savedSessions = localStorage.getItem('chatSessions');
     if (savedSessions) {
@@ -56,7 +74,6 @@ if(messageID){console.log(review)}
           ? { ...session, messages: [...session.messages, newMessage] }
           : session
       )
-      
     );
 
     // Simulate AI response
@@ -72,11 +89,13 @@ if(messageID){console.log(review)}
     }, 1000);
   };
   const handleNewChat = () => {
-    const newSession: ChatSession = { id: Date.now(), messages: [{
-      id: Date.now(),
-      text: 'Hello {user}, how can I assist you today?',
-      sender: 'ai'
-    }] };
+    const newSession: ChatSession = {
+      id: Date.now(), messages: [{
+        id: Date.now(),
+        text: 'Hello {user}, how can I assist you today?',
+        sender: 'ai'
+      }]
+    };
     setSessions((prevSessions) => [...prevSessions, newSession]);
     setActiveSessionId(newSession.id);
   };
@@ -87,17 +106,17 @@ if(messageID){console.log(review)}
   const activeSession = sessions.find((session) => session.id === activeSessionId);
 
 
-    return {
-        handleSendMessage,
-        handleNewChat,
-        activeSession,
-        handleSelectSession,
-        sessions,
-        setSessions,
-        activeSessionId,
-        setActiveSessionId,
-        isLoading, 
-        setLoading,
-        handleThumbsUpDown,
-    }
+  return {
+    handleSendMessage,
+    handleNewChat,
+    activeSession,
+    handleSelectSession,
+    sessions,
+    setSessions,
+    activeSessionId,
+    setActiveSessionId,
+    isLoading,
+    setLoading,
+    handleThumbsUpDown,
+  }
 }

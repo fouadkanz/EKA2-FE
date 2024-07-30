@@ -7,7 +7,7 @@ import NavBar from "./components/ui/sidebar";
 import loadConfig from "./lib/configLoader";
 import { ChatSessionProvider } from "./pages/chat/core/context/MessageContext";
 
-const appName = "eka2"; // This should be set to 'symbiosis' or 'eka2'
+const appName = process.env.VITE_APP_NAME || "eka2"; // This should be set to 'symbiosis' or 'eka2'
 const config = loadConfig(appName);
 function App() {
   return (

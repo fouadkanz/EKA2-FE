@@ -14,8 +14,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   index
 }) => {
   const {
-    setLoading,
-    handleThumbsUpDown
+    setLoading
   } = useChatSessionContext();
   return (
     <div className="flex items-start gap-1 space-x-1">
@@ -57,8 +56,8 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
           )}
         </div>
         {index !== 0 && message.sender !== "user" && <MessageMenu 
+        key={index}
         message={message}
-        handleThumbsUpDown={handleThumbsUpDown}
         />}
       </div>
     </div>
