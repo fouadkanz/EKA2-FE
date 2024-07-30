@@ -1,42 +1,27 @@
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import FormGroup from "@/components/ui/formGroup";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Menu, SendHorizonalIcon } from "lucide-react";
+
+import { ArrowRightCircle, Menu } from "lucide-react";
 import { FC, ReactNode } from "react";
 import { useComment } from "./useComment";
 import { useChatSessionContext } from "../core/context/useChatSessionContext";
-
+import AddComment from "./AddComment";
+import CommentList from "./CommentList";
+import { Message } from "../MessageList";
 
 export type CommentWindowProps = {
   children: ReactNode;
   id: number;
-  thumb: "up"|"down"
+  thumb: "up" | "down";
+  message:Message
 };
-const CommentWindow: FC<CommentWindowProps> = ({
-  children,
-  id,
-  thumb
-}) => {
-  const {
-    handleThumbsUpDown
-  } = useChatSessionContext();
+const CommentWindow: FC<CommentWindowProps> = ({ children, id, thumb,message }) => {
+  const { handleThumbsUpDown } = useChatSessionContext();
   const {
     commentType,
     setCommentType,
@@ -47,82 +32,58 @@ const CommentWindow: FC<CommentWindowProps> = ({
     reference,
     setReference,
     options,
+    commentTabList,
+    setCommentTabList,
   } = useComment();
   return (
-        <Dialog key={id}>
-          <DialogTrigger>{children}</DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="flex flex-row gap-4">
-                <Menu className="mb-2" />
+    <Dialog key={id}>
+      <DialogTrigger>{children}</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle className="flex flex-row gap-4">
+            {commentTabList ? (
+              <>
+                <ArrowRightCircle
+                  className="mb-2 hover:cursor-pointer text-gray-600"
+                  onClick={() => setCommentTabList(!commentTabList)}
+                />{" "}
+                Reviews
+              </>
+            ) : (
+              <>
+                <Menu
+                  className="mb-2 hover:cursor-pointer text-gray-600"
+                  onClick={() => setCommentTabList(!commentTabList)}
+                />{" "}
                 Add Review
-              </DialogTitle>
-            </DialogHeader>
-            <div className="bg-[#D9E2EA] p-5 rounded-lg">
-              <FormGroup>
-                <Label>Review Type</Label>
-                <Select
-                  defaultValue={commentType}
-                  onValueChange={(e) => setCommentType(e)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select feedback" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {options.map((item) => (
-                      <SelectItem key={item} value={item}>
-                        {item}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormGroup>
-              <FormGroup>
-                <Label>Comment</Label>
-                <Textarea
-                  value={commentText}
-                  placeholder="Add comment..."
-                  onChange={(e) => setCommentText(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>Ideal Answer</Label>
-                <Textarea
-                  value={idealAnswer}
-                  placeholder="Add answer..."
-                  onChange={(e) => setIdealAnswer(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>Reference</Label>
-                <Input
-                  value={reference}
-                  placeholder="Add file name..."
-                  onChange={(e) => setReference(e.target.value)}
-                />
-              </FormGroup>
-
-              <DialogFooter>
-                <Button
-                  size={"icon"}
-                  onClick={() =>
-                    handleThumbsUpDown(id, {
-                      flag: true,
-                      comment: {
-                        type: commentType,
-                        idealAnswer: idealAnswer,
-                        reference: reference,
-                        comment: commentText,
-                      },
-                    },thumb)
-                  }
-                >
-                  <SendHorizonalIcon />
-                </Button>
-              </DialogFooter>
-            </div>
-          </DialogContent>
-        </Dialog>
+              </>
+            )}
+          </DialogTitle>
+        </DialogHeader>
+        {commentTabList ? (
+          <CommentList 
+          message={message}
+          />
+        ) : (
+          <>
+            <AddComment
+              commentType={commentType}
+              setCommentType={setCommentType}
+              commentText={commentText}
+              setCommentText={setCommentText}
+              idealAnswer={idealAnswer}
+              setIdealAnswer={setIdealAnswer}
+              reference={reference}
+              setReference={setReference}
+              options={options}
+              id={id}
+              thumb={thumb}
+              handleThumbsUpDown={handleThumbsUpDown}
+            />
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 };
 

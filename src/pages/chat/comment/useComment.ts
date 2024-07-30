@@ -5,6 +5,7 @@ export function useComment(){
     const [commentText, setCommentText] = useState('');
     const [idealAnswer, setIdealAnswer] = useState('');
     const [reference, setReference] = useState('');
+    const [commentTabList,setCommentTabList] = useState(false)
     const options = ["Wrong information","Inappropriate answer","Difficult to read/understand","Other"]
 
     return {
@@ -16,6 +17,8 @@ export function useComment(){
         setIdealAnswer,
         reference,
         setReference,
-        options
+        options,
+        commentTabList,
+        setCommentTabList
     }
 }

@@ -21,10 +21,10 @@ const MessageMenu:FC<MessageMenuProps> = ({message}) => {
       </Collapsible>
       <div className="flex flex-row space-x-2">
         <Volume2 className="mt-2 size-[20px]" />
-        <CommentWindow id={message.id} thumb={"down"}>
+        <CommentWindow message={message} id={message.id} thumb={"down"}>
           <ThumbsDown className={`${message?.thumbsDown?.flag ? "fill-[#334155] text-[#334155]" : ""} mt-1 size-[18px] hover:fill-[#334155]`} />
         </CommentWindow>
-        <CommentWindow id={message.id} thumb={"up"}>
+        <CommentWindow message={message} id={message.id} thumb={"up"}>
           <ThumbsUp className={`${message?.thumbsUp?.flag ? "fill-[#334155] text-[#334155]" : ""} mt-1 size-[18px] hover:fill-[#334155]`} />
         </CommentWindow>
       </div>

@@ -50,7 +50,7 @@ export function useChatSession() {
         messages: [
           {
             id: Date.now(),
-            text: 'Hello {user}, how can I assist you today?',
+            text: 'Hello {user}, how can I assist you today ?',
             sender: 'ai'
           }
         ]
