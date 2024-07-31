@@ -1,7 +1,7 @@
 {
   "homepage": "http://fouadkanz.github.io/EKA2-FE",
   "name": "eka2-fe",
-  "private": "false",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
