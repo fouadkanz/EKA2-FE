@@ -7,13 +7,13 @@ export default ({ mode }: ConfigEnv) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return defineConfig({
     plugins: [react()],
-
+    base: '/EKA2-FE/',
     server: {
       port: parseInt(process.env.VITE_PORT||"5173"),
     },
     build: {
       minify: false,
-      sourcemap: false,
+      sourcemap: true,
     },
     resolve: {
       alias: {
