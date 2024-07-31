@@ -12259,6 +12259,10 @@ function useChatSession() {
       })
     );
   };
+  const activeSession = sessions.find((session) => session.id === activeSessionId);
+  const handleSelectSession = (sessionId) => {
+    if (sessionId) setActiveSessionId(sessionId);
+  };
   reactExports.useEffect(() => {
     const savedSessions = localStorage.getItem("chatSessions");
     if (savedSessions) {
@@ -12277,6 +12281,7 @@ function useChatSession() {
       setSessions([initialSession]);
       setActiveSessionId(initialSession.id);
     }
+    handleSelectSession(activeSessionId);
   }, []);
   reactExports.useEffect(() => {
     localStorage.setItem("chatSessions", JSON.stringify(sessions));
@@ -12311,10 +12316,6 @@ function useChatSession() {
     setSessions((prevSessions) => [...prevSessions, newSession]);
     setActiveSessionId(newSession.id);
   };
-  const handleSelectSession = (sessionId) => {
-    setActiveSessionId(sessionId);
-  };
-  const activeSession = sessions.find((session) => session.id === activeSessionId);
   return {
     handleSendMessage,
     handleNewChat,
@@ -26745,4 +26746,3 @@ function App() {
 client.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
 );
-//# sourceMappingURL=index-D0kLJAZU.js.map
