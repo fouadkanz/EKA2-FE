@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/EKA2-FE/sw.js', { scope: '/EKA2-FE/' })})}
