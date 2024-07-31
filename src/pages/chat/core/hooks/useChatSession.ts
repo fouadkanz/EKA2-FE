@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { ChatSession } from "../../ChatWindow";
 import { Message, Review } from "../../MessageList";
@@ -38,7 +39,11 @@ export function useChatSession() {
       })
     );
   };
-  
+  const activeSession = sessions.find((session) => session.id === activeSessionId);
+  const handleSelectSession = (sessionId: number|null) => {
+    if(sessionId) setActiveSessionId(sessionId);
+  };
+
   useEffect(() => {
     const savedSessions = localStorage.getItem('chatSessions');
     if (savedSessions) {
@@ -58,8 +63,9 @@ export function useChatSession() {
       setSessions([initialSession]);
       setActiveSessionId(initialSession.id);
     }
+    handleSelectSession(activeSessionId)
   }, []);
-
+  
   useEffect(() => {
     // Save chat sessions to local storage whenever they change
     localStorage.setItem('chatSessions', JSON.stringify(sessions));
@@ -99,13 +105,8 @@ export function useChatSession() {
     setSessions((prevSessions) => [...prevSessions, newSession]);
     setActiveSessionId(newSession.id);
   };
-  const handleSelectSession = (sessionId: number) => {
-    setActiveSessionId(sessionId);
-  };
 
-  const activeSession = sessions.find((session) => session.id === activeSessionId);
-
-
+ 
   return {
     handleSendMessage,
     handleNewChat,

@@ -1,7 +1,7 @@
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
- 
+
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -13,7 +13,7 @@ export default ({ mode }: ConfigEnv) => {
     },
     build: {
       minify: false,
-      sourcemap: true,
+      sourcemap: false,
     },
     resolve: {
       alias: {
