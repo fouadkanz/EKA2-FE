@@ -11,28 +11,26 @@ export interface ChatSession {
 }
 
 const ChatWindow = () => {
-  const { activeSession } = useChatSessionContext();
-  
+  const { activeSession, activeSessionId } = useChatSessionContext();
+  console.log("activeSession", activeSession?.id);
+  console.log("activeSessionId", activeSessionId);
   return activeSession ? (
     <Fragment>
-      <MessageList />
-      {activeSession.messages.length === 1 && (
-        <ChatSuggestion />
-      )}
+      <MessageList activeSession={activeSession} />
+      {activeSession.messages.length === 1 && <ChatSuggestion />}
       <ChatMessageInput />
     </Fragment>
   ) : (
     <LineWave
-  visible={true}
-
-  color="#334155"
-  ariaLabel="line-wave-loading"
-  wrapperStyle={{}}
-  wrapperClass="flex justify-center items-center h-full"
-  firstLineColor=""
-  middleLineColor=""
-  lastLineColor=""
-  />
+      visible={true}
+      color="#334155"
+      ariaLabel="line-wave-loading"
+      wrapperStyle={{}}
+      wrapperClass="flex justify-center items-center h-full"
+      firstLineColor=""
+      middleLineColor=""
+      lastLineColor=""
+    />
   );
 };
 

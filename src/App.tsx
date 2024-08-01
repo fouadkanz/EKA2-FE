@@ -18,7 +18,7 @@ function App() {
         </nav>
         <main className="flex flex-col flex-grow p-2 text-center h-screen w-screen">
           <HeaderChat appName={appName} config={config} />
-          {config.components.chatWindow && <ChatWindow />}
+          <ChatWindow />
           <nav className="h-20 text-center md:hidden block">
             <NavBar appName={appName} />
           </nav>
