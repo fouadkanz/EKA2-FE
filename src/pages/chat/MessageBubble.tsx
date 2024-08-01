@@ -18,7 +18,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   } = useChatSessionContext();
   return (
     <div className="flex items-start gap-1 space-x-1">
-      <Avatar className="w-10 h-10 bg-slate-900 rounded-md">
+      <Avatar className="w-10 h-10 bg-slate-900 rounded-s-md rounded-b-md">
         <AvatarFallback className=" text-slate-50">CN</AvatarFallback>
       </Avatar>
       <div className="flex flex-col w-full p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl mb-3">

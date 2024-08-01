@@ -7,7 +7,7 @@ import { useChatSession } from "../hooks/useChatSession";
 export interface ChatSessionContextType {
   handleSendMessage: (text: string) => void;
   handleNewChat: () => void;
-  activeSession:ChatSession | undefined; 
+  activeSession:ChatSession | null; 
   handleSelectSession: (sessionId: number) => void;
   sessions: ChatSession[]; 
   setSessions:Dispatch<SetStateAction<ChatSession[]>>

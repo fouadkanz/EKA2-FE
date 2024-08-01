@@ -5,9 +5,10 @@ import { Message, Review } from "../../MessageList";
 
 
 export function useChatSession() {
+  const dateNow = Date.now()
   const [isLoading, setLoading] = useState<boolean>(false)
   const [sessions, setSessions] = useState<ChatSession[]>([{
-    id: Date.now(),
+    id: dateNow,
     messages: [
       {
         id: Date.now(),
@@ -16,13 +17,13 @@ export function useChatSession() {
       }
     ]
   }]);
-  const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
+  const [activeSessionId, setActiveSessionId] = useState<number | null>(dateNow);
 
   const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down") => {
     if (!messageID) {
       return
     }
-  
+
     setSessions((prevSessions) =>
       prevSessions.map((session) => {
         if (session.id === activeSessionId) {
@@ -39,9 +40,15 @@ export function useChatSession() {
       })
     );
   };
-  const activeSession = sessions.find((session) => session.id === activeSessionId);
-  const handleSelectSession = (sessionId: number|null) => {
-    if(sessionId) setActiveSessionId(sessionId);
+  const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
+  useEffect(() => {
+    const session = sessions.find((session) => session.id === activeSessionId);
+    if (session) setActiveSession(session);
+  }, [activeSessionId, sessions]);
+  const handleSelectSession = (sessionId: number | null) => {
+    if (sessionId) {
+      setActiveSessionId(sessionId)
+    }
   };
 
   useEffect(() => {
@@ -63,9 +70,8 @@ export function useChatSession() {
       setSessions([initialSession]);
       setActiveSessionId(initialSession.id);
     }
-    handleSelectSession(activeSessionId)
   }, []);
-  
+
   useEffect(() => {
     // Save chat sessions to local storage whenever they change
     localStorage.setItem('chatSessions', JSON.stringify(sessions));
@@ -106,7 +112,7 @@ export function useChatSession() {
     setActiveSessionId(newSession.id);
   };
 
- 
+
   return {
     handleSendMessage,
     handleNewChat,
