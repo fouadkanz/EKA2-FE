@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {  Message } from "../MessageList";
 
 export function useComment(){
     const [commentType, setCommentType] = useState('');
@@ -7,7 +8,9 @@ export function useComment(){
     const [reference, setReference] = useState('');
     const [commentTabList,setCommentTabList] = useState(false)
     const options = ["Wrong information","Inappropriate answer","Difficult to read/understand","Other"]
-
+const toggleComment=(message:Message)=>{
+    if(message.thumbsDown || message.thumbsDown) setCommentTabList(!commentTabList)
+}
     return {
         commentType,
         setCommentType,
@@ -19,6 +22,7 @@ export function useComment(){
         setReference,
         options,
         commentTabList,
-        setCommentTabList
+        setCommentTabList,
+        toggleComment
     }
 }

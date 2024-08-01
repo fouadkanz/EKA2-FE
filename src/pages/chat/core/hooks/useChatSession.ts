@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { ChatSession } from "../../ChatWindow";
 import { Message, Review } from "../../MessageList";
 
-
 export function useChatSession() {
   const dateNow = Date.now()
   const [isLoading, setLoading] = useState<boolean>(false)
@@ -18,7 +17,6 @@ export function useChatSession() {
     ]
   }]);
   const [activeSessionId, setActiveSessionId] = useState<number | null>(dateNow);
-
   const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down") => {
     if (!messageID) {
       return

@@ -33,7 +33,7 @@ const CommentWindow: FC<CommentWindowProps> = ({ children, id, thumb,message }) 
     setReference,
     options,
     commentTabList,
-    setCommentTabList,
+    toggleComment
   } = useComment();
   return (
     <Dialog key={id}>
@@ -45,7 +45,7 @@ const CommentWindow: FC<CommentWindowProps> = ({ children, id, thumb,message }) 
               <>
                 <ArrowRightCircle
                   className="mb-2 hover:cursor-pointer text-gray-600"
-                  onClick={() => setCommentTabList(!commentTabList)}
+                  onClick={() => toggleComment(message)}
                 />{" "}
                 Reviews
               </>
@@ -53,7 +53,7 @@ const CommentWindow: FC<CommentWindowProps> = ({ children, id, thumb,message }) 
               <>
                 <Menu
                   className="mb-2 hover:cursor-pointer text-gray-600"
-                  onClick={() => setCommentTabList(!commentTabList)}
+                  onClick={() => toggleComment(message)}
                 />{" "}
                 Add Review
               </>
