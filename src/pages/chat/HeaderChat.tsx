@@ -22,11 +22,9 @@ const HeaderChat:FC<HeaderChatProps> = ({appName,config}) => {
           config={config}
           />
         </div>
-        <div className="flex items-center">
-          <img src={jeraLogo} alt="JERA Logo" className="h-8 w-12" />
-          <span className="text-[#8096A3] text-sm ml-2 mt-2 uppercase">
-            {appName}
-          </span>
+        <div className="flex items-center space-x-2">
+        <img src={jeraLogo} alt="JERA Logo" className="h-[34px] w-[90px]" />
+        <span className="text-[#8096A3] text-lg uppercase">{appName}</span>
         </div>
       </header>
       <header className="md:h-20 h-10 md:pl-3 md:py-5 my-2">

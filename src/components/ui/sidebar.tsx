@@ -9,8 +9,8 @@ const NavBar:React.FC<NavBarProps>=({appName})=> {
     <div className="flex md:flex-col md:justify-between md:h-screen justify-center">
       <div className="hidden md:block">
         <div className="flex flex-col m-3">
-          <img src={jeraLogo} alt="JERA Logo" className="h-8 w-12" />
-          <span className="text-[#8096A3] text-sm uppercase">{appName}</span>
+          <img src={jeraLogo} alt="JERA Logo" className="h-[34px] w-[90px]" />
+          <span className="text-[#8096A3] h-[34px] w-[90px] text-lg uppercase">{appName}</span>
         </div>
       </div>
       <div className="hidden md:block">
