@@ -3,7 +3,6 @@ import ChatSuggestion from "./ChatSuggestion";
 import ChatMessageInput from "./chatInput/ChatMessageInput";
 import { useChatSessionContext } from "./core/context/useChatSessionContext";
 import { Fragment } from "react/jsx-runtime";
-import { useEffect } from "react";
 import { LineWave } from "react-loader-spinner";
 
 export interface ChatSession {
