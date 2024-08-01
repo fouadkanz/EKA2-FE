@@ -16,7 +16,7 @@ export function useChatSession() {
       }
     ]
   }]);
-  const [activeSessionId, setActiveSessionId] = useState<number | null>(dateNow);
+  const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
   const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down") => {
     if (!messageID) {
       return
@@ -53,6 +53,8 @@ export function useChatSession() {
     const savedSessions = localStorage.getItem('chatSessions');
     if (savedSessions) {
       setSessions(JSON.parse(savedSessions));
+      const sizeArray = JSON.parse(savedSessions).length
+      setActiveSession(JSON.parse(savedSessions)[sizeArray-1])
     } else {
       // Create initial session with a welcome message
       const initialSession: ChatSession = {
@@ -67,6 +69,7 @@ export function useChatSession() {
       };
       setSessions([initialSession]);
       setActiveSessionId(initialSession.id);
+      setActiveSession(initialSession)
     }
   }, []);
 
