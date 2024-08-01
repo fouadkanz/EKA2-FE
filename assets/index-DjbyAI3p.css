@@ -552,6 +552,9 @@ video {
 .pointer-events-auto {
   pointer-events: auto;
 }
+.visible {
+  visibility: visible;
+}
 .fixed {
   position: fixed;
 }
@@ -1104,9 +1107,17 @@ video {
 .rounded-xl {
   border-radius: 0.75rem;
 }
+.rounded-b-md {
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+  border-bottom-left-radius: calc(var(--radius) - 2px);
+}
 .rounded-e-xl {
   border-start-end-radius: 0.75rem;
   border-end-end-radius: 0.75rem;
+}
+.rounded-s-md {
+  border-start-start-radius: calc(var(--radius) - 2px);
+  border-end-start-radius: calc(var(--radius) - 2px);
 }
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
