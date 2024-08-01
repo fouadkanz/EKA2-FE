@@ -10,7 +10,6 @@ const ChatMessageInput=() => {
   const handleFileDrop = (files: FileList) => {
     // Handle the dropped files here
     console.log('Files dropped:', files);
-   
 };
   return (
     <div className="md:p-3">

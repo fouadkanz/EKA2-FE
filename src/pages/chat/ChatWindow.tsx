@@ -12,12 +12,7 @@ export interface ChatSession {
 }
 
 const ChatWindow = () => {
-  const { activeSession, activeSessionId } = useChatSessionContext();
-  
-  useEffect(() => {
-    console.log("ChatWindow", activeSessionId);
-    console.log("ChatWindow", activeSession);
-  }, [])
+  const { activeSession } = useChatSessionContext();
   
   return activeSession ? (
     <Fragment>

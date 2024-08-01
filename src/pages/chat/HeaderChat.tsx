@@ -16,7 +16,6 @@ const HeaderChat:FC<HeaderChatProps> = ({appName,config}) => {
       <header className="text-3xl font-bold md:hidden md:w-24 p-3 flex flex-row space-x-10">
         <div
           className="hover:cursor-pointer"
-          onClick={() => console.log("click")}
         >
           <PageMenu
           config={config}
