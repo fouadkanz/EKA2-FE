@@ -706,9 +706,6 @@ video {
 .mr-2 {
   margin-right: 0.5rem;
 }
-.mt-1 {
-  margin-top: 0.25rem;
-}
 .mt-1\.5 {
   margin-top: 0.375rem;
 }
@@ -815,6 +812,9 @@ video {
 .h-\[100vh\] {
   height: 100vh;
 }
+.h-\[34px\] {
+  height: 34px;
+}
 .h-\[97svh\] {
   height: 97svh;
 }
@@ -854,9 +854,6 @@ video {
 .w-10 {
   width: 2.5rem;
 }
-.w-12 {
-  width: 3rem;
-}
 .w-16 {
   width: 4rem;
 }
@@ -892,6 +889,9 @@ video {
 }
 .w-\[4px\] {
   width: 4px;
+}
+.w-\[90px\] {
+  width: 90px;
 }
 .w-full {
   width: 100%;
