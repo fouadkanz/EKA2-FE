@@ -26907,9 +26907,7 @@ dt.svg`
   transform-origin: 50% 65%;
 `;
 const ChatWindow = () => {
-  const { activeSession, activeSessionId } = useChatSessionContext();
-  console.log("activeSession", activeSession == null ? void 0 : activeSession.id);
-  console.log("activeSessionId", activeSessionId);
+  const { activeSession } = useChatSessionContext();
   return activeSession ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(MessageList, { activeSession }),
     activeSession.messages.length === 1 && /* @__PURE__ */ jsxRuntimeExports.jsx(ChatSuggestion, {}),
