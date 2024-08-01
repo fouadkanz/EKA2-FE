@@ -11,9 +11,7 @@ export interface ChatSession {
 }
 
 const ChatWindow = () => {
-  const { activeSession, activeSessionId } = useChatSessionContext();
-  console.log("activeSession", activeSession?.id);
-  console.log("activeSessionId", activeSessionId);
+  const { activeSession } = useChatSessionContext();
   return activeSession ? (
     <Fragment>
       <MessageList activeSession={activeSession} />
