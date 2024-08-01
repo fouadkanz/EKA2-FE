@@ -23614,25 +23614,23 @@ const TypewriterEffect = ({
     }
   );
 };
-const MessageList = () => {
-  var _a;
-  const { activeSession } = useChatSessionContext();
+const MessageList = ({ activeSession }) => {
   const scrollRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [activeSession == null ? void 0 : activeSession.messages]);
+  }, [activeSession.messages]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     "div",
     {
       className: "grow w-full rounded-md md:p-4 overflow-auto",
       ref: scrollRef,
-      children: (_a = activeSession == null ? void 0 : activeSession.messages) == null ? void 0 : _a.map((message, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      children: activeSession.messages.map((message, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "div",
         {
           className: `${activeSession.messages.length === 1 ? "h-full" : ""}`,
-          children: (activeSession == null ? void 0 : activeSession.messages.length) === 1 && index2 === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-start items-center h-full w-full md:p-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center md:space-x-4 md:pl-4", children: [
+          children: activeSession.messages.length === 1 && index2 === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-start items-center h-full w-full md:p-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center md:space-x-4 md:pl-4", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { className: "w-10 h-10 bg-slate-900 rounded-s-md rounded-b-md", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AvatarFallback, { className: "text-slate-50 text-lg uppercase", children: message.sender }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               TypewriterEffect,
@@ -26909,9 +26907,11 @@ dt.svg`
   transform-origin: 50% 65%;
 `;
 const ChatWindow = () => {
-  const { activeSession } = useChatSessionContext();
+  const { activeSession, activeSessionId } = useChatSessionContext();
+  console.log("activeSession", activeSession == null ? void 0 : activeSession.id);
+  console.log("activeSessionId", activeSessionId);
   return activeSession ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(MessageList, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(MessageList, { activeSession }),
     activeSession.messages.length === 1 && /* @__PURE__ */ jsxRuntimeExports.jsx(ChatSuggestion, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ChatMessageInput, {})
   ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -27991,7 +27991,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "hidden md:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(NavBar, { appName }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "flex flex-col flex-grow p-2 text-center h-screen w-screen", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(HeaderChat, { appName, config }),
-      config.components.chatWindow && /* @__PURE__ */ jsxRuntimeExports.jsx(ChatWindow, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(ChatWindow, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "h-20 text-center md:hidden block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(NavBar, { appName }) })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("aside", { className: "h-[100vh] md:flex-shrink-0 w-1/4 md:p-3 md:text-center hidden md:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChatSideMenu, { config }) })
