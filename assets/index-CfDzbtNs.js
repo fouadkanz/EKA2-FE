@@ -12212,6 +12212,9 @@ function useComment() {
   const [reference, setReference] = reactExports.useState("");
   const [commentTabList, setCommentTabList] = reactExports.useState(false);
   const options = ["Wrong information", "Inappropriate answer", "Difficult to read/understand", "Other"];
+  const toggleComment = (message) => {
+    if (message.thumbsDown || message.thumbsDown) setCommentTabList(!commentTabList);
+  };
   return {
     commentType,
     setCommentType,
@@ -12223,7 +12226,8 @@ function useComment() {
     setReference,
     options,
     commentTabList,
-    setCommentTabList
+    setCommentTabList,
+    toggleComment
   };
 }
 function useChatSession() {
@@ -16055,7 +16059,7 @@ const CommentWindow = ({ children, id: id2, thumb, message }) => {
     setReference,
     options,
     commentTabList,
-    setCommentTabList
+    toggleComment
   } = useComment();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTrigger, { children }),
@@ -16065,7 +16069,7 @@ const CommentWindow = ({ children, id: id2, thumb, message }) => {
           CircleArrowRight,
           {
             className: "mb-2 hover:cursor-pointer text-gray-600",
-            onClick: () => setCommentTabList(!commentTabList)
+            onClick: () => toggleComment(message)
           }
         ),
         " ",
@@ -16075,7 +16079,7 @@ const CommentWindow = ({ children, id: id2, thumb, message }) => {
           Menu,
           {
             className: "mb-2 hover:cursor-pointer text-gray-600",
-            onClick: () => setCommentTabList(!commentTabList)
+            onClick: () => toggleComment(message)
           }
         ),
         " ",
@@ -25640,15 +25644,15 @@ function useChatInput(onSendMessage) {
   };
 }
 const LoadingBar = ({ isLaoding }) => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex items-center border rounded-full shadow-sm p-1`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex items-center border rounded-full shadow-sm`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full pl-2 h-11", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       "div",
       {
-        className: `${isLaoding ? "w-full" : " w-1/5"} translate-x-0  transition-all duration-1000 ease-in-out transform flex items-center justify-center h-12 bg-gradient-to-r from-[#424549] to-[#9FA6AF] rounded-full`,
+        className: `${isLaoding ? "progress-bar" : "w-1/5"} transition-all duration-1000 ease-in-out h-full rounded-full flex justify-center items-center`,
         children: "Generating output..."
       }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: " p-2 rounded-full", children: [
+    ) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: "p-2 rounded-full", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "sr-only", children: "Send" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center w-10 h-10 bg-[#334155] rounded-full hover:bg-[#49586d]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleStop, { className: "w-6 h-6 text-white" }) })
     ] })
