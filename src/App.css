@@ -1,5 +1,5 @@
 body {
-    @apply font-normal text-xs font-bold m-0 min-h-screen;
+    @apply font-sans font-medium text-xs m-0 min-h-screen;
   }
   
   #root {

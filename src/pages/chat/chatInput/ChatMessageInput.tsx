@@ -7,10 +7,7 @@ export type OnSendMessageType = (text: string) => void;
 const ChatMessageInput=() => {
   const { handleSendMessage,isLoading } = useChatSessionContext();
   const { handleSubmit, setText, text } = useChatInput(handleSendMessage);
-  const handleFileDrop = (files: FileList) => {
-    // Handle the dropped files here
-    console.log('Files dropped:', files);
-};
+
   return (
     <div className="md:p-3">
       {!isLoading ? (
@@ -19,7 +16,6 @@ const ChatMessageInput=() => {
           onChange={(e) => setText(e.target.value)}
           placeholder="Type a message..."
           submit={handleSubmit}
-          onFileDrop={handleFileDrop}
         />
       ) : (
        <LoadingBar isLaoding={isLoading}/>
