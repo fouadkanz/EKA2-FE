@@ -8,14 +8,14 @@ import {
   X,
   Paperclip,
 } from "lucide-react";
-import { Input } from "./input";
 import { Badge } from "./badge";
+import { Textarea } from "./textarea";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   placeholder?: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   submit?: (event: React.FormEvent) => void;
 }
 interface FilePros {
@@ -23,7 +23,7 @@ interface FilePros {
   type: string;
   size: number;
 }
-const ChatInput: React.FC<InputProps> = ({
+const ChatInput: React.FC<TextareaProps> = ({
   placeholder = "Ask me something...",
   value,
   onChange,
@@ -44,8 +44,8 @@ const ChatInput: React.FC<InputProps> = ({
     }
     setAttachedFiles(newFiles);
   };
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && submit) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && submit && !e.shiftKey) {
       e.preventDefault();
       submit(e as unknown as React.FormEvent);
     }
@@ -108,7 +108,7 @@ const ChatInput: React.FC<InputProps> = ({
         <div className="flex justify-between">
           <div className="flex flex-row flex-wrap space-x-1">
             {attachedFiles?.map((file) => (
-              <span className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white">
+              <span key={file.name} className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white">
                 {file.name}
               </span>
             ))}
@@ -123,7 +123,7 @@ const ChatInput: React.FC<InputProps> = ({
         </div>
       )}
       <div
-        className={`flex items-center border rounded-full shadow-sm h-15 ${
+        className={`flex items-center border rounded-lg shadow-sm h-auto ${
           isHovered ? "pl-4" : ""
         }`}
         onDrop={handleDrop}
@@ -131,7 +131,7 @@ const ChatInput: React.FC<InputProps> = ({
         onDragLeave={handleDragLeave}
       >
         {isDragOver ? (
-          <div className="w-full h-10 rounded-full m-2 bg-[#9FA6AF] text-center p-2">
+          <div className="w-full h-10 rounded-lg m-2 bg-[#9FA6AF] text-center p-2">
             Drag your file(s) to start uploading
           </div>
         ) : (
@@ -171,34 +171,33 @@ const ChatInput: React.FC<InputProps> = ({
               </div>
             </div>
             <div
-        className={`text-gray-500 hover:cursor-pointer ${isHovered ? 'pl-4' : ''}`}
-        onClick={handleAttacheDocument}
-      >
-        <Paperclip />
-      <input
-        type="file"
-        ref={fileInputRef}
-        style={{ display: 'none' }}
-        onChange={handleFileChange}
-      />
-    </div>
-            <Input
-              type="text"
-              className="flex-grow border-none "
+              className={`text-gray-500 hover:cursor-pointer ${isHovered ? 'pl-4' : ''}`}
+              onClick={handleAttacheDocument}
+            >
+              <Paperclip />
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+              />
+            </div>
+            <Textarea
+              className="flex-grow border-none resize-none p-2 rounded-lg"
               placeholder={placeholder}
               value={value}
               onChange={onChange}
               onKeyDown={handleKeyDown}
+              rows={2} 
             />
             <div className="group ml-2 p-2 rounded-full">
               <span className="sr-only">Voice</span>
               <Mic className="w-8 h-8 cursor-pointer rounded-full p-1 group-hover:bg-gray-200 transition-all duration-300 ease-in-out" />
             </div>
-            <button className="ml-2 p-2 rounded-full" type="button">
+            <button className="ml-2 p-2 rounded-full" type="button" onClick={submit}>
               <span className="sr-only">Send</span>
               <div
                 className="flex items-center justify-center w-10 h-10 bg-[#334155] rounded-full hover:bg-[#49586d]"
-                onClick={submit}
               >
                 <SendHorizontal className="w-6 h-6 text-white" />
               </div>
