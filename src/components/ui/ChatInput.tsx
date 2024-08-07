@@ -123,7 +123,7 @@ const ChatInput: React.FC<TextareaProps> = ({
         </div>
       )}
       <div
-        className={`flex items-center border rounded-lg shadow-sm h-auto ${
+        className={`flex items-center border rounded-full shadow-sm h-auto ${
           isHovered ? "pl-4" : ""
         }`}
         onDrop={handleDrop}
@@ -183,7 +183,7 @@ const ChatInput: React.FC<TextareaProps> = ({
               />
             </div>
             <Textarea
-              className="flex-grow border-none resize-none p-2 rounded-lg"
+              className="flex-grow border-none resize-none mt-3 rounded-lg"
               placeholder={placeholder}
               value={value}
               onChange={onChange}
