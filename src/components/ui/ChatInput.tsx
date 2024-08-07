@@ -105,7 +105,7 @@ const ChatInput: React.FC<TextareaProps> = ({
   return (
     <Fragment>
       {isDropped && (
-        <div className="flex justify-between">
+        <div className="flex space-x-4">
           <div className="flex flex-row flex-wrap space-x-1">
             {attachedFiles?.map((file) => (
               <span key={file.name} className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white">
@@ -114,11 +114,11 @@ const ChatInput: React.FC<TextareaProps> = ({
             ))}
           </div>
           <Badge
-            variant={"secondary"}
-            className="hover:cursor-pointer p-1 h-fit mb-1 w-16 flex gap-2 font-bold"
+            variant={"outline"}
+            className="hover:cursor-pointer p-1 h-fit mb-1 flex gap-2 font-bold hover:bg-slate-700 hover:text-white"
             onClick={handleClearFiles}
           >
-          <X className="size-3 font-bold"/><span>clear</span>  
+          <X className="size-3 font-bold"/>  
           </Badge>
         </div>
       )}
@@ -131,7 +131,7 @@ const ChatInput: React.FC<TextareaProps> = ({
         onDragLeave={handleDragLeave}
       >
         {isDragOver ? (
-          <div className="w-full h-10 rounded-lg m-2 bg-[#9FA6AF] text-center p-2">
+          <div className="w-full h-10 rounded-full m-2 bg-[#9FA6AF] text-center p-2">
             Drag your file(s) to start uploading
           </div>
         ) : (

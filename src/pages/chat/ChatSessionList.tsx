@@ -19,7 +19,7 @@ const ChatSideMenu:FC<ChatSideMenuProps>= ({config}) => {
               Chats <Badge variant={"secondary"}>2</Badge>
             </TabsTrigger>
             <TabsTrigger className="w-full" value="agents">
-              Agents <Badge variant={"secondary"}>2</Badge>
+              Agents <Badge variant={"secondary"}>4</Badge>
             </TabsTrigger>
           </TabsList>
           <AgentsList />
