@@ -2426,9 +2426,11 @@ body {
   @keyframes progressBarAnimation {
     0% {
       width: 0;
+      font-size: 1px;
     }
     50% {
       width: 50%;
+      font-size: 12px;
     }
     100% {
       width: 100%;
