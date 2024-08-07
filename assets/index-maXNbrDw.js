@@ -25630,18 +25630,15 @@ const ChatInput = ({
     }
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
-    isDropped && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between", children: [
+    isDropped && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-4", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-row flex-wrap space-x-1", children: attachedFiles == null ? void 0 : attachedFiles.map((file) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white", children: file.name }, file.name)) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
         Badge,
         {
-          variant: "secondary",
-          className: "hover:cursor-pointer p-1 h-fit mb-1 w-16 flex gap-2 font-bold",
+          variant: "outline",
+          className: "hover:cursor-pointer p-1 h-fit mb-1 flex gap-2 font-bold hover:bg-slate-700 hover:text-white",
           onClick: handleClearFiles,
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3 font-bold" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "clear" })
-          ]
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3 font-bold" })
         }
       )
     ] }),
@@ -25652,7 +25649,7 @@ const ChatInput = ({
         onDrop: handleDrop,
         onDragOver: handleDragOver,
         onDragLeave: handleDragLeave,
-        children: isDragOver ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-10 rounded-lg m-2 bg-[#9FA6AF] text-center p-2", children: "Drag your file(s) to start uploading" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        children: isDragOver ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-10 rounded-full m-2 bg-[#9FA6AF] text-center p-2", children: "Drag your file(s) to start uploading" }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "div",
             {
@@ -27983,7 +27980,7 @@ const ChatSideMenu = ({ config: config2 }) => {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(TabsTrigger, { className: "w-full", value: "agents", children: [
         "Agents ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "secondary", children: "2" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "secondary", children: "4" })
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(AgentsList, {}),
