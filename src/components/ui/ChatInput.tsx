@@ -183,7 +183,7 @@ const ChatInput: React.FC<TextareaProps> = ({
               />
             </div>
             <Textarea
-              className="flex-grow border-none resize-none mt-3 rounded-lg"
+              className="flex-grow border-none resize-none rounded-lg h-10"
               placeholder={placeholder}
               value={value}
               onChange={onChange}
