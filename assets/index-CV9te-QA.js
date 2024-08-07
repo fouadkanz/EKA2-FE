@@ -27538,6 +27538,28 @@ const TabsContent = reactExports.forwardRef(({ className, ...props }, ref) => /*
 ));
 TabsContent.displayName = Content.displayName;
 function AgentsList() {
+  const agentList = [
+    {
+      id: crypto.randomUUID(),
+      name: "Jenna",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Emily",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Sylvia",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Bailey",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    }
+  ];
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(TabsContent, { value: "agents", className: "flex flex-col gap-2", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row gap-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -27551,25 +27573,23 @@ function AgentsList() {
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Search, { className: "absolute left-2 top-2.5 h-5 text-muted-foreground" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            className: "flex w-full px-3 py-1 pl-10",
-            placeholder: "Search"
-          }
-        )
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { className: "flex w-full px-3 py-1 pl-10", placeholder: "Search" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1 cursor-pointer p-2 hover:bg-gray-100 rounded-md text-slate-800", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row justify-between", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 gap-1", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, {}),
-          "Agent name"
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-normal", children: "12:45" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "opacity-70 font-light", children: "Lorem ipsum, dolor sit amet consectetur adipisicing elit." })
-    ] })
+    agentList.map((agent) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: "flex flex-col gap-1 cursor-pointer p-2 hover:bg-gray-100 rounded-md text-slate-800",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-row justify-between", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 gap-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, {}),
+            agent.name
+          ] }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "opacity-70 font-light", children: agent.description })
+        ]
+      },
+      agent.id
+    ))
   ] });
 }
 var ACCORDION_NAME = "Accordion";
