@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { groupSessionsByWeek } from '@/lib/utils'
+import { groupSessionsByWeek, shortenText } from '@/lib/utils'
 import { MessageSquare, PlusIcon, Search } from 'lucide-react'
 import { ChatSessionContext } from '../core/context/MessageContext'
 import { useContext } from 'react'
@@ -42,7 +42,7 @@ const SessionList= () => {
                   <div className="flex flex-row justify-between">
                     <div className="flex flex-1 gap-1">
                       <MessageSquare />
-                      Chat Session {session.messages[1]?.text}
+                      <p>{session?.messages[1]?.text ? shortenText(session.messages[1].text,25): ""}</p>
                     </div>
                     <span className="font-normal">12:45</span>
                   </div>
