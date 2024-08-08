@@ -29,9 +29,9 @@ const SessionList= () => {
         </div>
       </div>
       <Accordion className="rounded-lg w-full" type="multiple">
-        {Object.keys(groupedSessions).map((week) => (
+        {Object.keys(groupedSessions).map((week,index) => (
           <AccordionItem key={week} value={week} className='w-full'>
-            <AccordionTrigger className='flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3'>{week}</AccordionTrigger>
+            <AccordionTrigger className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3 ${index==0 ? 'rounded-t-xl':''} `}>{week}</AccordionTrigger>
             <AccordionContent className="flex flex-col space-y-1 p-5 border border-t-0 border-gray-200 dark:border-gray-700">
               {groupedSessions[week].map((session) => (
                 <div
@@ -52,6 +52,7 @@ const SessionList= () => {
                   </span>
                 </div>
               ))}
+             
             </AccordionContent>
           </AccordionItem>
         ))}
