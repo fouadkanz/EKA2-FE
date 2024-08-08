@@ -27950,8 +27950,8 @@ const SessionList = () => {
         )
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Accordion, { className: "rounded-lg w-full", type: "multiple", children: Object.keys(groupedSessions).map((week) => /* @__PURE__ */ jsxRuntimeExports.jsxs(AccordionItem, { value: week, className: "w-full", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionTrigger, { className: "flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3", children: week }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Accordion, { className: "rounded-lg w-full", type: "multiple", children: Object.keys(groupedSessions).map((week, index2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(AccordionItem, { value: week, className: "w-full", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionTrigger, { className: `flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3 ${index2 == 0 ? "rounded-t-xl" : ""} `, children: week }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionContent, { className: "flex flex-col space-y-1 p-5 border border-t-0 border-gray-200 dark:border-gray-700", children: groupedSessions[week].map((session) => {
         var _a;
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(
