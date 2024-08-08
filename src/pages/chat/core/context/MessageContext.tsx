@@ -3,6 +3,7 @@ import { ChatSession } from '../../ChatWindow';
 import { Review } from "../../MessageList";
 
 import { useChatSession } from "../hooks/useChatSession";
+import { ToasterToast } from "@/components/ui/use-toast";
 
 export interface ChatSessionContextType {
   handleSendMessage: (text: string) => void;
@@ -15,7 +16,8 @@ export interface ChatSessionContextType {
   setActiveSessionId:Dispatch<SetStateAction<number| null>>
   isLoading: boolean;
   setLoading:Dispatch<SetStateAction<boolean>>
-  handleThumbsUpDown: (messageID: number|undefined, isThumbsUp: Review,direction:"up" | "down") => void;
+  handleThumbsUpDown: (messageID: number|undefined, isThumbsUp: Review,direction:"up" | "down") => boolean;
+  toast: ({ ...props }:Partial<ToasterToast>)=> void
 }
 
 export const ChatSessionContext = createContext<ChatSessionContextType | undefined>(undefined);
@@ -24,7 +26,7 @@ export const ChatSessionContext = createContext<ChatSessionContextType | undefin
 
   export const ChatSessionProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const chatSession = useChatSession();
-  
+
     return (
       <ChatSessionContext.Provider value={chatSession}>
         {children}

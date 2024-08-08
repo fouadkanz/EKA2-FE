@@ -79,6 +79,8 @@ const CommentWindow: FC<CommentWindowProps> = ({ children, id, thumb,message }) 
               id={id}
               thumb={thumb}
               handleThumbsUpDown={handleThumbsUpDown}
+              toggleComment={toggleComment}
+              message={message}
             />
           </>
         )}

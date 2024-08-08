@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import { ChatSession } from "../../ChatWindow";
 import { Message, Review } from "../../MessageList";
+import { useToast } from "@/components/ui/use-toast";
+import { formatDate } from "@/lib/utils";
 
 export function useChatSession() {
   const dateNow = Date.now()
+  const { toast } = useToast()
   const [isLoading, setLoading] = useState<boolean>(false)
   const [sessions, setSessions] = useState<ChatSession[]>([{
     id: dateNow,
@@ -17,9 +20,9 @@ export function useChatSession() {
     ]
   }]);
   const [activeSessionId, setActiveSessionId] = useState<number | null>(sessions[0].id);
-  const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down") => {
+  const handleThumbsUpDown = (messageID: number | undefined, review: Review, direction: "up" | "down"):boolean => {
     if (!messageID) {
-      return
+      return false
     }
 
     setSessions((prevSessions) =>
@@ -37,6 +40,11 @@ export function useChatSession() {
         return session;
       })
     );
+    toast({
+      title: "Review has been added !",
+      description: formatDate(new Date()),
+    })
+    return true
   };
   const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
   useEffect(() => {
@@ -126,5 +134,6 @@ export function useChatSession() {
     isLoading,
     setLoading,
     handleThumbsUpDown,
+    toast
   }
 }

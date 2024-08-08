@@ -2,7 +2,6 @@
 
 import {
   Toast,
-  ToastClose,
   ToastDescription,
   ToastProvider,
   ToastTitle,
@@ -15,17 +14,27 @@ export function Toaster() {
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map(function ({ id, title, description, action,footer, ...props }) {
         return (
           <Toast key={id} {...props}>
-            <div className="grid gap-1">
+
+            <div className="flex flex-col">
               {title && <ToastTitle>{title}</ToastTitle>}
+
               {description && (
+                <div className="w-full">
                 <ToastDescription>{description}</ToastDescription>
+                </div>
+                 
               )}
+               {footer && (
+                    <div className="w-full">
+                    <ToastDescription>{footer}</ToastDescription></div>
+                  )}
             </div>
+            <div>
             {action}
-            <ToastClose />
+            </div>
           </Toast>
         )
       })}

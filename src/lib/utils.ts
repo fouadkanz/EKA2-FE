@@ -57,3 +57,17 @@ export const shortenText=(text: string, maxLength: number): string=> {
   }
   return text.slice(0, maxLength - 3) + "...";
 }
+
+export const formatDate = (date: Date): string=> {
+  const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+  };
+
+  return date.toLocaleDateString('en-US', options);
+}

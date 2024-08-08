@@ -6,12 +6,15 @@ import ChatSideMenu from "./pages/chat/ChatSessionList";
 import NavBar from "./components/ui/sidebar";
 import loadConfig from "./lib/configLoader";
 import { ChatSessionProvider } from "./pages/chat/core/context/MessageContext";
-
 const appName = process.env.VITE_APP_NAME || "eka2"; // This should be set to 'symbiosis' or 'eka2'
 const config = loadConfig(appName);
+import { Toaster } from "@/components/ui/toaster"
+
 function App() {
+
   return (
     <ChatSessionProvider>
+      <Toaster />
       <div className="md:flex md:flex-grow">
         <nav className="hidden md:block">
           <SideBar appName={appName} />

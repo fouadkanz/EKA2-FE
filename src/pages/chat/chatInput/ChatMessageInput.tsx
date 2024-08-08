@@ -2,6 +2,7 @@ import ChatInput from "@/components/ui/ChatInput";
 import { useChatInput } from "./useChatInput";
 import LoadingBar from "@/components/ui/loadingBar";
 import { useChatSessionContext } from "../core/context/useChatSessionContext";
+
 export type OnSendMessageType = (text: string) => void;
 
 const ChatMessageInput=() => {

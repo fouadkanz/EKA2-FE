@@ -7,9 +7,13 @@ import {
   SendHorizontal,
   X,
   Paperclip,
+  PauseCircle,
+  XCircle,
 } from "lucide-react";
 import { Badge } from "./badge";
 import { Textarea } from "./textarea";
+import { useToast } from "./use-toast";
+import { Progress } from "./progress";
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -33,6 +37,9 @@ const ChatInput: React.FC<TextareaProps> = ({
   const [isDragOver, setDragOver] = useState(false);
   const [isDropped, setDropped] = useState(false);
   const [attachedFiles, setAttachedFiles] = useState<FilePros[]>([]);
+  const { toast } = useToast();
+  const [progress, setProgress] = React.useState(0);
+
   const handleFileDrop = (files: FileList) => {
     const newFiles: FilePros[] = attachedFiles;
     for (let index = 0; index < files.length; index++) {
@@ -43,6 +50,7 @@ const ChatInput: React.FC<TextareaProps> = ({
       });
     }
     setAttachedFiles(newFiles);
+
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && submit && !e.shiftKey) {
@@ -55,10 +63,25 @@ const ChatInput: React.FC<TextareaProps> = ({
     event.stopPropagation();
     if (event.dataTransfer.files.length > 0) {
       handleFileDrop(event.dataTransfer.files);
+      toast({
+        title: "Uploading...",
+        description: (
+            <p className="opacity-40">{progress}% • 30 seconds remaining</p>
+        ),
+        action: (
+          <div className="flex flex-row gap-2">
+            <XCircle className="text-red-500" />
+            <PauseCircle className="text-blue-500" />
+          </div>
+        ),
+        footer:
+        <Progress value={progress} className="w-full mt-4 h-3" />
+      });
     }
     setIsHovered(false);
     setDragOver(false);
     setDropped(true);
+    setProgress(100)
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -82,14 +105,14 @@ const ChatInput: React.FC<TextareaProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleAttacheDocument = () => {
-    if(fileInputRef.current){
-      setDropped(false)
+    if (fileInputRef.current) {
+      setDropped(false);
       fileInputRef.current.click();
-    }  
+    }
   };
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    if( files){
+    if (files) {
       const newFiles: FilePros[] = attachedFiles;
       for (let index = 0; index < files.length; index++) {
         newFiles.push({
@@ -98,17 +121,20 @@ const ChatInput: React.FC<TextareaProps> = ({
           type: files[index].type,
         });
       }
-      setDropped(true)
+      setDropped(true);
       setAttachedFiles(newFiles);
     }
-  }
+  };
   return (
     <Fragment>
       {isDropped && (
         <div className="flex space-x-4">
           <div className="flex flex-row flex-wrap space-x-1">
             {attachedFiles?.map((file) => (
-              <span key={file.name} className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white">
+              <span
+                key={file.name}
+                className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white"
+              >
                 {file.name}
               </span>
             ))}
@@ -118,7 +144,7 @@ const ChatInput: React.FC<TextareaProps> = ({
             className="hover:cursor-pointer p-1 h-fit mb-1 flex gap-2 font-bold hover:bg-slate-700 hover:text-white"
             onClick={handleClearFiles}
           >
-          <X className="size-3 font-bold"/>  
+            <X className="size-3 font-bold" />
           </Badge>
         </div>
       )}
@@ -136,7 +162,6 @@ const ChatInput: React.FC<TextareaProps> = ({
           </div>
         ) : (
           <>
-           
             <div
               className="relative mr-2 p-2 rounded-full"
               onMouseEnter={() => setIsHovered(true)}
@@ -171,14 +196,16 @@ const ChatInput: React.FC<TextareaProps> = ({
               </div>
             </div>
             <div
-              className={`text-gray-500 hover:cursor-pointer ${isHovered ? 'pl-4' : ''}`}
+              className={`text-gray-500 hover:cursor-pointer ${
+                isHovered ? "pl-4" : ""
+              }`}
               onClick={handleAttacheDocument}
             >
               <Paperclip />
               <input
                 type="file"
                 ref={fileInputRef}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
                 onChange={handleFileChange}
               />
             </div>
@@ -188,17 +215,19 @@ const ChatInput: React.FC<TextareaProps> = ({
               value={value}
               onChange={onChange}
               onKeyDown={handleKeyDown}
-              rows={2} 
+              rows={2}
             />
             <div className="group ml-2 p-2 rounded-full">
               <span className="sr-only">Voice</span>
               <Mic className="w-8 h-8 cursor-pointer rounded-full p-1 group-hover:bg-gray-200 transition-all duration-300 ease-in-out" />
             </div>
-            <button className="ml-2 p-2 rounded-full" type="button" onClick={submit}>
+            <button
+              className="ml-2 p-2 rounded-full"
+              type="button"
+              onClick={submit}
+            >
               <span className="sr-only">Send</span>
-              <div
-                className="flex items-center justify-center w-10 h-10 bg-[#334155] rounded-full hover:bg-[#49586d]"
-              >
+              <div className="flex items-center justify-center w-10 h-10 bg-[#334155] rounded-full hover:bg-[#49586d]">
                 <SendHorizontal className="w-6 h-6 text-white" />
               </div>
             </button>

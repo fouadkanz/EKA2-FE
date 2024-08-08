@@ -7,13 +7,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea'
 import { SendHorizonalIcon } from 'lucide-react'
 import { Dispatch, FC, SetStateAction } from 'react'
-import { Review } from '../MessageList'
+import { Message, Review } from '../MessageList'
 type StringState = Dispatch<SetStateAction<string>>
 interface AddCommentProps{
     id:number,
     thumb:"up"|"down",
     setReference:StringState,
-    handleThumbsUpDown:(messageID: number|undefined, isThumbsUp: Review,direction:"up" | "down") => void;
+    handleThumbsUpDown:(messageID: number|undefined, isThumbsUp: Review,direction:"up" | "down") => boolean;
     commentText:string,
     commentType:string,
     setCommentType:StringState,
@@ -21,9 +21,11 @@ interface AddCommentProps{
     setCommentText:StringState,
     idealAnswer:string,
     setIdealAnswer:StringState,
-    reference:string
+    reference:string,
+    toggleComment:(message: Message) => void,
+    message:Message
 }
-const AddComment:FC<AddCommentProps>=({id,thumb,setReference,handleThumbsUpDown,commentText,commentType,setCommentType,options,setCommentText,idealAnswer,setIdealAnswer,reference})=> {
+const AddComment:FC<AddCommentProps>=({id,thumb,toggleComment,message,setReference,handleThumbsUpDown,commentText,commentType,setCommentType,options,setCommentText,idealAnswer,setIdealAnswer,reference})=> {
   return (
     <div className="bg-[#D9E2EA] p-5 rounded-lg">
     <FormGroup>
@@ -72,7 +74,7 @@ const AddComment:FC<AddCommentProps>=({id,thumb,setReference,handleThumbsUpDown,
     <DialogFooter>
       <Button
         size={"icon"}
-        onClick={() =>
+        onClick={() =>{
           handleThumbsUpDown(
             id,
             {
@@ -85,7 +87,7 @@ const AddComment:FC<AddCommentProps>=({id,thumb,setReference,handleThumbsUpDown,
               },
             },
             thumb
-          )
+          ) ? toggleComment(message) : false}
         }
       >
         <SendHorizonalIcon />
