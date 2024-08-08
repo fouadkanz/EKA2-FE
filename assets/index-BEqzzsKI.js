@@ -9853,6 +9853,12 @@ const convertToMMDDYY = (dateString) => {
   const year = date.getFullYear().toString().slice(-2);
   return `${month}/${day}/${year}`;
 };
+const shortenText = (text, maxLength) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.slice(0, maxLength - 3) + "...";
+};
 const Avatar = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   Root$5,
   {
@@ -27957,8 +27963,7 @@ const SessionList = () => {
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row justify-between", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 gap-1", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, {}),
-                  "Chat Session ",
-                  (_a = session.messages[1]) == null ? void 0 : _a.text
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: ((_a = session == null ? void 0 : session.messages[1]) == null ? void 0 : _a.text) ? shortenText(session.messages[1].text, 25) : "" })
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-normal", children: "12:45" })
               ] }),
@@ -28035,19 +28040,19 @@ const NavBar = ({ appName: appName2 }) => {
       /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: jeraLogo, alt: "JERA Logo", className: "h-[34px] w-[90px]" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[#8096A3] h-[34px] w-[90px] text-lg uppercase", children: appName2 })
     ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:block", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" })
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:block space-y-7", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl h-[47px] w-[49px] m-3 flex items-center justify-center hover:bg-slate-900 hover:text-white hover:cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "size-6" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl h-[47px] w-[49px] m-3 flex items-center justify-center hover:bg-slate-900 hover:text-white hover:cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, { className: "size-6" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl h-[47px] w-[49px] m-3 flex items-center justify-center hover:bg-slate-900 hover:text-white hover:cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-6" }) })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:hidden flex flex-row", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white hover:cursor-pointer" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(House, { className: "size-14 rounded-xl m-3 p-4 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Bot, { className: "size-14 rounded-xl m-3 p-4 hover:bg-slate-900 hover:text-white hover:cursor-pointer" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-14 rounded-xl m-3 p-4 hover:bg-slate-900 hover:text-white hover:cursor-pointer" })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:block", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar$1, { className: "h-64 w-16 rounded-xl m-3 p-3 bg-slate-900", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AvatarFallback$1, { className: "text-slate-50 uppercase text-lg", children: "CV" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "size-12 rounded-xl m-3 p-3 hover:bg-slate-900 hover:text-white" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl h-[47px] w-[49px] m-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar$1, { className: "size-12 rounded-xl bg-slate-900 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AvatarFallback$1, { className: "text-slate-50 uppercase text-lg ", children: "CV" }) }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl h-[47px] w-[49px] m-3 flex items-center justify-center hover:bg-slate-900 hover:text-white hover:cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(LogOut, { className: "size-6" }) })
     ] })
   ] });
 };

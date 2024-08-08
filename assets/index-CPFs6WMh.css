@@ -743,6 +743,10 @@ video {
   width: 3rem;
   height: 3rem;
 }
+.size-14 {
+  width: 3.5rem;
+  height: 3.5rem;
+}
 .size-3 {
   width: 0.75rem;
   height: 0.75rem;
@@ -804,9 +808,6 @@ video {
 .h-6 {
   height: 1.5rem;
 }
-.h-64 {
-  height: 16rem;
-}
 .h-8 {
   height: 2rem;
 }
@@ -818,6 +819,9 @@ video {
 }
 .h-\[34px\] {
   height: 34px;
+}
+.h-\[47px\] {
+  height: 47px;
 }
 .h-\[97svh\] {
   height: 97svh;
@@ -865,9 +869,6 @@ video {
 .w-10 {
   width: 2.5rem;
 }
-.w-16 {
-  width: 4rem;
-}
 .w-2 {
   width: 0.5rem;
 }
@@ -897,6 +898,9 @@ video {
 }
 .w-\[300px\] {
   width: 300px;
+}
+.w-\[49px\] {
+  width: 49px;
 }
 .w-\[4px\] {
   width: 4px;
@@ -1094,6 +1098,11 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.space-y-7 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 .self-center {
   align-self: center;
