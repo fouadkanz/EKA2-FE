@@ -63,6 +63,7 @@ export function useChatSession() {
       setSessions(JSON.parse(savedSessions));
       const sizeArray = JSON.parse(savedSessions).length
       setActiveSession(JSON.parse(savedSessions)[sizeArray-1])
+      setActiveSessionId(JSON.parse(savedSessions)[sizeArray-1].id)
     } else {
       // Create initial session with a welcome message
       const initialSession: ChatSession = {
