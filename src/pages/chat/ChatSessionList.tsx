@@ -13,7 +13,7 @@ const ChatSideMenu:FC<ChatSideMenuProps>= ({config}) => {
   return (
     <>
       {config.components.sideMenu.length > 1 ? (
-        <Tabs defaultValue="chats" className="h-[97svh] w-full overflow-auto">
+        <Tabs defaultValue="chats" className="h-[97svh] w-full">
           <TabsList className="sticky top-0 z-50 w-full">
             <TabsTrigger className="w-full" value="chats">
               Chats <Badge variant={"secondary"}>2</Badge>

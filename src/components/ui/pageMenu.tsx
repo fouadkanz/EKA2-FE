@@ -17,7 +17,7 @@ const PageMenu : React.FC<PageMenuTypeProps> = ({
   return (
     <Sheet>
       <SheetTrigger><MenuIcon /></SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-hidden h-screen">
         <SheetHeader>
           <ChatSessionList
           config={config}

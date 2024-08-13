@@ -4,7 +4,7 @@ import jeraLogo from "../../assets/jera_logo.svg";
 interface NavBarProps {
   appName: string;
 }
-const NavBar: React.FC<NavBarProps> = ({ appName }) => {
+const Sidebar: React.FC<NavBarProps> = ({ appName }) => {
   return (
     <div className="flex md:flex-col md:justify-between md:h-screen justify-center">
       <div className="hidden md:block">
@@ -47,4 +47,4 @@ const NavBar: React.FC<NavBarProps> = ({ appName }) => {
   );
 };
 
-export default NavBar;
+export default Sidebar;

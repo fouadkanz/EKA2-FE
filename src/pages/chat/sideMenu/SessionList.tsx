@@ -15,7 +15,7 @@ const SessionList = () => {
   const groupedSessions = groupSessionsByWeek(sessionListCopntext?.sessions);
 
   return (
-    <div className="flex flex-col gap-2 w-full">
+    <div className="flex flex-col gap-2 w-full h-screen overflow-auto">
       <div className="flex flex-row gap-2">
         <Button
           className="relative md:hover:w-28 flex transition-all duration-300 overflow-hidden"
