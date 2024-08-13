@@ -13378,6 +13378,7 @@ function useChatSession() {
       setSessions(JSON.parse(savedSessions));
       const sizeArray = JSON.parse(savedSessions).length;
       setActiveSession(JSON.parse(savedSessions)[sizeArray - 1]);
+      setActiveSessionId(JSON.parse(savedSessions)[sizeArray - 1].id);
     } else {
       const initialSession = {
         id: Date.now(),
