@@ -343,10 +343,10 @@ react_production_min.version = "18.3.1";
   react.exports = react_production_min;
 }
 var reactExports = react.exports;
-const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
-const React$1 = /* @__PURE__ */ _mergeNamespaces({
+const React$1 = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
+const React$2 = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
-  default: React
+  default: React$1
 }, [reactExports]);
 /**
  * @license React
@@ -7185,7 +7185,7 @@ function composeContextScopes(...scopes) {
 }
 var useLayoutEffect2 = Boolean(globalThis == null ? void 0 : globalThis.document) ? reactExports.useLayoutEffect : () => {
 };
-var useReactId = React$1["useId".toString()] || (() => void 0);
+var useReactId = React$2["useId".toString()] || (() => void 0);
 var count$2 = 0;
 function useId(deterministicId) {
   const [id2, setId] = reactExports.useState(useReactId());
@@ -12122,13 +12122,13 @@ function createCollection(name2) {
   );
   const CollectionProvider = (props) => {
     const { scope, children } = props;
-    const ref = React.useRef(null);
-    const itemMap = React.useRef(/* @__PURE__ */ new Map()).current;
+    const ref = React$1.useRef(null);
+    const itemMap = React$1.useRef(/* @__PURE__ */ new Map()).current;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
   };
   CollectionProvider.displayName = PROVIDER_NAME2;
   const COLLECTION_SLOT_NAME = name2 + "CollectionSlot";
-  const CollectionSlot = React.forwardRef(
+  const CollectionSlot = React$1.forwardRef(
     (props, forwardedRef) => {
       const { scope, children } = props;
       const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
@@ -12139,13 +12139,13 @@ function createCollection(name2) {
   CollectionSlot.displayName = COLLECTION_SLOT_NAME;
   const ITEM_SLOT_NAME = name2 + "CollectionItemSlot";
   const ITEM_DATA_ATTR = "data-radix-collection-item";
-  const CollectionItemSlot = React.forwardRef(
+  const CollectionItemSlot = React$1.forwardRef(
     (props, forwardedRef) => {
       const { scope, children, ...itemData } = props;
-      const ref = React.useRef(null);
+      const ref = React$1.useRef(null);
       const composedRefs = useComposedRefs(forwardedRef, ref);
       const context = useCollectionContext(ITEM_SLOT_NAME, scope);
-      React.useEffect(() => {
+      React$1.useEffect(() => {
         context.itemMap.set(ref, { ref, ...itemData });
         return () => void context.itemMap.delete(ref);
       });
@@ -12155,7 +12155,7 @@ function createCollection(name2) {
   CollectionItemSlot.displayName = ITEM_SLOT_NAME;
   function useCollection2(scope) {
     const context = useCollectionContext(name2 + "CollectionConsumer", scope);
-    const getItems = React.useCallback(() => {
+    const getItems = React$1.useCallback(() => {
       const collectionNode = context.collectionRef.current;
       if (!collectionNode) return [];
       const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
@@ -12863,7 +12863,7 @@ var [createAccordionContext, createAccordionScope] = createContextScope(ACCORDIO
   createCollapsibleScope
 ]);
 var useCollapsibleScope = createCollapsibleScope();
-var Accordion$1 = React.forwardRef(
+var Accordion$1 = React$1.forwardRef(
   (props, forwardedRef) => {
     const { type, ...accordionProps } = props;
     const singleProps = accordionProps;
@@ -12877,7 +12877,7 @@ var [AccordionCollapsibleProvider, useAccordionCollapsibleContext] = createAccor
   ACCORDION_NAME,
   { collapsible: false }
 );
-var AccordionImplSingle = React.forwardRef(
+var AccordionImplSingle = React$1.forwardRef(
   (props, forwardedRef) => {
     const {
       value: valueProp,
@@ -12898,13 +12898,13 @@ var AccordionImplSingle = React.forwardRef(
         scope: props.__scopeAccordion,
         value: value ? [value] : [],
         onItemOpen: setValue,
-        onItemClose: React.useCallback(() => collapsible && setValue(""), [collapsible, setValue]),
+        onItemClose: React$1.useCallback(() => collapsible && setValue(""), [collapsible, setValue]),
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionCollapsibleProvider, { scope: props.__scopeAccordion, collapsible, children: /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionImpl, { ...accordionSingleProps, ref: forwardedRef }) })
       }
     );
   }
 );
-var AccordionImplMultiple = React.forwardRef((props, forwardedRef) => {
+var AccordionImplMultiple = React$1.forwardRef((props, forwardedRef) => {
   const {
     value: valueProp,
     defaultValue,
@@ -12917,11 +12917,11 @@ var AccordionImplMultiple = React.forwardRef((props, forwardedRef) => {
     defaultProp: defaultValue,
     onChange: onValueChange
   });
-  const handleItemOpen = React.useCallback(
+  const handleItemOpen = React$1.useCallback(
     (itemValue) => setValue((prevValue = []) => [...prevValue, itemValue]),
     [setValue]
   );
-  const handleItemClose = React.useCallback(
+  const handleItemClose = React$1.useCallback(
     (itemValue) => setValue((prevValue = []) => prevValue.filter((value2) => value2 !== itemValue)),
     [setValue]
   );
@@ -12937,10 +12937,10 @@ var AccordionImplMultiple = React.forwardRef((props, forwardedRef) => {
   );
 });
 var [AccordionImplProvider, useAccordionContext] = createAccordionContext(ACCORDION_NAME);
-var AccordionImpl = React.forwardRef(
+var AccordionImpl = React$1.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAccordion, disabled, dir, orientation = "vertical", ...accordionProps } = props;
-    const accordionRef = React.useRef(null);
+    const accordionRef = React$1.useRef(null);
     const composedRefs = useComposedRefs(accordionRef, forwardedRef);
     const getItems = useCollection$2(__scopeAccordion);
     const direction = useDirection(dir);
@@ -13033,7 +13033,7 @@ var AccordionImpl = React.forwardRef(
 );
 var ITEM_NAME$1 = "AccordionItem";
 var [AccordionItemProvider, useAccordionItemContext] = createAccordionContext(ITEM_NAME$1);
-var AccordionItem$1 = React.forwardRef(
+var AccordionItem$1 = React$1.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAccordion, value, ...accordionItemProps } = props;
     const accordionContext = useAccordionContext(ITEM_NAME$1, __scopeAccordion);
@@ -13074,7 +13074,7 @@ var AccordionItem$1 = React.forwardRef(
 );
 AccordionItem$1.displayName = ITEM_NAME$1;
 var HEADER_NAME = "AccordionHeader";
-var AccordionHeader = React.forwardRef(
+var AccordionHeader = React$1.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAccordion, ...headerProps } = props;
     const accordionContext = useAccordionContext(ACCORDION_NAME, __scopeAccordion);
@@ -13093,7 +13093,7 @@ var AccordionHeader = React.forwardRef(
 );
 AccordionHeader.displayName = HEADER_NAME;
 var TRIGGER_NAME$1 = "AccordionTrigger";
-var AccordionTrigger$1 = React.forwardRef(
+var AccordionTrigger$1 = React$1.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAccordion, ...triggerProps } = props;
     const accordionContext = useAccordionContext(ACCORDION_NAME, __scopeAccordion);
@@ -13115,7 +13115,7 @@ var AccordionTrigger$1 = React.forwardRef(
 );
 AccordionTrigger$1.displayName = TRIGGER_NAME$1;
 var CONTENT_NAME$2 = "AccordionContent";
-var AccordionContent$1 = React.forwardRef(
+var AccordionContent$1 = React$1.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAccordion, ...contentProps } = props;
     const accordionContext = useAccordionContext(ACCORDION_NAME, __scopeAccordion);
@@ -18137,7 +18137,7 @@ function getStatics(component) {
 }
 var defineProperty = Object.defineProperty;
 var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
 var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var getPrototypeOf = Object.getPrototypeOf;
 var objectPrototype = Object.prototype;
@@ -18150,8 +18150,8 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
       }
     }
     var keys = getOwnPropertyNames(sourceComponent);
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    if (getOwnPropertySymbols$1) {
+      keys = keys.concat(getOwnPropertySymbols$1(sourceComponent));
     }
     var targetStatics = getStatics(targetComponent);
     var sourceStatics = getStatics(sourceComponent);
@@ -18170,7 +18170,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 var hoistNonReactStatics_cjs = hoistNonReactStatics;
 const m$1 = /* @__PURE__ */ getDefaultExportFromCjs(hoistNonReactStatics_cjs);
-var define_process_env_default$2 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+var define_process_env_default$3 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_helmet: "^6.1.0", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__types_react_helmet: "^6.1.11", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/${VITE_APP_NAME}", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
 function y$1() {
   return (y$1 = Object.assign || function(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
@@ -18195,7 +18195,7 @@ function b(e2) {
 function _$1(e2) {
   return e2 && "string" == typeof e2.styledComponentId;
 }
-var N = "undefined" != typeof process && void 0 !== define_process_env_default$2 && (define_process_env_default$2.REACT_APP_SC_ATTR || define_process_env_default$2.SC_ATTR) || "data-styled", C$1 = "undefined" != typeof window && "HTMLElement" in window, I$1 = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$2 && (void 0 !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY && "" !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY && define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY : void 0 !== define_process_env_default$2.SC_DISABLE_SPEEDY && "" !== define_process_env_default$2.SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$2.SC_DISABLE_SPEEDY && define_process_env_default$2.SC_DISABLE_SPEEDY : false));
+var N = "undefined" != typeof process && void 0 !== define_process_env_default$3 && (define_process_env_default$3.REACT_APP_SC_ATTR || define_process_env_default$3.SC_ATTR) || "data-styled", C$1 = "undefined" != typeof window && "HTMLElement" in window, I$1 = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$3 && (void 0 !== define_process_env_default$3.REACT_APP_SC_DISABLE_SPEEDY && "" !== define_process_env_default$3.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$3.REACT_APP_SC_DISABLE_SPEEDY && define_process_env_default$3.REACT_APP_SC_DISABLE_SPEEDY : void 0 !== define_process_env_default$3.SC_DISABLE_SPEEDY && "" !== define_process_env_default$3.SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$3.SC_DISABLE_SPEEDY && define_process_env_default$3.SC_DISABLE_SPEEDY : false));
 function D$1(e2) {
   for (var t2 = arguments.length, n2 = new Array(t2 > 1 ? t2 - 1 : 0), r2 = 1; r2 < t2; r2++) n2[r2 - 1] = arguments[r2];
   throw new Error("An error occurred. See https://git.io/JUIaE#" + e2 + " for more information." + (n2.length > 0 ? " Args: " + n2.join(", ") : ""));
@@ -18474,9 +18474,9 @@ function ae$1(e2) {
     return t3.name || D$1(15), ee$1(e3, t3.name);
   }, 5381).toString() : "", m2;
 }
-var ce$1 = React.createContext();
+var ce$1 = React$1.createContext();
 ce$1.Consumer;
-var le$1 = React.createContext(), de = (le$1.Consumer, new X$1()), he$1 = ae$1();
+var le$1 = React$1.createContext(), de = (le$1.Consumer, new X$1()), he$1 = ae$1();
 function pe() {
   return reactExports.useContext(ce$1) || de;
 }
@@ -18561,7 +18561,7 @@ function ze$1(e2) {
   }
   return e2;
 }
-var Me$1 = React.createContext();
+var Me$1 = React$1.createContext();
 Me$1.Consumer;
 function Le(e2) {
   var t2 = reactExports.useContext(Me$1), n2 = reactExports.useMemo(function() {
@@ -18574,7 +18574,7 @@ function Le(e2) {
       return Array.isArray(e3) || "object" != typeof e3 ? D$1(8) : t3 ? y$1({}, t3, {}, e3) : e3;
     }(e2.theme, t2);
   }, [e2.theme, t2]);
-  return e2.children ? React.createElement(Me$1.Provider, { value: n2 }, e2.children) : null;
+  return e2.children ? React$1.createElement(Me$1.Provider, { value: n2 }, e2.children) : null;
 }
 var Fe$1 = {};
 function Ye(e2, t2, n2) {
@@ -18606,7 +18606,7 @@ function Ye(e2, t2, n2) {
       return t4.style && v3.style !== t4.style && (A3.style = y$1({}, t4.style, {}, v3.style)), A3.className = Array.prototype.concat(c3, d3, g3 !== d3 ? g3 : null, t4.className, v3.className).filter(Boolean).join(" "), A3.ref = S2, reactExports.createElement(b2, A3);
     }(A2, e3, t3, I2);
   };
-  return P2.displayName = p2, (A2 = React.forwardRef(P2)).attrs = g2, A2.componentStyle = C2, A2.displayName = p2, A2.shouldForwardProp = N2, A2.foldedComponentIds = o2 ? Array.prototype.concat(e2.foldedComponentIds, e2.styledComponentId) : S$1, A2.styledComponentId = v2, A2.target = o2 ? e2.target : e2, A2.withComponent = function(e3) {
+  return P2.displayName = p2, (A2 = React$1.forwardRef(P2)).attrs = g2, A2.componentStyle = C2, A2.displayName = p2, A2.shouldForwardProp = N2, A2.foldedComponentIds = o2 ? Array.prototype.concat(e2.foldedComponentIds, e2.styledComponentId) : S$1, A2.styledComponentId = v2, A2.target = o2 ? e2.target : e2, A2.withComponent = function(e3) {
     var r2 = t2.componentId, o3 = function(e4, t3) {
       if (null == e4) return {};
       var n3, r3, o4 = {}, s3 = Object.keys(e4);
@@ -18768,7 +18768,7 @@ var AppProvider = function(props) {
     dispatch2(setAllDocuments(documents));
     config2 && dispatch2(setMainConfig(config2));
   }, [documents]);
-  return React.createElement(DocViewerContext.Provider, { value: { state, dispatch: dispatch2 } }, children);
+  return React$1.createElement(DocViewerContext.Provider, { value: { state, dispatch: dispatch2 } }, children);
 };
 var __makeTemplateObject$h = function(cooked, raw) {
   if (Object.defineProperty) {
@@ -18813,35 +18813,35 @@ var __assign$c = function() {
   return __assign$c.apply(this, arguments);
 };
 var PrevDocIcon = function(props) {
-  return React.createElement(DocNavIcon, __assign$c({}, props));
+  return React$1.createElement(DocNavIcon, __assign$c({}, props));
 };
 var NextDocIcon = function(props) {
-  return React.createElement(DocNavIcon, __assign$c({}, props, { reverse: true }));
+  return React$1.createElement(DocNavIcon, __assign$c({}, props, { reverse: true }));
 };
 var DocNavIcon = function(props) {
   var color2 = props.color, size2 = props.size, reverse = props.reverse;
-  return React.createElement(
+  return React$1.createElement(
     "svg",
     { width: size2 || "100%", height: size2 || "100%", style: { transform: "".concat(reverse ? "rotate(180deg)" : "") }, id: "arrow_left", version: "1.1", viewBox: "0 0 32 32", xmlSpace: "preserve" },
-    React.createElement("path", { clipRule: "evenodd", d: "M31.106,15H3.278l8.325-8.293  c0.391-0.391,0.391-1.024,0-1.414c-0.391-0.391-1.024-0.391-1.414,0l-9.9,9.899c-0.385,0.385-0.385,1.029,0,1.414l9.9,9.9  c0.391,0.391,1.024,0.391,1.414,0c0.391-0.391,0.391-1.024,0-1.414L3.278,17h27.828c0.552,0,1-0.448,1-1  C32.106,15.448,31.658,15,31.106,15z", fill: color2 || "#aaa", fillRule: "evenodd", id: "Arrow_Back" })
+    React$1.createElement("path", { clipRule: "evenodd", d: "M31.106,15H3.278l8.325-8.293  c0.391-0.391,0.391-1.024,0-1.414c-0.391-0.391-1.024-0.391-1.414,0l-9.9,9.899c-0.385,0.385-0.385,1.029,0,1.414l9.9,9.9  c0.391,0.391,1.024,0.391,1.414,0c0.391-0.391,0.391-1.024,0-1.414L3.278,17h27.828c0.552,0,1-0.448,1-1  C32.106,15.448,31.658,15,31.106,15z", fill: color2 || "#aaa", fillRule: "evenodd", id: "Arrow_Back" })
   );
 };
 var LoadingIcon = function(props) {
   var color2 = props.color, size2 = props.size;
-  return React.createElement(
+  return React$1.createElement(
     "svg",
     { width: size2 || "100%", height: size2 || "100%", version: "1.1", id: "Icons", viewBox: "0 0 32 32", xmlSpace: "preserve", style: { alignSelf: "center", justifySelf: "center" } },
-    React.createElement(
+    React$1.createElement(
       "g",
       null,
-      React.createElement("path", { fill: color2 || "#aaa", d: "M16,2c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1s1-0.4,1-1V3C17,2.4,16.6,2,16,2z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M7.5,6.1c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l3.5,3.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L7.5,6.1\n		z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M9,16c0-0.6-0.4-1-1-1H3c-0.6,0-1,0.4-1,1s0.4,1,1,1h5C8.6,17,9,16.6,9,16z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M9.6,20.9l-3.5,3.5c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.5-3.5c0.4-0.4,0.4-1,0-1.4\n		S10,20.6,9.6,20.9z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M16,23c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1s1-0.4,1-1v-5C17,23.4,16.6,23,16,23z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M22.4,20.9c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l3.5,3.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4\n		L22.4,20.9z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M29,15h-5c-0.6,0-1,0.4-1,1s0.4,1,1,1h5c0.6,0,1-0.4,1-1S29.6,15,29,15z" }),
-      React.createElement("path", { fill: color2 || "#aaa", d: "M21.7,11.3c0.3,0,0.5-0.1,0.7-0.3l3.5-3.5c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-3.5,3.5c-0.4,0.4-0.4,1,0,1.4\n		C21.1,11.2,21.4,11.3,21.7,11.3z" })
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M16,2c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1s1-0.4,1-1V3C17,2.4,16.6,2,16,2z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M7.5,6.1c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l3.5,3.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L7.5,6.1\n		z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M9,16c0-0.6-0.4-1-1-1H3c-0.6,0-1,0.4-1,1s0.4,1,1,1h5C8.6,17,9,16.6,9,16z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M9.6,20.9l-3.5,3.5c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.5-3.5c0.4-0.4,0.4-1,0-1.4\n		S10,20.6,9.6,20.9z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M16,23c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1s1-0.4,1-1v-5C17,23.4,16.6,23,16,23z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M22.4,20.9c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l3.5,3.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4\n		L22.4,20.9z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M29,15h-5c-0.6,0-1,0.4-1,1s0.4,1,1,1h5c0.6,0,1-0.4,1-1S29.6,15,29,15z" }),
+      React$1.createElement("path", { fill: color2 || "#aaa", d: "M21.7,11.3c0.3,0,0.5-0.1,0.7-0.3l3.5-3.5c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-3.5,3.5c-0.4,0.4-0.4,1,0,1.4\n		C21.1,11.2,21.4,11.3,21.7,11.3z" })
     )
   );
 };
@@ -18862,10 +18862,10 @@ var DocumentNav = function() {
   if (splitURL.length) {
     fileName = splitURL[splitURL.length - 1];
   }
-  return React.createElement(
+  return React$1.createElement(
     Container$5,
     { id: "doc-nav" },
-    React.createElement(
+    React$1.createElement(
       "p",
       { id: "doc-nav-info" },
       "Doc ",
@@ -18873,19 +18873,19 @@ var DocumentNav = function() {
       " of ",
       documents.length
     ),
-    React.createElement(
+    React$1.createElement(
       ButtonPrev,
       { id: "doc-nav-prev", onClick: function() {
         return dispatch2(previousDocument());
       }, disabled: currentFileNo === 0 },
-      React.createElement(PrevDocIcon, { color: "#fff", size: "60%" })
+      React$1.createElement(PrevDocIcon, { color: "#fff", size: "60%" })
     ),
-    React.createElement(
+    React$1.createElement(
       ButtonNext,
       { id: "doc-nav-next", onClick: function() {
         return dispatch2(nextDocument());
       }, disabled: currentFileNo >= documents.length - 1 },
-      React.createElement(NextDocIcon, { color: "#fff", size: "60%" })
+      React$1.createElement(NextDocIcon, { color: "#fff", size: "60%" })
     )
   );
 };
@@ -18917,7 +18917,7 @@ var FileName = function() {
   if (splitURL.length) {
     fileName = splitURL[splitURL.length - 1];
   }
-  return React.createElement(Container$4, { id: "file-name", "data-testid": "file-name" }, fileName);
+  return React$1.createElement(Container$4, { id: "file-name", "data-testid": "file-name" }, fileName);
 };
 var Container$4 = styled.div(templateObject_1$f || (templateObject_1$f = __makeTemplateObject$f(["\n  flex: 1;\n  text-align: left;\n  color: ", ";\n  font-weight: bold;\n  margin: 0 10px;\n  overflow: hidden;\n"], ["\n  flex: 1;\n  text-align: left;\n  color: ", ";\n  font-weight: bold;\n  margin: 0 10px;\n  overflow: hidden;\n"])), function(props) {
   return props.theme.text_primary;
@@ -18945,11 +18945,11 @@ var HeaderBar = function() {
   if (override) {
     return override;
   } else {
-    return React.createElement(
+    return React$1.createElement(
       Container$3,
       { id: "header-bar", "data-testid": "header-bar" },
-      React.createElement(FileName, null),
-      React.createElement(DocumentNav, null)
+      React$1.createElement(FileName, null),
+      React$1.createElement(DocumentNav, null)
     );
   }
 };
@@ -19250,37 +19250,37 @@ var ProxyRenderer = function() {
   );
   var Contents = function() {
     if (!documents.length) {
-      return React.createElement("div", { id: "no-documents" });
+      return React$1.createElement("div", { id: "no-documents" });
     } else if (documentLoading) {
-      return React.createElement(
+      return React$1.createElement(
         LoadingContainer,
         { id: "loading-renderer", "data-testid": "loading-renderer" },
-        React.createElement(
+        React$1.createElement(
           LoadingIconContainer,
           null,
-          React.createElement(LoadingIcon, { color: "#444", size: 40 })
+          React$1.createElement(LoadingIcon, { color: "#444", size: 40 })
         )
       );
     } else {
       if (CurrentRenderer) {
-        return React.createElement(CurrentRenderer, { mainState: state });
+        return React$1.createElement(CurrentRenderer, { mainState: state });
       } else if (CurrentRenderer === void 0) {
         return null;
       } else {
-        return React.createElement(
+        return React$1.createElement(
           "div",
           { id: "no-renderer", "data-testid": "no-renderer" },
           "No Renderer for file type ",
           currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileType,
-          React.createElement(DownloadButton, { id: "no-renderer-download", href: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri, download: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri }, "Download File")
+          React$1.createElement(DownloadButton, { id: "no-renderer-download", href: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri, download: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri }, "Download File")
         );
       }
     }
   };
-  return React.createElement(
+  return React$1.createElement(
     Container$2,
     { id: "proxy-renderer", ref: containerRef },
-    React.createElement(Contents, null)
+    React$1.createElement(Contents, null)
   );
 };
 var Container$2 = styled.div(templateObject_1$d || (templateObject_1$d = __makeTemplateObject$d(["\n  display: flex;\n  flex: 1;\n  overflow-y: auto;\n"], ["\n  display: flex;\n  flex: 1;\n  overflow-y: auto;\n"])));
@@ -19314,7 +19314,7 @@ var ImageProxyRenderer = function(props) {
   var currentDocument = props.mainState.currentDocument, children = props.children;
   if (!currentDocument)
     return null;
-  return React.createElement(Container$1, __assign$9({ id: "image-renderer" }, props), children || React.createElement(Img, { id: "image-img", src: currentDocument.fileData }));
+  return React$1.createElement(Container$1, __assign$9({ id: "image-renderer" }, props), children || React$1.createElement(Img, { id: "image-img", src: currentDocument.fileData }));
 };
 ImageProxyRenderer.fileTypes = [];
 ImageProxyRenderer.weight = 0;
@@ -20878,7 +20878,7 @@ styled.iframe(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject$9
 var templateObject_1$9, templateObject_2$3, templateObject_3$2, templateObject_4$1;
 const scriptRel = "modulepreload";
 const assetsURL = function(dep) {
-  return "/EKA2-FE/" + dep;
+  return "/eka2/" + dep;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
@@ -21355,7 +21355,7 @@ function info(msg) {
     console.log(`Info: ${msg}`);
   }
 }
-function warn(msg) {
+function warn$1(msg) {
   if (verbosity >= VerbosityLevel.WARNINGS) {
     console.log(`Warning: ${msg}`);
   }
@@ -22413,7 +22413,7 @@ function getPdfFilenameFromUrl(url, defaultFilename = "document.pdf") {
     return defaultFilename;
   }
   if (isDataScheme(url)) {
-    warn('getPdfFilenameFromUrl: ignore "data:"-URL for performance reasons.');
+    warn$1('getPdfFilenameFromUrl: ignore "data:"-URL for performance reasons.');
     return defaultFilename;
   }
   const reURI = /^(?:(?:[^:]+:)?\/\/[^/]+)?([^?#]*)(\?[^#]*)?(#.*)?$/;
@@ -22438,13 +22438,13 @@ class StatTimer {
   }
   time(name2) {
     if (name2 in this.started) {
-      warn(`Timer is already running for ${name2}`);
+      warn$1(`Timer is already running for ${name2}`);
     }
     this.started[name2] = Date.now();
   }
   timeEnd(name2) {
     if (!(name2 in this.started)) {
-      warn(`Timer has not been started for ${name2}`);
+      warn$1(`Timer has not been started for ${name2}`);
     }
     this.times.push({
       name: name2,
@@ -22551,7 +22551,7 @@ function getRGB(color2) {
   if (color2.startsWith("rgba(")) {
     return color2.slice(5, -1).split(",").map((x2) => parseInt(x2)).slice(0, 3);
   }
-  warn(`Not a valid color format: "${color2}"`);
+  warn$1(`Not a valid color format: "${color2}"`);
   return [0, 0, 0];
 }
 function getColorValues(colors) {
@@ -23502,7 +23502,7 @@ const _AnnotationEditorUIManager = class _AnnotationEditorUIManager {
     try {
       data = JSON.parse(data);
     } catch (ex) {
-      warn(`paste: "${ex.message}".`);
+      warn$1(`paste: "${ex.message}".`);
       return;
     }
     if (!Array.isArray(data)) {
@@ -23536,7 +23536,7 @@ const _AnnotationEditorUIManager = class _AnnotationEditorUIManager {
         mustExec: true
       });
     } catch (ex) {
-      warn(`paste: "${ex.message}".`);
+      warn$1(`paste: "${ex.message}".`);
     }
   }
   keydown(event) {
@@ -26061,7 +26061,7 @@ class FontLoader {
         __privateGet(this, _systemFonts).add(loadedName);
         _inspectFont == null ? void 0 : _inspectFont(info2);
       } catch {
-        warn(`Cannot load system font: ${info2.baseFontName}, installing it could help to improve PDF rendering.`);
+        warn$1(`Cannot load system font: ${info2.baseFontName}, installing it could help to improve PDF rendering.`);
         this.removeNativeFontFace(fontFace);
       }
       return;
@@ -26084,7 +26084,7 @@ class FontLoader {
         try {
           await nativeFontFace.loaded;
         } catch (ex) {
-          warn(`Failed to load font '${nativeFontFace.family}': '${ex}'.`);
+          warn$1(`Failed to load font '${nativeFontFace.family}': '${ex}'.`);
           font.disableFontFace = true;
           throw ex;
         }
@@ -26158,7 +26158,7 @@ class FontLoader {
     let called = 0;
     function isFontReady(name2, callback) {
       if (++called > 30) {
-        warn("Load test font never loaded.");
+        warn$1("Load test font never loaded.");
         callback();
         return;
       }
@@ -26267,7 +26267,7 @@ class FontFaceObject {
     try {
       cmds = objs.get(this.loadedName + "_path_" + character2);
     } catch (ex) {
-      warn(`getPathGenerator - ignoring character: "${ex}".`);
+      warn$1(`getPathGenerator - ignoring character: "${ex}".`);
     }
     if (!Array.isArray(cmds) || cmds.length === 0) {
       return this.compiledGlyphs[character2] = function(c2, size2) {
@@ -26370,7 +26370,7 @@ if (isNodeJS) {
     packageMap = map;
     packageCapability.resolve();
   }, (reason) => {
-    warn(`loadPackages: ${reason}`);
+    warn$1(`loadPackages: ${reason}`);
     packageMap = /* @__PURE__ */ new Map();
     packageCapability.resolve();
   });
@@ -28113,7 +28113,7 @@ const _CanvasGraphics = class _CanvasGraphics {
     }
     current.fontMatrix = fontObj.fontMatrix || FONT_IDENTITY_MATRIX;
     if (current.fontMatrix[0] === 0 || current.fontMatrix[3] === 0) {
-      warn("Invalid font matrix for font " + fontRefName);
+      warn$1("Invalid font matrix for font " + fontRefName);
     }
     if (size2 < 0) {
       size2 = -size2;
@@ -28393,7 +28393,7 @@ const _CanvasGraphics = class _CanvasGraphics {
       const spacing = (glyph.isSpace ? wordSpacing : 0) + charSpacing;
       const operatorList = font.charProcOperatorList[glyph.operatorListId];
       if (!operatorList) {
-        warn(`Type3 character "${glyph.operatorListId}" is not available.`);
+        warn$1(`Type3 character "${glyph.operatorListId}" is not available.`);
         continue;
       }
       if (this.contentVisible) {
@@ -28535,7 +28535,7 @@ const _CanvasGraphics = class _CanvasGraphics {
       info("TODO: Support non-isolated groups.");
     }
     if (group.knockout) {
-      warn("Knockout groups not supported.");
+      warn$1("Knockout groups not supported.");
     }
     const currentTransform = getCurrentTransform(currentCtx);
     if (group.matrix) {
@@ -28744,7 +28744,7 @@ const _CanvasGraphics = class _CanvasGraphics {
     }
     const imgData = this.getObject(objId);
     if (!imgData) {
-      warn("Dependent image isn't ready yet");
+      warn$1("Dependent image isn't ready yet");
       return;
     }
     this.paintInlineImageXObject(imgData);
@@ -28755,7 +28755,7 @@ const _CanvasGraphics = class _CanvasGraphics {
     }
     const imgData = this.getObject(objId);
     if (!imgData) {
-      warn("Dependent image isn't ready yet");
+      warn$1("Dependent image isn't ready yet");
       return;
     }
     const width = imgData.width;
@@ -29577,7 +29577,7 @@ class OptionalContentConfig {
     }
     if (group.type === "OCG") {
       if (!__privateGet(this, _groups).has(group.id)) {
-        warn(`Optional content group not found: ${group.id}`);
+        warn$1(`Optional content group not found: ${group.id}`);
         return true;
       }
       return __privateGet(this, _groups).get(group.id).visible;
@@ -29588,7 +29588,7 @@ class OptionalContentConfig {
       if (!group.policy || group.policy === "AnyOn") {
         for (const id2 of group.ids) {
           if (!__privateGet(this, _groups).has(id2)) {
-            warn(`Optional content group not found: ${id2}`);
+            warn$1(`Optional content group not found: ${id2}`);
             return true;
           }
           if (__privateGet(this, _groups).get(id2).visible) {
@@ -29599,7 +29599,7 @@ class OptionalContentConfig {
       } else if (group.policy === "AllOn") {
         for (const id2 of group.ids) {
           if (!__privateGet(this, _groups).has(id2)) {
-            warn(`Optional content group not found: ${id2}`);
+            warn$1(`Optional content group not found: ${id2}`);
             return true;
           }
           if (!__privateGet(this, _groups).get(id2).visible) {
@@ -29610,7 +29610,7 @@ class OptionalContentConfig {
       } else if (group.policy === "AnyOff") {
         for (const id2 of group.ids) {
           if (!__privateGet(this, _groups).has(id2)) {
-            warn(`Optional content group not found: ${id2}`);
+            warn$1(`Optional content group not found: ${id2}`);
             return true;
           }
           if (!__privateGet(this, _groups).get(id2).visible) {
@@ -29621,7 +29621,7 @@ class OptionalContentConfig {
       } else if (group.policy === "AllOff") {
         for (const id2 of group.ids) {
           if (!__privateGet(this, _groups).has(id2)) {
-            warn(`Optional content group not found: ${id2}`);
+            warn$1(`Optional content group not found: ${id2}`);
             return true;
           }
           if (__privateGet(this, _groups).get(id2).visible) {
@@ -29630,16 +29630,16 @@ class OptionalContentConfig {
         }
         return true;
       }
-      warn(`Unknown optional content policy ${group.policy}.`);
+      warn$1(`Unknown optional content policy ${group.policy}.`);
       return true;
     }
-    warn(`Unknown group type ${group.type}.`);
+    warn$1(`Unknown group type ${group.type}.`);
     return true;
   }
   setVisibility(id2, visible = true) {
     const group = __privateGet(this, _groups).get(id2);
     if (!group) {
-      warn(`Optional content group not found: ${id2}`);
+      warn$1(`Optional content group not found: ${id2}`);
       return;
     }
     group._setVisible(INTERNAL, !!visible, true);
@@ -29724,7 +29724,7 @@ evaluateVisibilityExpression_fn = function(array) {
     } else if (__privateGet(this, _groups).has(element)) {
       state = __privateGet(this, _groups).get(element).visible;
     } else {
-      warn(`Optional content group not found: ${element}`);
+      warn$1(`Optional content group not found: ${element}`);
       return true;
     }
     switch (operator) {
@@ -30228,7 +30228,7 @@ function getArrayBuffer(val) {
   if (val instanceof ArrayBuffer) {
     return val;
   }
-  warn(`getArrayBuffer - unexpected data format: ${val}`);
+  warn$1(`getArrayBuffer - unexpected data format: ${val}`);
   return new Uint8Array(val).buffer;
 }
 class PDFFetchStream {
@@ -31329,7 +31329,7 @@ processItems_fn = function(items) {
   const textDivs = __privateGet(this, _textDivs), textContentItemsStr = __privateGet(this, _textContentItemsStr);
   for (const item of items) {
     if (textDivs.length > MAX_TEXT_DIVS_TO_RENDER) {
-      warn("Ignoring additional textDivs for performance reasons.");
+      warn$1("Ignoring additional textDivs for performance reasons.");
       __privateSet(this, _disableProcessItems, true);
       return;
     }
@@ -31540,7 +31540,7 @@ function renderTextLayer() {
   } = arguments[0];
   const restKeys = Object.keys(rest);
   if (restKeys.length > 0) {
-    warn("Ignoring `renderTextLayer` parameters: " + restKeys.join(", "));
+    warn$1("Ignoring `renderTextLayer` parameters: " + restKeys.join(", "));
   }
   const textLayer = new TextLayer({
     textContentSource,
@@ -32640,7 +32640,7 @@ const _PDFWorker = class _PDFWorker {
   }
   _setupFakeWorker() {
     if (!PDFWorkerUtil.isWorkerDisabled) {
-      warn("Setting up fake worker.");
+      warn$1("Setting up fake worker.");
       PDFWorkerUtil.isWorkerDisabled = true;
     }
     _PDFWorker._setupFakeWorkerGlobal.then((WorkerMessageHandler) => {
@@ -32769,7 +32769,7 @@ class WorkerTransport {
         renderingIntent = RenderingIntentFlag.PRINT;
         break;
       default:
-        warn(`getRenderingIntent - invalid intent: ${intent}`);
+        warn$1(`getRenderingIntent - invalid intent: ${intent}`);
     }
     switch (annotationMode) {
       case AnnotationMode.DISABLE:
@@ -32786,7 +32786,7 @@ class WorkerTransport {
         annotationStorageSerializable = annotationStorage.serializable;
         break;
       default:
-        warn(`getRenderingIntent - invalid annotationMode: ${annotationMode}`);
+        warn$1(`getRenderingIntent - invalid annotationMode: ${annotationMode}`);
     }
     if (isOpList) {
       renderingIntent += RenderingIntentFlag.OPLIST;
@@ -33014,7 +33014,7 @@ class WorkerTransport {
           } = this._params;
           if ("error" in exportedData) {
             const exportedError = exportedData.error;
-            warn(`Error during font loading: ${exportedError}`);
+            warn$1(`Error during font loading: ${exportedError}`);
             this.commonObjs.resolve(id2, exportedError);
             break;
           }
@@ -33122,7 +33122,7 @@ class WorkerTransport {
   saveDocument() {
     var _a2;
     if (this.annotationStorage.size <= 0) {
-      warn("saveDocument called while `annotationStorage` is empty, please use the getData-method instead.");
+      warn$1("saveDocument called while `annotationStorage` is empty, please use the getData-method instead.");
     }
     const {
       map,
@@ -33983,10 +33983,10 @@ const _AnnotationElement = class _AnnotationElement {
           style.borderStyle = "dashed";
           break;
         case AnnotationBorderStyleType.BEVELED:
-          warn("Unimplemented border style: beveled");
+          warn$1("Unimplemented border style: beveled");
           break;
         case AnnotationBorderStyleType.INSET:
-          warn("Unimplemented border style: inset");
+          warn$1("Unimplemented border style: inset");
           break;
         case AnnotationBorderStyleType.UNDERLINE:
           style.borderBottomStyle = "solid";
@@ -34275,7 +34275,7 @@ const _AnnotationElement = class _AnnotationElement {
           const exportValue = typeof exportValues === "string" ? exportValues : null;
           const domElement = document.querySelector(`[data-element-id="${id2}"]`);
           if (domElement && !GetElementsByNameSet.has(domElement)) {
-            warn(`_getElementsByName - element not allowed: ${id2}`);
+            warn$1(`_getElementsByName - element not allowed: ${id2}`);
             continue;
           }
           fields.push({
@@ -34499,7 +34499,7 @@ class LinkAnnotationElement extends AnnotationElement {
     }
     __privateMethod(this, _LinkAnnotationElement_instances, setInternalLink_fn).call(this);
     if (!this._fieldObjects) {
-      warn(`_bindResetFormAction - "resetForm" action not supported, ensure that the \`fieldObjects\` parameter is provided.`);
+      warn$1(`_bindResetFormAction - "resetForm" action not supported, ensure that the \`fieldObjects\` parameter is provided.`);
       if (!otherClickAction) {
         link.onclick = () => false;
       }
@@ -34574,7 +34574,7 @@ class LinkAnnotationElement extends AnnotationElement {
         if (!domElement) {
           continue;
         } else if (!GetElementsByNameSet.has(domElement)) {
-          warn(`_bindResetFormAction - element not allowed: ${id2}`);
+          warn$1(`_bindResetFormAction - element not allowed: ${id2}`);
           continue;
         }
         domElement.dispatchEvent(new Event("resetform"));
@@ -41587,17 +41587,17 @@ var DocViewer = function(props) {
   if (!documents || documents === void 0) {
     throw new Error("Please provide an array of documents to DocViewer.\ne.g. <DocViewer documents={[ { uri: 'https://mypdf.pdf' } ]} />");
   }
-  return React.createElement(
+  return React$1.createElement(
     AppProvider,
     __assign$1({}, props),
-    React.createElement(
+    React$1.createElement(
       Le,
       { theme: theme ? __assign$1(__assign$1({}, defaultTheme), theme) : defaultTheme },
-      React.createElement(
+      React$1.createElement(
         Container,
         __assign$1({ id: "react-doc-viewer", "data-testid": "react-doc-viewer" }, props),
-        React.createElement(HeaderBar, null),
-        React.createElement(ProxyRenderer, null)
+        React$1.createElement(HeaderBar, null),
+        React$1.createElement(ProxyRenderer, null)
       )
     )
   );
@@ -49167,7 +49167,7 @@ function isObject$1(subject) {
 function isRecord(subject) {
   return isObject$1(subject) || Array.isArray(subject);
 }
-function canUseDOM() {
+function canUseDOM$1() {
   return !!(typeof window !== "undefined" && window.document && window.document.createElement);
 }
 function areOptionsEqual(optionsA, optionsB) {
@@ -50814,7 +50814,7 @@ function useEmblaCarousel(options = {}, plugins = []) {
     if (emblaApi) emblaApi.reInit(storedOptions.current, storedPlugins.current);
   }, [emblaApi]);
   reactExports.useEffect(() => {
-    if (canUseDOM() && viewport) {
+    if (canUseDOM$1() && viewport) {
       EmblaCarousel.globalOptions = useEmblaCarousel.globalOptions;
       const newEmblaApi = EmblaCarousel(viewport, storedOptions.current, storedPlugins.current);
       setEmblaApi(newEmblaApi);
@@ -51877,8 +51877,8 @@ var unitlessKeys = {
   strokeOpacity: 1,
   strokeWidth: 1
 };
-var define_process_env_default$1 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
-var f = "undefined" != typeof process && void 0 !== define_process_env_default$1 && (define_process_env_default$1.REACT_APP_SC_ATTR || define_process_env_default$1.SC_ATTR) || "data-styled", m = "active", y = "data-styled-version", v = "6.1.12", g = "/*!sc*/\n", S = "undefined" != typeof window && "HTMLElement" in window, w = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$1 && void 0 !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY && "" !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY && define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$1 && void 0 !== define_process_env_default$1.SC_DISABLE_SPEEDY && "" !== define_process_env_default$1.SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$1.SC_DISABLE_SPEEDY && define_process_env_default$1.SC_DISABLE_SPEEDY : false), _ = Object.freeze([]), C = Object.freeze({});
+var define_process_env_default$2 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_helmet: "^6.1.0", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__types_react_helmet: "^6.1.11", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/${VITE_APP_NAME}", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+var f = "undefined" != typeof process && void 0 !== define_process_env_default$2 && (define_process_env_default$2.REACT_APP_SC_ATTR || define_process_env_default$2.SC_ATTR) || "data-styled", m = "active", y = "data-styled-version", v = "6.1.12", g = "/*!sc*/\n", S = "undefined" != typeof window && "HTMLElement" in window, w = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$2 && void 0 !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY && "" !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY && define_process_env_default$2.REACT_APP_SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$2 && void 0 !== define_process_env_default$2.SC_DISABLE_SPEEDY && "" !== define_process_env_default$2.SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$2.SC_DISABLE_SPEEDY && define_process_env_default$2.SC_DISABLE_SPEEDY : false), _ = Object.freeze([]), C = Object.freeze({});
 function I(e2, t2, n2) {
   return void 0 === n2 && (n2 = C), e2.theme !== n2.theme && e2.theme || t2 || n2.theme;
 }
@@ -52159,9 +52159,9 @@ function Fe(e2) {
     return t3.name || he(15), M(e3, t3.name);
   }, F).toString() : "", p2;
 }
-var Me = new ke(), ze = Fe(), $e = React.createContext({ shouldForwardProp: void 0, styleSheet: Me, stylis: ze });
+var Me = new ke(), ze = Fe(), $e = React$1.createContext({ shouldForwardProp: void 0, styleSheet: Me, stylis: ze });
 $e.Consumer;
-React.createContext(void 0);
+React$1.createContext(void 0);
 function Ge() {
   return reactExports.useContext($e);
 }
@@ -52251,7 +52251,7 @@ var Ke = z(v), Qe = function() {
     }
     return o2;
   }, e2;
-}(), et = React.createContext(void 0);
+}(), et = React$1.createContext(void 0);
 et.Consumer;
 var rt = {};
 function it(e2, r2, s2) {
@@ -52275,7 +52275,7 @@ function it(e2, r2, s2) {
   var N2 = new Qe(s2, g2, i2 ? a2.componentStyle : void 0);
   function O2(e3, r3) {
     return function(e4, r4, s3) {
-      var i3 = e4.attrs, a3 = e4.componentStyle, c3 = e4.defaultProps, p3 = e4.foldedComponentIds, d3 = e4.styledComponentId, h3 = e4.target, f3 = React.useContext(et), m3 = Ge(), y3 = e4.shouldForwardProp || m3.shouldForwardProp;
+      var i3 = e4.attrs, a3 = e4.componentStyle, c3 = e4.defaultProps, p3 = e4.foldedComponentIds, d3 = e4.styledComponentId, h3 = e4.target, f3 = React$1.useContext(et), m3 = Ge(), y3 = e4.shouldForwardProp || m3.shouldForwardProp;
       var v2 = I(r4, f3, c3) || C, g3 = function(e5, n2, o2) {
         for (var r5, s4 = __assign(__assign({}, n2), { className: void 0, theme: o2 }), i4 = 0; i4 < e5.length; i4 += 1) {
           var a4 = re(r5 = e5[i4]) ? r5(s4) : r5;
@@ -52293,7 +52293,7 @@ function it(e2, r2, s2) {
     }(D2, e3, r3);
   }
   O2.displayName = y2;
-  var D2 = React.forwardRef(O2);
+  var D2 = React$1.forwardRef(O2);
   return D2.attrs = S2, D2.componentStyle = N2, D2.displayName = y2, D2.shouldForwardProp = w2, D2.foldedComponentIds = i2 ? ie(a2.foldedComponentIds, a2.styledComponentId) : "", D2.styledComponentId = g2, D2.target = i2 ? a2.target : e2, Object.defineProperty(D2, "defaultProps", { get: function() {
     return this._foldedDefaultProps;
   }, set: function(e3) {
@@ -53282,7 +53282,7 @@ function Toaster() {
   ] });
 }
 const Microsoft = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAsASURBVHic7d0xb1RnFoDh49FKoKzpY4mKjiJl5A5FiCqSBdT8ApfUG1GgbE3JL6DGCCnVCkXpUMoUdK6QnB6DTOUtxt4FAgQB9gje55GmuTNjn2q+d+7M3G/t8PBwPsTzK5tnZubyzFydmYszs3F0W/+gPwB8dv/8z+O1Vf7/rZ3rH/YCApyE/ZnZO7o9mZkHM/Po4bX7Lz/kyWt/FwDPr2xuzMytmbkxM+c+aVTgsxIAwBuezcy9mbn98Nr9vfc98J0B8PzK5tmZ+Wlmbs7MN597QuDTCQDgHV7MzJ2Z+fnhtfsHb3vA4m0Hn1/Z/HZmfp2Zf43FHwC+NN/Mcg3/dWvn+rdve8BfAuD5lc3vZub3mdk82dkAgBO2OTO/b+1c/+7NO14LgKN3/r/MzPlTGgwAOFnnZ+aXN88E/C8Ajj7z3xmLPwB8bc7PzM7WzvWzxwdePQPw0zjtDwBfq81ZrvUzcxQARz/1u7mqiQCAU3Fza+f6xsz/zwDcGt/2B4Cv3TezXPNncXSFvxurnQcAOCU3tnaun1nM8vK+rvAHAA3nZubyYpbX9gcAOq4uZrmxDwDQcXExyx39AICODQEAAD0bi5lZX/UUAMCpWn/rboAAwNdNAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIWjs8PFz1DADAKXMGAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAoH9cuLt/uOohgI+zu72+ttIBfjvr9QO+UM4AAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQtJiZ/VUPAQCcqv3FzOytegoA4FTtCQAA6NlbzMyTVU8BAJyqJ4uZebDqKQCAU/VgMTOPZubZqicBAE7Fs5l5tNjdXn85M/dWPQ0AcCruzaWDl8fXAbg9My9WOQ0AcOJezHLNX14IaHd7fW9m7qxyIgDgxN2ZSwd7M69fCfDnmXm8mnkAgBP2eJZr/cy8EgC72+sHM3NtZp6uYCgA4OQ8nZlrc+ng4PjAa3sB7G6v/zkzP44IAICvxdOZ+XEuHfz56sG/bAa0u73+x8x8Pz4OAIAv3eOZ+X4uHfzx5h1v3Q3w6EzADzPz7/HrAAD40ryY5Rr+w5vv/I+tHR4evvcvXLi7vzEzt2bmxsyc+9wTAh9vd3t9baUD/Hb2/S8gwGl7Nstr+9w+/rb/u/xtABy7cHf/zMxcnpmrM3NxZjaObuufNCrw0QQApO3PckO/vVnu6/NgZh7NpYOXH/Lk/wKQAq5eW3YI8AAAAABJRU5ErkJggg==";
-const LoginFig = "/EKA2-FE/assets/component-ByurrvpA.png";
+const LoginFig = "/eka2/assets/component-ByurrvpA.png";
 function LoginPage() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col w-screen h-screen bg-[#334155]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-screen h-screen flex justify-center items-center flex-col space-y-8", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: JeraLogo, alt: "Jera logo", className: "h-[55px] w-[146px]" }),
@@ -66237,16 +66237,1006 @@ const useMsalAuth = () => {
   };
   return { isAuthenticated, login, logout };
 };
-var define_process_env_default = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
-const appName = define_process_env_default.VITE_APP_NAME;
-const config = loadConfig(appName);
+var define_process_env_default$1 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_helmet: "^6.1.0", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__types_react_helmet: "^6.1.11", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/${VITE_APP_NAME}", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+const appName$1 = define_process_env_default$1.VITE_APP_NAME;
+const config = loadConfig(appName$1);
 function App() {
   const { isAuthenticated } = useMsalAuth();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Fragment, { children: isAuthenticated ? /* @__PURE__ */ jsxRuntimeExports.jsxs(ChatSessionProvider, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Toaster, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ChatPage, { config, appName })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ChatPage, { config, appName: appName$1 })
   ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LoginPage, {}) });
 }
+var propTypes = { exports: {} };
+var ReactPropTypesSecret$1 = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+function emptyFunction() {
+}
+function emptyFunctionWithReset() {
+}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+var factoryWithThrowingShims = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      return;
+    }
+    var err = new Error(
+      "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
+    );
+    err.name = "Invariant Violation";
+    throw err;
+  }
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }
+  var ReactPropTypes = {
+    array: shim,
+    bigint: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+{
+  propTypes.exports = factoryWithThrowingShims();
+}
+var propTypesExports = propTypes.exports;
+const PropTypes = /* @__PURE__ */ getDefaultExportFromCjs(propTypesExports);
+function _interopDefault(ex) {
+  return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
+}
+var React = reactExports;
+var React__default = _interopDefault(React);
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+function withSideEffect(reducePropsToState3, handleStateChangeOnClient, mapStateOnServer3) {
+  if (typeof reducePropsToState3 !== "function") {
+    throw new Error("Expected reducePropsToState to be a function.");
+  }
+  if (typeof handleStateChangeOnClient !== "function") {
+    throw new Error("Expected handleStateChangeOnClient to be a function.");
+  }
+  if (typeof mapStateOnServer3 !== "undefined" && typeof mapStateOnServer3 !== "function") {
+    throw new Error("Expected mapStateOnServer to either be undefined or a function.");
+  }
+  function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || "Component";
+  }
+  return function wrap2(WrappedComponent) {
+    if (typeof WrappedComponent !== "function") {
+      throw new Error("Expected WrappedComponent to be a React component.");
+    }
+    var mountedInstances = [];
+    var state;
+    function emitChange() {
+      state = reducePropsToState3(mountedInstances.map(function(instance) {
+        return instance.props;
+      }));
+      if (SideEffect.canUseDOM) {
+        handleStateChangeOnClient(state);
+      } else if (mapStateOnServer3) {
+        state = mapStateOnServer3(state);
+      }
+    }
+    var SideEffect = /* @__PURE__ */ function(_PureComponent) {
+      _inheritsLoose(SideEffect2, _PureComponent);
+      function SideEffect2() {
+        return _PureComponent.apply(this, arguments) || this;
+      }
+      SideEffect2.peek = function peek2() {
+        return state;
+      };
+      SideEffect2.rewind = function rewind() {
+        if (SideEffect2.canUseDOM) {
+          throw new Error("You may only call rewind() on the server. Call peek() to read the current state.");
+        }
+        var recordedState = state;
+        state = void 0;
+        mountedInstances = [];
+        return recordedState;
+      };
+      var _proto = SideEffect2.prototype;
+      _proto.UNSAFE_componentWillMount = function UNSAFE_componentWillMount() {
+        mountedInstances.push(this);
+        emitChange();
+      };
+      _proto.componentDidUpdate = function componentDidUpdate() {
+        emitChange();
+      };
+      _proto.componentWillUnmount = function componentWillUnmount() {
+        var index2 = mountedInstances.indexOf(this);
+        mountedInstances.splice(index2, 1);
+        emitChange();
+      };
+      _proto.render = function render() {
+        return React__default.createElement(WrappedComponent, this.props);
+      };
+      return SideEffect2;
+    }(React.PureComponent);
+    _defineProperty(SideEffect, "displayName", "SideEffect(" + getDisplayName(WrappedComponent) + ")");
+    _defineProperty(SideEffect, "canUseDOM", canUseDOM);
+    return SideEffect;
+  };
+}
+var lib = withSideEffect;
+const withSideEffect$1 = /* @__PURE__ */ getDefaultExportFromCjs(lib);
+var hasElementType = typeof Element !== "undefined";
+var hasMap = typeof Map === "function";
+var hasSet = typeof Set === "function";
+var hasArrayBuffer = typeof ArrayBuffer === "function" && !!ArrayBuffer.isView;
+function equal(a, b2) {
+  if (a === b2) return true;
+  if (a && b2 && typeof a == "object" && typeof b2 == "object") {
+    if (a.constructor !== b2.constructor) return false;
+    var length2, i, keys;
+    if (Array.isArray(a)) {
+      length2 = a.length;
+      if (length2 != b2.length) return false;
+      for (i = length2; i-- !== 0; )
+        if (!equal(a[i], b2[i])) return false;
+      return true;
+    }
+    var it2;
+    if (hasMap && a instanceof Map && b2 instanceof Map) {
+      if (a.size !== b2.size) return false;
+      it2 = a.entries();
+      while (!(i = it2.next()).done)
+        if (!b2.has(i.value[0])) return false;
+      it2 = a.entries();
+      while (!(i = it2.next()).done)
+        if (!equal(i.value[1], b2.get(i.value[0]))) return false;
+      return true;
+    }
+    if (hasSet && a instanceof Set && b2 instanceof Set) {
+      if (a.size !== b2.size) return false;
+      it2 = a.entries();
+      while (!(i = it2.next()).done)
+        if (!b2.has(i.value[0])) return false;
+      return true;
+    }
+    if (hasArrayBuffer && ArrayBuffer.isView(a) && ArrayBuffer.isView(b2)) {
+      length2 = a.length;
+      if (length2 != b2.length) return false;
+      for (i = length2; i-- !== 0; )
+        if (a[i] !== b2[i]) return false;
+      return true;
+    }
+    if (a.constructor === RegExp) return a.source === b2.source && a.flags === b2.flags;
+    if (a.valueOf !== Object.prototype.valueOf && typeof a.valueOf === "function" && typeof b2.valueOf === "function") return a.valueOf() === b2.valueOf();
+    if (a.toString !== Object.prototype.toString && typeof a.toString === "function" && typeof b2.toString === "function") return a.toString() === b2.toString();
+    keys = Object.keys(a);
+    length2 = keys.length;
+    if (length2 !== Object.keys(b2).length) return false;
+    for (i = length2; i-- !== 0; )
+      if (!Object.prototype.hasOwnProperty.call(b2, keys[i])) return false;
+    if (hasElementType && a instanceof Element) return false;
+    for (i = length2; i-- !== 0; ) {
+      if ((keys[i] === "_owner" || keys[i] === "__v" || keys[i] === "__o") && a.$$typeof) {
+        continue;
+      }
+      if (!equal(a[keys[i]], b2[keys[i]])) return false;
+    }
+    return true;
+  }
+  return a !== a && b2 !== b2;
+}
+var reactFastCompare = function isEqual(a, b2) {
+  try {
+    return equal(a, b2);
+  } catch (error) {
+    if ((error.message || "").match(/stack|recursion/i)) {
+      console.warn("react-fast-compare cannot handle circular refs");
+      return false;
+    }
+    throw error;
+  }
+};
+const isEqual2 = /* @__PURE__ */ getDefaultExportFromCjs(reactFastCompare);
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+function toObject(val) {
+  if (val === null || val === void 0) {
+    throw new TypeError("Object.assign cannot be called with null or undefined");
+  }
+  return Object(val);
+}
+function shouldUseNative() {
+  try {
+    if (!Object.assign) {
+      return false;
+    }
+    var test1 = new String("abc");
+    test1[5] = "de";
+    if (Object.getOwnPropertyNames(test1)[0] === "5") {
+      return false;
+    }
+    var test2 = {};
+    for (var i = 0; i < 10; i++) {
+      test2["_" + String.fromCharCode(i)] = i;
+    }
+    var order2 = Object.getOwnPropertyNames(test2).map(function(n2) {
+      return test2[n2];
+    });
+    if (order2.join("") !== "0123456789") {
+      return false;
+    }
+    var test3 = {};
+    "abcdefghijklmnopqrst".split("").forEach(function(letter) {
+      test3[letter] = letter;
+    });
+    if (Object.keys(Object.assign({}, test3)).join("") !== "abcdefghijklmnopqrst") {
+      return false;
+    }
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+var objectAssign = shouldUseNative() ? Object.assign : function(target, source) {
+  var from2;
+  var to = toObject(target);
+  var symbols;
+  for (var s = 1; s < arguments.length; s++) {
+    from2 = Object(arguments[s]);
+    for (var key in from2) {
+      if (hasOwnProperty.call(from2, key)) {
+        to[key] = from2[key];
+      }
+    }
+    if (getOwnPropertySymbols) {
+      symbols = getOwnPropertySymbols(from2);
+      for (var i = 0; i < symbols.length; i++) {
+        if (propIsEnumerable.call(from2, symbols[i])) {
+          to[symbols[i]] = from2[symbols[i]];
+        }
+      }
+    }
+  }
+  return to;
+};
+const objectAssign$1 = /* @__PURE__ */ getDefaultExportFromCjs(objectAssign);
+var ATTRIBUTE_NAMES = {
+  BODY: "bodyAttributes",
+  HTML: "htmlAttributes",
+  TITLE: "titleAttributes"
+};
+var TAG_NAMES = {
+  BASE: "base",
+  BODY: "body",
+  HEAD: "head",
+  HTML: "html",
+  LINK: "link",
+  META: "meta",
+  NOSCRIPT: "noscript",
+  SCRIPT: "script",
+  STYLE: "style",
+  TITLE: "title"
+};
+Object.keys(TAG_NAMES).map(function(name2) {
+  return TAG_NAMES[name2];
+});
+var TAG_PROPERTIES = {
+  CHARSET: "charset",
+  CSS_TEXT: "cssText",
+  HREF: "href",
+  HTTPEQUIV: "http-equiv",
+  INNER_HTML: "innerHTML",
+  ITEM_PROP: "itemprop",
+  NAME: "name",
+  PROPERTY: "property",
+  REL: "rel",
+  SRC: "src",
+  TARGET: "target"
+};
+var REACT_TAG_MAP = {
+  accesskey: "accessKey",
+  charset: "charSet",
+  class: "className",
+  contenteditable: "contentEditable",
+  contextmenu: "contextMenu",
+  "http-equiv": "httpEquiv",
+  itemprop: "itemProp",
+  tabindex: "tabIndex"
+};
+var HELMET_PROPS = {
+  DEFAULT_TITLE: "defaultTitle",
+  DEFER: "defer",
+  ENCODE_SPECIAL_CHARACTERS: "encodeSpecialCharacters",
+  ON_CHANGE_CLIENT_STATE: "onChangeClientState",
+  TITLE_TEMPLATE: "titleTemplate"
+};
+var HTML_TAG_MAP = Object.keys(REACT_TAG_MAP).reduce(function(obj, key) {
+  obj[REACT_TAG_MAP[key]] = key;
+  return obj;
+}, {});
+var SELF_CLOSING_TAGS = [TAG_NAMES.NOSCRIPT, TAG_NAMES.SCRIPT, TAG_NAMES.STYLE];
+var HELMET_ATTRIBUTE = "data-react-helmet";
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
+  return typeof obj;
+} : function(obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+var classCallCheck = function(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+var createClass = /* @__PURE__ */ function() {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  return function(Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+var _extends = Object.assign || function(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+  return target;
+};
+var inherits = function(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+var objectWithoutProperties = function(obj, keys) {
+  var target = {};
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+  return target;
+};
+var possibleConstructorReturn = function(self2, call) {
+  if (!self2) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return call && (typeof call === "object" || typeof call === "function") ? call : self2;
+};
+var encodeSpecialCharacters = function encodeSpecialCharacters2(str) {
+  var encode = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
+  if (encode === false) {
+    return String(str);
+  }
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;");
+};
+var getTitleFromPropsList = function getTitleFromPropsList2(propsList) {
+  var innermostTitle = getInnermostProperty(propsList, TAG_NAMES.TITLE);
+  var innermostTemplate = getInnermostProperty(propsList, HELMET_PROPS.TITLE_TEMPLATE);
+  if (innermostTemplate && innermostTitle) {
+    return innermostTemplate.replace(/%s/g, function() {
+      return Array.isArray(innermostTitle) ? innermostTitle.join("") : innermostTitle;
+    });
+  }
+  var innermostDefaultTitle = getInnermostProperty(propsList, HELMET_PROPS.DEFAULT_TITLE);
+  return innermostTitle || innermostDefaultTitle || void 0;
+};
+var getOnChangeClientState = function getOnChangeClientState2(propsList) {
+  return getInnermostProperty(propsList, HELMET_PROPS.ON_CHANGE_CLIENT_STATE) || function() {
+  };
+};
+var getAttributesFromPropsList = function getAttributesFromPropsList2(tagType, propsList) {
+  return propsList.filter(function(props) {
+    return typeof props[tagType] !== "undefined";
+  }).map(function(props) {
+    return props[tagType];
+  }).reduce(function(tagAttrs, current) {
+    return _extends({}, tagAttrs, current);
+  }, {});
+};
+var getBaseTagFromPropsList = function getBaseTagFromPropsList2(primaryAttributes, propsList) {
+  return propsList.filter(function(props) {
+    return typeof props[TAG_NAMES.BASE] !== "undefined";
+  }).map(function(props) {
+    return props[TAG_NAMES.BASE];
+  }).reverse().reduce(function(innermostBaseTag, tag) {
+    if (!innermostBaseTag.length) {
+      var keys = Object.keys(tag);
+      for (var i = 0; i < keys.length; i++) {
+        var attributeKey = keys[i];
+        var lowerCaseAttributeKey = attributeKey.toLowerCase();
+        if (primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 && tag[lowerCaseAttributeKey]) {
+          return innermostBaseTag.concat(tag);
+        }
+      }
+    }
+    return innermostBaseTag;
+  }, []);
+};
+var getTagsFromPropsList = function getTagsFromPropsList2(tagName, primaryAttributes, propsList) {
+  var approvedSeenTags = {};
+  return propsList.filter(function(props) {
+    if (Array.isArray(props[tagName])) {
+      return true;
+    }
+    if (typeof props[tagName] !== "undefined") {
+      warn("Helmet: " + tagName + ' should be of type "Array". Instead found type "' + _typeof(props[tagName]) + '"');
+    }
+    return false;
+  }).map(function(props) {
+    return props[tagName];
+  }).reverse().reduce(function(approvedTags, instanceTags) {
+    var instanceSeenTags = {};
+    instanceTags.filter(function(tag) {
+      var primaryAttributeKey = void 0;
+      var keys2 = Object.keys(tag);
+      for (var i2 = 0; i2 < keys2.length; i2++) {
+        var attributeKey2 = keys2[i2];
+        var lowerCaseAttributeKey = attributeKey2.toLowerCase();
+        if (primaryAttributes.indexOf(lowerCaseAttributeKey) !== -1 && !(primaryAttributeKey === TAG_PROPERTIES.REL && tag[primaryAttributeKey].toLowerCase() === "canonical") && !(lowerCaseAttributeKey === TAG_PROPERTIES.REL && tag[lowerCaseAttributeKey].toLowerCase() === "stylesheet")) {
+          primaryAttributeKey = lowerCaseAttributeKey;
+        }
+        if (primaryAttributes.indexOf(attributeKey2) !== -1 && (attributeKey2 === TAG_PROPERTIES.INNER_HTML || attributeKey2 === TAG_PROPERTIES.CSS_TEXT || attributeKey2 === TAG_PROPERTIES.ITEM_PROP)) {
+          primaryAttributeKey = attributeKey2;
+        }
+      }
+      if (!primaryAttributeKey || !tag[primaryAttributeKey]) {
+        return false;
+      }
+      var value = tag[primaryAttributeKey].toLowerCase();
+      if (!approvedSeenTags[primaryAttributeKey]) {
+        approvedSeenTags[primaryAttributeKey] = {};
+      }
+      if (!instanceSeenTags[primaryAttributeKey]) {
+        instanceSeenTags[primaryAttributeKey] = {};
+      }
+      if (!approvedSeenTags[primaryAttributeKey][value]) {
+        instanceSeenTags[primaryAttributeKey][value] = true;
+        return true;
+      }
+      return false;
+    }).reverse().forEach(function(tag) {
+      return approvedTags.push(tag);
+    });
+    var keys = Object.keys(instanceSeenTags);
+    for (var i = 0; i < keys.length; i++) {
+      var attributeKey = keys[i];
+      var tagUnion = objectAssign$1({}, approvedSeenTags[attributeKey], instanceSeenTags[attributeKey]);
+      approvedSeenTags[attributeKey] = tagUnion;
+    }
+    return approvedTags;
+  }, []).reverse();
+};
+var getInnermostProperty = function getInnermostProperty2(propsList, property) {
+  for (var i = propsList.length - 1; i >= 0; i--) {
+    var props = propsList[i];
+    if (props.hasOwnProperty(property)) {
+      return props[property];
+    }
+  }
+  return null;
+};
+var reducePropsToState = function reducePropsToState2(propsList) {
+  return {
+    baseTag: getBaseTagFromPropsList([TAG_PROPERTIES.HREF, TAG_PROPERTIES.TARGET], propsList),
+    bodyAttributes: getAttributesFromPropsList(ATTRIBUTE_NAMES.BODY, propsList),
+    defer: getInnermostProperty(propsList, HELMET_PROPS.DEFER),
+    encode: getInnermostProperty(propsList, HELMET_PROPS.ENCODE_SPECIAL_CHARACTERS),
+    htmlAttributes: getAttributesFromPropsList(ATTRIBUTE_NAMES.HTML, propsList),
+    linkTags: getTagsFromPropsList(TAG_NAMES.LINK, [TAG_PROPERTIES.REL, TAG_PROPERTIES.HREF], propsList),
+    metaTags: getTagsFromPropsList(TAG_NAMES.META, [TAG_PROPERTIES.NAME, TAG_PROPERTIES.CHARSET, TAG_PROPERTIES.HTTPEQUIV, TAG_PROPERTIES.PROPERTY, TAG_PROPERTIES.ITEM_PROP], propsList),
+    noscriptTags: getTagsFromPropsList(TAG_NAMES.NOSCRIPT, [TAG_PROPERTIES.INNER_HTML], propsList),
+    onChangeClientState: getOnChangeClientState(propsList),
+    scriptTags: getTagsFromPropsList(TAG_NAMES.SCRIPT, [TAG_PROPERTIES.SRC, TAG_PROPERTIES.INNER_HTML], propsList),
+    styleTags: getTagsFromPropsList(TAG_NAMES.STYLE, [TAG_PROPERTIES.CSS_TEXT], propsList),
+    title: getTitleFromPropsList(propsList),
+    titleAttributes: getAttributesFromPropsList(ATTRIBUTE_NAMES.TITLE, propsList)
+  };
+};
+var rafPolyfill = function() {
+  var clock = Date.now();
+  return function(callback) {
+    var currentTime = Date.now();
+    if (currentTime - clock > 16) {
+      clock = currentTime;
+      callback(currentTime);
+    } else {
+      setTimeout(function() {
+        rafPolyfill(callback);
+      }, 0);
+    }
+  };
+}();
+var cafPolyfill = function cafPolyfill2(id2) {
+  return clearTimeout(id2);
+};
+var requestAnimationFrame$1 = typeof window !== "undefined" ? window.requestAnimationFrame && window.requestAnimationFrame.bind(window) || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || rafPolyfill : global.requestAnimationFrame || rafPolyfill;
+var cancelAnimationFrame$1 = typeof window !== "undefined" ? window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || cafPolyfill : global.cancelAnimationFrame || cafPolyfill;
+var warn = function warn2(msg) {
+  return console && typeof console.warn === "function" && console.warn(msg);
+};
+var _helmetCallback = null;
+var handleClientStateChange = function handleClientStateChange2(newState) {
+  if (_helmetCallback) {
+    cancelAnimationFrame$1(_helmetCallback);
+  }
+  if (newState.defer) {
+    _helmetCallback = requestAnimationFrame$1(function() {
+      commitTagChanges(newState, function() {
+        _helmetCallback = null;
+      });
+    });
+  } else {
+    commitTagChanges(newState);
+    _helmetCallback = null;
+  }
+};
+var commitTagChanges = function commitTagChanges2(newState, cb2) {
+  var baseTag = newState.baseTag, bodyAttributes = newState.bodyAttributes, htmlAttributes = newState.htmlAttributes, linkTags = newState.linkTags, metaTags = newState.metaTags, noscriptTags = newState.noscriptTags, onChangeClientState = newState.onChangeClientState, scriptTags = newState.scriptTags, styleTags = newState.styleTags, title = newState.title, titleAttributes = newState.titleAttributes;
+  updateAttributes(TAG_NAMES.BODY, bodyAttributes);
+  updateAttributes(TAG_NAMES.HTML, htmlAttributes);
+  updateTitle(title, titleAttributes);
+  var tagUpdates = {
+    baseTag: updateTags(TAG_NAMES.BASE, baseTag),
+    linkTags: updateTags(TAG_NAMES.LINK, linkTags),
+    metaTags: updateTags(TAG_NAMES.META, metaTags),
+    noscriptTags: updateTags(TAG_NAMES.NOSCRIPT, noscriptTags),
+    scriptTags: updateTags(TAG_NAMES.SCRIPT, scriptTags),
+    styleTags: updateTags(TAG_NAMES.STYLE, styleTags)
+  };
+  var addedTags = {};
+  var removedTags = {};
+  Object.keys(tagUpdates).forEach(function(tagType) {
+    var _tagUpdates$tagType = tagUpdates[tagType], newTags = _tagUpdates$tagType.newTags, oldTags = _tagUpdates$tagType.oldTags;
+    if (newTags.length) {
+      addedTags[tagType] = newTags;
+    }
+    if (oldTags.length) {
+      removedTags[tagType] = tagUpdates[tagType].oldTags;
+    }
+  });
+  cb2 && cb2();
+  onChangeClientState(newState, addedTags, removedTags);
+};
+var flattenArray = function flattenArray2(possibleArray) {
+  return Array.isArray(possibleArray) ? possibleArray.join("") : possibleArray;
+};
+var updateTitle = function updateTitle2(title, attributes) {
+  if (typeof title !== "undefined" && document.title !== title) {
+    document.title = flattenArray(title);
+  }
+  updateAttributes(TAG_NAMES.TITLE, attributes);
+};
+var updateAttributes = function updateAttributes2(tagName, attributes) {
+  var elementTag = document.getElementsByTagName(tagName)[0];
+  if (!elementTag) {
+    return;
+  }
+  var helmetAttributeString = elementTag.getAttribute(HELMET_ATTRIBUTE);
+  var helmetAttributes = helmetAttributeString ? helmetAttributeString.split(",") : [];
+  var attributesToRemove = [].concat(helmetAttributes);
+  var attributeKeys = Object.keys(attributes);
+  for (var i = 0; i < attributeKeys.length; i++) {
+    var attribute = attributeKeys[i];
+    var value = attributes[attribute] || "";
+    if (elementTag.getAttribute(attribute) !== value) {
+      elementTag.setAttribute(attribute, value);
+    }
+    if (helmetAttributes.indexOf(attribute) === -1) {
+      helmetAttributes.push(attribute);
+    }
+    var indexToSave = attributesToRemove.indexOf(attribute);
+    if (indexToSave !== -1) {
+      attributesToRemove.splice(indexToSave, 1);
+    }
+  }
+  for (var _i = attributesToRemove.length - 1; _i >= 0; _i--) {
+    elementTag.removeAttribute(attributesToRemove[_i]);
+  }
+  if (helmetAttributes.length === attributesToRemove.length) {
+    elementTag.removeAttribute(HELMET_ATTRIBUTE);
+  } else if (elementTag.getAttribute(HELMET_ATTRIBUTE) !== attributeKeys.join(",")) {
+    elementTag.setAttribute(HELMET_ATTRIBUTE, attributeKeys.join(","));
+  }
+};
+var updateTags = function updateTags2(type, tags) {
+  var headElement = document.head || document.querySelector(TAG_NAMES.HEAD);
+  var tagNodes = headElement.querySelectorAll(type + "[" + HELMET_ATTRIBUTE + "]");
+  var oldTags = Array.prototype.slice.call(tagNodes);
+  var newTags = [];
+  var indexToDelete = void 0;
+  if (tags && tags.length) {
+    tags.forEach(function(tag) {
+      var newElement = document.createElement(type);
+      for (var attribute in tag) {
+        if (tag.hasOwnProperty(attribute)) {
+          if (attribute === TAG_PROPERTIES.INNER_HTML) {
+            newElement.innerHTML = tag.innerHTML;
+          } else if (attribute === TAG_PROPERTIES.CSS_TEXT) {
+            if (newElement.styleSheet) {
+              newElement.styleSheet.cssText = tag.cssText;
+            } else {
+              newElement.appendChild(document.createTextNode(tag.cssText));
+            }
+          } else {
+            var value = typeof tag[attribute] === "undefined" ? "" : tag[attribute];
+            newElement.setAttribute(attribute, value);
+          }
+        }
+      }
+      newElement.setAttribute(HELMET_ATTRIBUTE, "true");
+      if (oldTags.some(function(existingTag, index2) {
+        indexToDelete = index2;
+        return newElement.isEqualNode(existingTag);
+      })) {
+        oldTags.splice(indexToDelete, 1);
+      } else {
+        newTags.push(newElement);
+      }
+    });
+  }
+  oldTags.forEach(function(tag) {
+    return tag.parentNode.removeChild(tag);
+  });
+  newTags.forEach(function(tag) {
+    return headElement.appendChild(tag);
+  });
+  return {
+    oldTags,
+    newTags
+  };
+};
+var generateElementAttributesAsString = function generateElementAttributesAsString2(attributes) {
+  return Object.keys(attributes).reduce(function(str, key) {
+    var attr = typeof attributes[key] !== "undefined" ? key + '="' + attributes[key] + '"' : "" + key;
+    return str ? str + " " + attr : attr;
+  }, "");
+};
+var generateTitleAsString = function generateTitleAsString2(type, title, attributes, encode) {
+  var attributeString = generateElementAttributesAsString(attributes);
+  var flattenedTitle = flattenArray(title);
+  return attributeString ? "<" + type + " " + HELMET_ATTRIBUTE + '="true" ' + attributeString + ">" + encodeSpecialCharacters(flattenedTitle, encode) + "</" + type + ">" : "<" + type + " " + HELMET_ATTRIBUTE + '="true">' + encodeSpecialCharacters(flattenedTitle, encode) + "</" + type + ">";
+};
+var generateTagsAsString = function generateTagsAsString2(type, tags, encode) {
+  return tags.reduce(function(str, tag) {
+    var attributeHtml = Object.keys(tag).filter(function(attribute) {
+      return !(attribute === TAG_PROPERTIES.INNER_HTML || attribute === TAG_PROPERTIES.CSS_TEXT);
+    }).reduce(function(string, attribute) {
+      var attr = typeof tag[attribute] === "undefined" ? attribute : attribute + '="' + encodeSpecialCharacters(tag[attribute], encode) + '"';
+      return string ? string + " " + attr : attr;
+    }, "");
+    var tagContent = tag.innerHTML || tag.cssText || "";
+    var isSelfClosing = SELF_CLOSING_TAGS.indexOf(type) === -1;
+    return str + "<" + type + " " + HELMET_ATTRIBUTE + '="true" ' + attributeHtml + (isSelfClosing ? "/>" : ">" + tagContent + "</" + type + ">");
+  }, "");
+};
+var convertElementAttributestoReactProps = function convertElementAttributestoReactProps2(attributes) {
+  var initProps = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  return Object.keys(attributes).reduce(function(obj, key) {
+    obj[REACT_TAG_MAP[key] || key] = attributes[key];
+    return obj;
+  }, initProps);
+};
+var convertReactPropstoHtmlAttributes = function convertReactPropstoHtmlAttributes2(props) {
+  var initAttributes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  return Object.keys(props).reduce(function(obj, key) {
+    obj[HTML_TAG_MAP[key] || key] = props[key];
+    return obj;
+  }, initAttributes);
+};
+var generateTitleAsReactComponent = function generateTitleAsReactComponent2(type, title, attributes) {
+  var _initProps;
+  var initProps = (_initProps = {
+    key: title
+  }, _initProps[HELMET_ATTRIBUTE] = true, _initProps);
+  var props = convertElementAttributestoReactProps(attributes, initProps);
+  return [React$1.createElement(TAG_NAMES.TITLE, props, title)];
+};
+var generateTagsAsReactComponent = function generateTagsAsReactComponent2(type, tags) {
+  return tags.map(function(tag, i) {
+    var _mappedTag;
+    var mappedTag = (_mappedTag = {
+      key: i
+    }, _mappedTag[HELMET_ATTRIBUTE] = true, _mappedTag);
+    Object.keys(tag).forEach(function(attribute) {
+      var mappedAttribute = REACT_TAG_MAP[attribute] || attribute;
+      if (mappedAttribute === TAG_PROPERTIES.INNER_HTML || mappedAttribute === TAG_PROPERTIES.CSS_TEXT) {
+        var content = tag.innerHTML || tag.cssText;
+        mappedTag.dangerouslySetInnerHTML = { __html: content };
+      } else {
+        mappedTag[mappedAttribute] = tag[attribute];
+      }
+    });
+    return React$1.createElement(type, mappedTag);
+  });
+};
+var getMethodsForTag = function getMethodsForTag2(type, tags, encode) {
+  switch (type) {
+    case TAG_NAMES.TITLE:
+      return {
+        toComponent: function toComponent() {
+          return generateTitleAsReactComponent(type, tags.title, tags.titleAttributes);
+        },
+        toString: function toString() {
+          return generateTitleAsString(type, tags.title, tags.titleAttributes, encode);
+        }
+      };
+    case ATTRIBUTE_NAMES.BODY:
+    case ATTRIBUTE_NAMES.HTML:
+      return {
+        toComponent: function toComponent() {
+          return convertElementAttributestoReactProps(tags);
+        },
+        toString: function toString() {
+          return generateElementAttributesAsString(tags);
+        }
+      };
+    default:
+      return {
+        toComponent: function toComponent() {
+          return generateTagsAsReactComponent(type, tags);
+        },
+        toString: function toString() {
+          return generateTagsAsString(type, tags, encode);
+        }
+      };
+  }
+};
+var mapStateOnServer = function mapStateOnServer2(_ref) {
+  var baseTag = _ref.baseTag, bodyAttributes = _ref.bodyAttributes, encode = _ref.encode, htmlAttributes = _ref.htmlAttributes, linkTags = _ref.linkTags, metaTags = _ref.metaTags, noscriptTags = _ref.noscriptTags, scriptTags = _ref.scriptTags, styleTags = _ref.styleTags, _ref$title = _ref.title, title = _ref$title === void 0 ? "" : _ref$title, titleAttributes = _ref.titleAttributes;
+  return {
+    base: getMethodsForTag(TAG_NAMES.BASE, baseTag, encode),
+    bodyAttributes: getMethodsForTag(ATTRIBUTE_NAMES.BODY, bodyAttributes, encode),
+    htmlAttributes: getMethodsForTag(ATTRIBUTE_NAMES.HTML, htmlAttributes, encode),
+    link: getMethodsForTag(TAG_NAMES.LINK, linkTags, encode),
+    meta: getMethodsForTag(TAG_NAMES.META, metaTags, encode),
+    noscript: getMethodsForTag(TAG_NAMES.NOSCRIPT, noscriptTags, encode),
+    script: getMethodsForTag(TAG_NAMES.SCRIPT, scriptTags, encode),
+    style: getMethodsForTag(TAG_NAMES.STYLE, styleTags, encode),
+    title: getMethodsForTag(TAG_NAMES.TITLE, { title, titleAttributes }, encode)
+  };
+};
+var Helmet = function Helmet2(Component) {
+  var _class, _temp;
+  return _temp = _class = function(_React$Component) {
+    inherits(HelmetWrapper, _React$Component);
+    function HelmetWrapper() {
+      classCallCheck(this, HelmetWrapper);
+      return possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    }
+    HelmetWrapper.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+      return !isEqual2(this.props, nextProps);
+    };
+    HelmetWrapper.prototype.mapNestedChildrenToProps = function mapNestedChildrenToProps(child, nestedChildren) {
+      if (!nestedChildren) {
+        return null;
+      }
+      switch (child.type) {
+        case TAG_NAMES.SCRIPT:
+        case TAG_NAMES.NOSCRIPT:
+          return {
+            innerHTML: nestedChildren
+          };
+        case TAG_NAMES.STYLE:
+          return {
+            cssText: nestedChildren
+          };
+      }
+      throw new Error("<" + child.type + " /> elements are self-closing and can not contain children. Refer to our API for more information.");
+    };
+    HelmetWrapper.prototype.flattenArrayTypeChildren = function flattenArrayTypeChildren(_ref) {
+      var _babelHelpers$extends;
+      var child = _ref.child, arrayTypeChildren = _ref.arrayTypeChildren, newChildProps = _ref.newChildProps, nestedChildren = _ref.nestedChildren;
+      return _extends({}, arrayTypeChildren, (_babelHelpers$extends = {}, _babelHelpers$extends[child.type] = [].concat(arrayTypeChildren[child.type] || [], [_extends({}, newChildProps, this.mapNestedChildrenToProps(child, nestedChildren))]), _babelHelpers$extends));
+    };
+    HelmetWrapper.prototype.mapObjectTypeChildren = function mapObjectTypeChildren(_ref2) {
+      var _babelHelpers$extends2, _babelHelpers$extends3;
+      var child = _ref2.child, newProps = _ref2.newProps, newChildProps = _ref2.newChildProps, nestedChildren = _ref2.nestedChildren;
+      switch (child.type) {
+        case TAG_NAMES.TITLE:
+          return _extends({}, newProps, (_babelHelpers$extends2 = {}, _babelHelpers$extends2[child.type] = nestedChildren, _babelHelpers$extends2.titleAttributes = _extends({}, newChildProps), _babelHelpers$extends2));
+        case TAG_NAMES.BODY:
+          return _extends({}, newProps, {
+            bodyAttributes: _extends({}, newChildProps)
+          });
+        case TAG_NAMES.HTML:
+          return _extends({}, newProps, {
+            htmlAttributes: _extends({}, newChildProps)
+          });
+      }
+      return _extends({}, newProps, (_babelHelpers$extends3 = {}, _babelHelpers$extends3[child.type] = _extends({}, newChildProps), _babelHelpers$extends3));
+    };
+    HelmetWrapper.prototype.mapArrayTypeChildrenToProps = function mapArrayTypeChildrenToProps(arrayTypeChildren, newProps) {
+      var newFlattenedProps = _extends({}, newProps);
+      Object.keys(arrayTypeChildren).forEach(function(arrayChildName) {
+        var _babelHelpers$extends4;
+        newFlattenedProps = _extends({}, newFlattenedProps, (_babelHelpers$extends4 = {}, _babelHelpers$extends4[arrayChildName] = arrayTypeChildren[arrayChildName], _babelHelpers$extends4));
+      });
+      return newFlattenedProps;
+    };
+    HelmetWrapper.prototype.warnOnInvalidChildren = function warnOnInvalidChildren(child, nestedChildren) {
+      return true;
+    };
+    HelmetWrapper.prototype.mapChildrenToProps = function mapChildrenToProps(children, newProps) {
+      var _this2 = this;
+      var arrayTypeChildren = {};
+      React$1.Children.forEach(children, function(child) {
+        if (!child || !child.props) {
+          return;
+        }
+        var _child$props = child.props, nestedChildren = _child$props.children, childProps = objectWithoutProperties(_child$props, ["children"]);
+        var newChildProps = convertReactPropstoHtmlAttributes(childProps);
+        _this2.warnOnInvalidChildren(child, nestedChildren);
+        switch (child.type) {
+          case TAG_NAMES.LINK:
+          case TAG_NAMES.META:
+          case TAG_NAMES.NOSCRIPT:
+          case TAG_NAMES.SCRIPT:
+          case TAG_NAMES.STYLE:
+            arrayTypeChildren = _this2.flattenArrayTypeChildren({
+              child,
+              arrayTypeChildren,
+              newChildProps,
+              nestedChildren
+            });
+            break;
+          default:
+            newProps = _this2.mapObjectTypeChildren({
+              child,
+              newProps,
+              newChildProps,
+              nestedChildren
+            });
+            break;
+        }
+      });
+      newProps = this.mapArrayTypeChildrenToProps(arrayTypeChildren, newProps);
+      return newProps;
+    };
+    HelmetWrapper.prototype.render = function render() {
+      var _props = this.props, children = _props.children, props = objectWithoutProperties(_props, ["children"]);
+      var newProps = _extends({}, props);
+      if (children) {
+        newProps = this.mapChildrenToProps(children, newProps);
+      }
+      return React$1.createElement(Component, newProps);
+    };
+    createClass(HelmetWrapper, null, [{
+      key: "canUseDOM",
+      // Component.peek comes from react-side-effect:
+      // For testing, you may use a static peek() method available on the returned component.
+      // It lets you get the current state without resetting the mounted instance stack.
+      // Don’t use it for anything other than testing.
+      /**
+       * @param {Object} base: {"target": "_blank", "href": "http://mysite.com/"}
+       * @param {Object} bodyAttributes: {"className": "root"}
+       * @param {String} defaultTitle: "Default Title"
+       * @param {Boolean} defer: true
+       * @param {Boolean} encodeSpecialCharacters: true
+       * @param {Object} htmlAttributes: {"lang": "en", "amp": undefined}
+       * @param {Array} link: [{"rel": "canonical", "href": "http://mysite.com/example"}]
+       * @param {Array} meta: [{"name": "description", "content": "Test description"}]
+       * @param {Array} noscript: [{"innerHTML": "<img src='http://mysite.com/js/test.js'"}]
+       * @param {Function} onChangeClientState: "(newState) => console.log(newState)"
+       * @param {Array} script: [{"type": "text/javascript", "src": "http://mysite.com/js/test.js"}]
+       * @param {Array} style: [{"type": "text/css", "cssText": "div { display: block; color: blue; }"}]
+       * @param {String} title: "Title"
+       * @param {Object} titleAttributes: {"itemprop": "name"}
+       * @param {String} titleTemplate: "MySite.com - %s"
+       */
+      set: function set$$1(canUseDOM2) {
+        Component.canUseDOM = canUseDOM2;
+      }
+    }]);
+    return HelmetWrapper;
+  }(React$1.Component), _class.propTypes = {
+    base: PropTypes.object,
+    bodyAttributes: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+    defaultTitle: PropTypes.string,
+    defer: PropTypes.bool,
+    encodeSpecialCharacters: PropTypes.bool,
+    htmlAttributes: PropTypes.object,
+    link: PropTypes.arrayOf(PropTypes.object),
+    meta: PropTypes.arrayOf(PropTypes.object),
+    noscript: PropTypes.arrayOf(PropTypes.object),
+    onChangeClientState: PropTypes.func,
+    script: PropTypes.arrayOf(PropTypes.object),
+    style: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string,
+    titleAttributes: PropTypes.object,
+    titleTemplate: PropTypes.string
+  }, _class.defaultProps = {
+    defer: true,
+    encodeSpecialCharacters: true
+  }, _class.peek = Component.peek, _class.rewind = function() {
+    var mappedState = Component.rewind();
+    if (!mappedState) {
+      mappedState = mapStateOnServer({
+        baseTag: [],
+        bodyAttributes: {},
+        encodeSpecialCharacters: true,
+        htmlAttributes: {},
+        linkTags: [],
+        metaTags: [],
+        noscriptTags: [],
+        scriptTags: [],
+        styleTags: [],
+        title: "",
+        titleAttributes: {}
+      });
+    }
+    return mappedState;
+  }, _temp;
+};
+var NullComponent = function NullComponent2() {
+  return null;
+};
+var HelmetSideEffects = withSideEffect$1(reducePropsToState, handleClientStateChange, mapStateOnServer)(NullComponent);
+var HelmetExport = Helmet(HelmetSideEffects);
+HelmetExport.renderStatic = HelmetExport.rewind;
+var define_process_env_default = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_helmet: "^6.1.0", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__types_react_helmet: "^6.1.11", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/${VITE_APP_NAME}", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+const appName = define_process_env_default.VITE_APP_NAME;
 client.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) })
+  /* @__PURE__ */ jsxRuntimeExports.jsxs(React$1.StrictMode, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(HelmetExport, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("title", { children: appName.toUpperCase() }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(App, {})
+  ] })
 );
