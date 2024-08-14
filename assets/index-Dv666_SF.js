@@ -7565,7 +7565,7 @@ function handleAndDispatchCustomEvent$1(name2, handler, detail, { discrete }) {
     target.dispatchEvent(event);
   }
 }
-var Root$7 = DismissableLayer;
+var Root$6 = DismissableLayer;
 var Branch = DismissableLayerBranch;
 var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
 var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
@@ -8976,7 +8976,7 @@ var DescriptionWarning = ({ contentRef, descriptionId }) => {
   }, [MESSAGE, contentRef, descriptionId]);
   return null;
 };
-var Root$6 = Dialog$1;
+var Root$5 = Dialog$1;
 var Trigger$3 = DialogTrigger$1;
 var Portal$1 = DialogPortal$1;
 var Overlay = DialogOverlay$1;
@@ -9230,31 +9230,9 @@ const CircleArrowRight = createLucideIcon("CircleArrowRight", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const CirclePause = createLucideIcon("CirclePause", [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "10", x2: "10", y1: "15", y2: "9", key: "c1nkhi" }],
-  ["line", { x1: "14", x2: "14", y1: "15", y2: "9", key: "h65svq" }]
-]);
-/**
- * @license lucide-react v0.408.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
 const CircleStop = createLucideIcon("CircleStop", [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["rect", { width: "6", height: "6", x: "9", y: "9", key: "1wrtvo" }]
-]);
-/**
- * @license lucide-react v0.408.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const CircleX = createLucideIcon("CircleX", [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
-  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
 ]);
 /**
  * @license lucide-react v0.408.0 - ISC
@@ -9885,22 +9863,22 @@ const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch))\(.+\)$/;
 const shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
 const imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
 function isLength(value) {
-  return isNumber$3(value) || stringLengths.has(value) || fractionRegex.test(value);
+  return isNumber$2(value) || stringLengths.has(value) || fractionRegex.test(value);
 }
 function isArbitraryLength(value) {
   return getIsArbitraryValue(value, "length", isLengthOnly);
 }
-function isNumber$3(value) {
+function isNumber$2(value) {
   return Boolean(value) && !Number.isNaN(Number(value));
 }
 function isArbitraryNumber(value) {
-  return getIsArbitraryValue(value, "number", isNumber$3);
+  return getIsArbitraryValue(value, "number", isNumber$2);
 }
 function isInteger(value) {
   return Boolean(value) && Number.isInteger(Number(value));
 }
 function isPercent(value) {
-  return value.endsWith("%") && isNumber$3(value.slice(0, -1));
+  return value.endsWith("%") && isNumber$2(value.slice(0, -1));
 }
 function isArbitraryValue(value) {
   return arbitraryValueRegex.test(value);
@@ -9978,15 +9956,15 @@ function getDefaultConfig() {
   const getSpacingWithAutoAndArbitrary = () => ["auto", isArbitraryValue, spacing];
   const getSpacingWithArbitrary = () => [isArbitraryValue, spacing];
   const getLengthWithEmptyAndArbitrary = () => ["", isLength, isArbitraryLength];
-  const getNumberWithAutoAndArbitrary = () => ["auto", isNumber$3, isArbitraryValue];
+  const getNumberWithAutoAndArbitrary = () => ["auto", isNumber$2, isArbitraryValue];
   const getPositions = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"];
   const getLineStyles = () => ["solid", "dashed", "dotted", "double", "none"];
   const getBlendModes = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"];
   const getAlign = () => ["start", "end", "center", "between", "around", "evenly", "stretch"];
   const getZeroAndEmpty = () => ["", "0", isArbitraryValue];
   const getBreaks = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  const getNumber = () => [isNumber$3, isArbitraryNumber];
-  const getNumberAndArbitrary = () => [isNumber$3, isArbitraryValue];
+  const getNumber = () => [isNumber$2, isArbitraryNumber];
+  const getNumberAndArbitrary = () => [isNumber$2, isArbitraryValue];
   return {
     cacheSize: 500,
     separator: ":",
@@ -10725,7 +10703,7 @@ function getDefaultConfig() {
        * @see https://tailwindcss.com/docs/line-clamp
        */
       "line-clamp": [{
-        "line-clamp": ["none", isNumber$3, isArbitraryNumber]
+        "line-clamp": ["none", isNumber$2, isArbitraryNumber]
       }],
       /**
        * Line Height
@@ -12053,7 +12031,7 @@ const formatDate = (date) => {
   };
   return date.toLocaleDateString("en-US", options);
 };
-const Sheet = Root$6;
+const Sheet = Root$5;
 const SheetTrigger = Trigger$3;
 const SheetPortal = Portal$1;
 const SheetOverlay = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -12404,7 +12382,7 @@ function focusFirst$1(candidates, preventScroll = false) {
 function wrapArray$1(array, startIndex) {
   return array.map((_2, index2) => array[(startIndex + index2) % array.length]);
 }
-var Root$5 = RovingFocusGroup;
+var Root$4 = RovingFocusGroup;
 var Item$2 = RovingFocusGroupItem;
 var TABS_NAME = "Tabs";
 var [createTabsContext, createTabsScope] = createContextScope(TABS_NAME, [
@@ -12461,7 +12439,7 @@ var TabsList$1 = reactExports.forwardRef(
     const context = useTabsContext(TAB_LIST_NAME, __scopeTabs);
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeTabs);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Root$5,
+      Root$4,
       {
         asChild: true,
         ...rovingFocusGroupScope,
@@ -12874,7 +12852,7 @@ var CollapsibleContentImpl = reactExports.forwardRef((props, forwardedRef) => {
 function getState$1(open) {
   return open ? "open" : "closed";
 }
-var Root$4 = Collapsible$1;
+var Root$3 = Collapsible$1;
 var Trigger$1 = CollapsibleTrigger$1;
 var Content$1 = CollapsibleContent$1;
 var ACCORDION_NAME = "Accordion";
@@ -13072,7 +13050,7 @@ var AccordionItem$1 = React.forwardRef(
         disabled,
         triggerId,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root$4,
+          Root$3,
           {
             "data-orientation": accordionContext.orientation,
             "data-state": getState(open),
@@ -13636,11 +13614,11 @@ function useImageLoadingStatus(src) {
   }, [src]);
   return loadingStatus;
 }
-var Root$3 = Avatar$1;
+var Root$2 = Avatar$1;
 var Image$1 = AvatarImage$1;
 var Fallback = AvatarFallback$1;
 const Avatar = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  Root$3,
+  Root$2,
   {
     ref,
     className: cn(
@@ -13650,7 +13628,7 @@ const Avatar = reactExports.forwardRef(({ className, ...props }, ref) => /* @__P
     ...props
   }
 ));
-Avatar.displayName = Root$3.displayName;
+Avatar.displayName = Root$2.displayName;
 const AvatarImage = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   Image$1,
   {
@@ -13672,10 +13650,10 @@ const AvatarFallback = reactExports.forwardRef(({ className, ...props }, ref) =>
   }
 ));
 AvatarFallback.displayName = Fallback.displayName;
-const Collapsible = Root$4;
+const Collapsible = Root$3;
 const CollapsibleTrigger = CollapsibleTrigger$1;
 const CollapsibleContent = CollapsibleContent$1;
-const Dialog = Root$6;
+const Dialog = Root$5;
 const DialogTrigger = Trigger$3;
 const DialogPortal = Portal$1;
 const DialogOverlay = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -13814,19 +13792,19 @@ var Label$2 = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 Label$2.displayName = NAME$2;
-var Root$2 = Label$2;
+var Root$1 = Label$2;
 const labelVariants = cva(
   "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize font-normal"
 );
 const Label$1 = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  Root$2,
+  Root$1,
   {
     ref,
     className: cn(labelVariants(), className),
     ...props
   }
 ));
-Label$1.displayName = Root$2.displayName;
+Label$1.displayName = Root$1.displayName;
 function clamp$2(value, [min2, max2]) {
   return Math.min(max2, Math.max(min2, value));
 }
@@ -15633,7 +15611,7 @@ var Arrow$1 = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 Arrow$1.displayName = NAME$1;
-var Root$1 = Arrow$1;
+var Root = Arrow$1;
 function useSize(element) {
   const [size2, setSize] = reactExports.useState(void 0);
   useLayoutEffect2(() => {
@@ -15875,7 +15853,7 @@ var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwarded
           visibility: contentContext.shouldHideArrow ? "hidden" : void 0
         },
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root$1,
+          Root,
           {
             ...arrowProps,
             ref: forwardedRef,
@@ -18192,7 +18170,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 var hoistNonReactStatics_cjs = hoistNonReactStatics;
 const m$1 = /* @__PURE__ */ getDefaultExportFromCjs(hoistNonReactStatics_cjs);
-var define_process_env_default$2 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_34068_UKHZRRWWDVOIYDWN", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", OneDriveConsumer: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.0", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+var define_process_env_default$2 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
 function y$1() {
   return (y$1 = Object.assign || function(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
@@ -48934,8 +48912,8 @@ function getValueTransition(transition, key) {
     ...transition[key]
   } : { ...transition };
 }
-const isNumber$2 = (keyframe) => typeof keyframe === "number";
-const isNumberKeyframesArray = (keyframes2) => keyframes2.every(isNumber$2);
+const isNumber$1 = (keyframe) => typeof keyframe === "number";
+const isNumberKeyframesArray = (keyframes2) => keyframes2.every(isNumber$1);
 function animateElements(elementOrSelector, keyframes2, options, scope) {
   const elements = resolveElements(elementOrSelector, scope);
   const numElements = elements.length;
@@ -49219,7 +49197,7 @@ function arePluginsEqual(pluginsA, pluginsB) {
     return areOptionsEqual(optionA, optionB);
   });
 }
-function isNumber$1(subject) {
+function isNumber(subject) {
   return typeof subject === "number";
 }
 function isString(subject) {
@@ -50096,7 +50074,7 @@ function SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStor
       root.scrollLeft = 0;
       const index2 = slides.indexOf(slide);
       const group = slideRegistry.findIndex((group2) => group2.includes(index2));
-      if (!isNumber$1(group)) return;
+      if (!isNumber(group)) return;
       scrollBody.useDuration(0);
       scrollTo.index(group, 0);
       eventHandler.emit("slideFocus");
@@ -50126,7 +50104,7 @@ function Vector1D(initialValue) {
     value -= normalizeInput(n2);
   }
   function normalizeInput(n2) {
-    return isNumber$1(n2) ? n2 : n2.get();
+    return isNumber(n2) ? n2 : n2.get();
   }
   const self2 = {
     get,
@@ -50376,7 +50354,7 @@ function SlidesToScroll(axis, viewSize, slidesToScroll, loop, containerRect, sli
     endEdge,
     direction
   } = axis;
-  const groupByNumber = isNumber$1(slidesToScroll);
+  const groupByNumber = isNumber(slidesToScroll);
   function byNumber(array, groupSize) {
     return arrayKeys(array).filter((i) => i % groupSize === 0).map((i) => array.slice(i, i + groupSize));
   }
@@ -51049,111 +51027,6 @@ function ChatSuggestion() {
     ] })
   ] });
 }
-var PROGRESS_NAME = "Progress";
-var DEFAULT_MAX = 100;
-var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
-var [ProgressProvider, useProgressContext] = createProgressContext(PROGRESS_NAME);
-var Progress$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const {
-      __scopeProgress,
-      value: valueProp = null,
-      max: maxProp,
-      getValueLabel = defaultGetValueLabel,
-      ...progressProps
-    } = props;
-    if ((maxProp || maxProp === 0) && !isValidMaxNumber(maxProp)) {
-      console.error(getInvalidMaxError(`${maxProp}`, "Progress"));
-    }
-    const max2 = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX;
-    if (valueProp !== null && !isValidValueNumber(valueProp, max2)) {
-      console.error(getInvalidValueError(`${valueProp}`, "Progress"));
-    }
-    const value = isValidValueNumber(valueProp, max2) ? valueProp : null;
-    const valueLabel = isNumber(value) ? getValueLabel(value, max2) : void 0;
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(ProgressProvider, { scope: __scopeProgress, value, max: max2, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.div,
-      {
-        "aria-valuemax": max2,
-        "aria-valuemin": 0,
-        "aria-valuenow": isNumber(value) ? value : void 0,
-        "aria-valuetext": valueLabel,
-        role: "progressbar",
-        "data-state": getProgressState(value, max2),
-        "data-value": value ?? void 0,
-        "data-max": max2,
-        ...progressProps,
-        ref: forwardedRef
-      }
-    ) });
-  }
-);
-Progress$1.displayName = PROGRESS_NAME;
-var INDICATOR_NAME = "ProgressIndicator";
-var ProgressIndicator = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeProgress, ...indicatorProps } = props;
-    const context = useProgressContext(INDICATOR_NAME, __scopeProgress);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.div,
-      {
-        "data-state": getProgressState(context.value, context.max),
-        "data-value": context.value ?? void 0,
-        "data-max": context.max,
-        ...indicatorProps,
-        ref: forwardedRef
-      }
-    );
-  }
-);
-ProgressIndicator.displayName = INDICATOR_NAME;
-function defaultGetValueLabel(value, max2) {
-  return `${Math.round(value / max2 * 100)}%`;
-}
-function getProgressState(value, maxValue) {
-  return value == null ? "indeterminate" : value === maxValue ? "complete" : "loading";
-}
-function isNumber(value) {
-  return typeof value === "number";
-}
-function isValidMaxNumber(max2) {
-  return isNumber(max2) && !isNaN(max2) && max2 > 0;
-}
-function isValidValueNumber(value, max2) {
-  return isNumber(value) && !isNaN(value) && value <= max2 && value >= 0;
-}
-function getInvalidMaxError(propValue, componentName) {
-  return `Invalid prop \`max\` of value \`${propValue}\` supplied to \`${componentName}\`. Only numbers greater than 0 are valid max values. Defaulting to \`${DEFAULT_MAX}\`.`;
-}
-function getInvalidValueError(propValue, componentName) {
-  return `Invalid prop \`value\` of value \`${propValue}\` supplied to \`${componentName}\`. The \`value\` prop must be:
-  - a positive number
-  - less than the value passed to \`max\` (or ${DEFAULT_MAX} if no \`max\` prop is set)
-  - \`null\` or \`undefined\` if the progress is indeterminate.
-
-Defaulting to \`null\`.`;
-}
-var Root = Progress$1;
-var Indicator = ProgressIndicator;
-const Progress = reactExports.forwardRef(({ className, value, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  Root,
-  {
-    ref,
-    className: cn(
-      "relative h-4 w-full overflow-hidden rounded-full bg-secondary",
-      className
-    ),
-    ...props,
-    children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Indicator,
-      {
-        className: "h-full w-full flex-1 bg-primary transition-all",
-        style: { transform: `translateX(-${100 - (value || 0)}%)` }
-      }
-    )
-  }
-));
-Progress.displayName = Root.displayName;
 const ChatInput = ({
   placeholder = "Ask me something...",
   value,
@@ -51165,7 +51038,6 @@ const ChatInput = ({
   const [isDropped, setDropped] = reactExports.useState(false);
   const [attachedFiles, setAttachedFiles] = reactExports.useState([]);
   const { toast: toast2 } = useToast();
-  const [progress2, setProgress] = React.useState(0);
   const handleFileDrop = (files) => {
     const newFiles = attachedFiles;
     for (let index2 = 0; index2 < files.length; index2++) {
@@ -51188,23 +51060,16 @@ const ChatInput = ({
     event.stopPropagation();
     if (event.dataTransfer.files.length > 0) {
       handleFileDrop(event.dataTransfer.files);
-      toast2({
-        title: "Uploading...",
-        description: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "opacity-40", children: [
-          progress2,
-          "% • 30 seconds remaining"
-        ] }),
-        action: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CircleX, { className: "text-red-500" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CirclePause, { className: "text-blue-500" })
-        ] }),
-        footer: /* @__PURE__ */ jsxRuntimeExports.jsx(Progress, { value: progress2, className: "w-full mt-4 h-3" })
-      });
     }
     setIsHovered(false);
     setDragOver(false);
     setDropped(true);
-    setProgress(100);
+    toast2({
+      title: "Upload Complete",
+      description: `files has been successfully attached.`,
+      footer: null
+      // Optionally remove the progress bar on success
+    });
   };
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -51244,6 +51109,12 @@ const ChatInput = ({
       }
       setDropped(true);
       setAttachedFiles(newFiles);
+      toast2({
+        title: "Upload Complete",
+        description: `files has been successfully attached.`,
+        footer: null
+        // Optionally remove the progress bar on success
+      });
     }
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
@@ -52006,7 +51877,7 @@ var unitlessKeys = {
   strokeOpacity: 1,
   strokeWidth: 1
 };
-var define_process_env_default$1 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_34068_UKHZRRWWDVOIYDWN", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", OneDriveConsumer: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.0", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+var define_process_env_default$1 = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
 var f = "undefined" != typeof process && void 0 !== define_process_env_default$1 && (define_process_env_default$1.REACT_APP_SC_ATTR || define_process_env_default$1.SC_ATTR) || "data-styled", m = "active", y = "data-styled-version", v = "6.1.12", g = "/*!sc*/\n", S = "undefined" != typeof window && "HTMLElement" in window, w = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$1 && void 0 !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY && "" !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY && define_process_env_default$1.REACT_APP_SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== define_process_env_default$1 && void 0 !== define_process_env_default$1.SC_DISABLE_SPEEDY && "" !== define_process_env_default$1.SC_DISABLE_SPEEDY ? "false" !== define_process_env_default$1.SC_DISABLE_SPEEDY && define_process_env_default$1.SC_DISABLE_SPEEDY : false), _ = Object.freeze([]), C = Object.freeze({});
 function I(e2, t2, n2) {
   return void 0 === n2 && (n2 = C), e2.theme !== n2.theme && e2.theme || t2 || n2.theme;
@@ -53057,7 +52928,7 @@ var ToastImpl = reactExports.forwardRef(
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx(ToastInteractiveProvider, { scope: __scopeToast, onClose: handleClose, children: reactDomExports.createPortal(
         /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.ItemSlot, { scope: __scopeToast, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root$7,
+          Root$6,
           {
             asChild: true,
             onEscapeKeyDown: composeEventHandlers(onEscapeKeyDown, () => {
@@ -66366,7 +66237,7 @@ const useMsalAuth = () => {
   };
   return { isAuthenticated, login, logout };
 };
-var define_process_env_default = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_34068_UKHZRRWWDVOIYDWN", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", OneDriveConsumer: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.0", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
+var define_process_env_default = { ALLUSERSPROFILE: "C:\\ProgramData", APPDATA: "C:\\Users\\MrDollar\\AppData\\Roaming", "asl.log": "Destination=file", CHROME_CRASHPAD_PIPE_NAME: "\\\\.\\pipe\\crashpad_21944_EKIWNUMIHAIKMNHY", COLORTERM: "truecolor", CommonProgramFiles: "C:\\Program Files\\Common Files", "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files", CommonProgramW6432: "C:\\Program Files\\Common Files", COMPUTERNAME: "FOUADKANZAOUI", ComSpec: "C:\\WINDOWS\\system32\\cmd.exe", DB_STORAGE: "./database/database.sqlite3", DriverData: "C:\\Windows\\System32\\Drivers\\DriverData", EFC_17388: "1", GIT_ASKPASS: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh", HADOOP_HOME: "C:\\hadoop", HOME: "C:\\Users\\MrDollar", HOMEDRIVE: "C:", HOMEPATH: "\\Users\\MrDollar", INIT_CWD: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", JAVA_HOME: "C:\\Program Files\\Java\\jdk-11.0.14", LANG: "en_US.UTF-8", LOCALAPPDATA: "C:\\Users\\MrDollar\\AppData\\Local", LOGONSERVER: "\\\\FOUADKANZAOUI", NODE: "C:\\Program Files\\nodejs\\node.exe", NODE_ENV: "production", NODE_PATH: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\bin\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules\\vite\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\vite@5.3.4_@types+node@20.14.11_terser@5.31.5\\node_modules;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.pnpm\\node_modules", npm_command: "run-script", npm_config_frozen_lockfile: "", npm_config_node_gyp: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node_modules\\node-gyp\\bin\\node-gyp.js", npm_config_registry: "https://registry.npmjs.org/", npm_config_user_agent: "pnpm/9.1.0 npm/? node/v20.11.0 win32 x64", npm_execpath: "C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\bin\\pnpm.cjs", npm_lifecycle_event: "build", npm_lifecycle_script: "tsc -b && vite build", npm_node_execpath: "C:\\Program Files\\nodejs\\node.exe", npm_package_dependencies_class_variance_authority: "^0.7.0", npm_package_dependencies_clsx: "^2.1.1", npm_package_dependencies_embla_carousel_react: "^8.1.7", npm_package_dependencies_framer_motion: "^11.3.8", npm_package_dependencies_lucide_react: "^0.408.0", npm_package_dependencies_react: "^18.3.1", npm_package_dependencies_react_doc_viewer: "^0.1.14", npm_package_dependencies_react_dom: "^18.3.1", npm_package_dependencies_react_hook_form: "^7.52.1", npm_package_dependencies_react_loader_spinner: "^6.1.6", npm_package_dependencies_tailwindcss_animate: "^1.0.7", npm_package_dependencies_tailwind_merge: "^2.4.0", npm_package_dependencies_vite_plugin_pwa: "^0.20.1", npm_package_dependencies_zod: "^3.23.8", npm_package_dependencies__azure_msal_browser: "^3.20.0", npm_package_dependencies__cyntler_react_doc_viewer: "^1.16.6", npm_package_dependencies__hookform_resolvers: "^3.9.0", npm_package_dependencies__radix_ui_react_accordion: "^1.2.0", npm_package_dependencies__radix_ui_react_avatar: "^1.1.0", npm_package_dependencies__radix_ui_react_collapsible: "^1.1.0", npm_package_dependencies__radix_ui_react_dialog: "^1.1.1", npm_package_dependencies__radix_ui_react_label: "^2.1.0", npm_package_dependencies__radix_ui_react_navigation_menu: "^1.2.0", npm_package_dependencies__radix_ui_react_progress: "^1.1.0", npm_package_dependencies__radix_ui_react_scroll_area: "^1.1.0", npm_package_dependencies__radix_ui_react_select: "^2.1.1", npm_package_dependencies__radix_ui_react_separator: "^1.1.0", npm_package_dependencies__radix_ui_react_slot: "^1.1.0", npm_package_dependencies__radix_ui_react_switch: "^1.1.0", npm_package_dependencies__radix_ui_react_tabs: "^1.1.0", npm_package_dependencies__radix_ui_react_toast: "^1.2.1", npm_package_dependencies__radix_ui_react_toggle: "^1.1.0", npm_package_dependencies__radix_ui_react_toggle_group: "^1.1.0", npm_package_dependencies__radix_ui_react_tooltip: "^1.1.2", npm_package_dependencies__vite_pwa_assets_generator: "^0.2.4", npm_package_devDependencies_autoprefixer: "^10.4.19", npm_package_devDependencies_cross_env: "^7.0.3", npm_package_devDependencies_eslint: "^8.57.0", npm_package_devDependencies_eslint_plugin_react_hooks: "^4.6.2", npm_package_devDependencies_eslint_plugin_react_refresh: "^0.4.7", npm_package_devDependencies_gh_pages: "^6.1.1", npm_package_devDependencies_postcss: "^8.4.39", npm_package_devDependencies_react_file_viewer: "^1.2.1", npm_package_devDependencies_tailwindcss: "^3.4.6", npm_package_devDependencies_typescript: "^5.2.2", npm_package_devDependencies_vite: "^5.3.4", npm_package_devDependencies__typescript_eslint_eslint_plugin: "^7.15.0", npm_package_devDependencies__typescript_eslint_parser: "^7.15.0", npm_package_devDependencies__types_node: "^20.14.11", npm_package_devDependencies__types_react: "^18.3.3", npm_package_devDependencies__types_react_dom: "^18.3.0", npm_package_devDependencies__vitejs_plugin_react: "^4.3.1", npm_package_homepage: "http://fouadkanz.github.io/EKA2-FE", npm_package_name: "eka2-fe", npm_package_private: "false", npm_package_scripts_build: "tsc -b && vite build", npm_package_scripts_deploy: "gh-pages -d dist", npm_package_scripts_dev: "vite", npm_package_scripts_dev_eka2: "cross-env VITE_APP_NAME=eka2 vite", npm_package_scripts_dev_symbiosis: "cross-env VITE_APP_NAME=symbiosis vite", npm_package_scripts_generate_pwa_assets: "pwa-assets-generator --preset minimal public/jera_logo.svg", npm_package_scripts_lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0", npm_package_scripts_predeploy: "pnpm run build", npm_package_scripts_preview: "vite preview", npm_package_type: "module", npm_package_version: "0.0.0", NUMBER_OF_PROCESSORS: "12", OneDrive: "C:\\Users\\MrDollar\\OneDrive", ORIGINAL_XDG_CURRENT_DESKTOP: "undefined", OS: "Windows_NT", Path: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Users\\MrDollar\\project-avaxia\\eka2-fe\\node_modules\\.bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\node-gyp-bin;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk1.8.0_144\\bin;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Git\\cmd;C:\\Users\\MrDollar\\.azure-kubectl;C:\\Program Files\\PostgreSQL\\13\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\NetSarang\\Xshell 7\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\GitHub CLI\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\MrDollar\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\Documents\\flutter\\bin;C:\\Program Files\\MongoDB\\Server\\4.4\\bin;C:\\Users\\MrDollar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\;C:\\Program Files\\Java\\jdk-11.0.14\\bin;C:\\Users\\MrDollar\\AppData\\Roaming\\npm;C:\\Users\\MrDollar\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\MrDollar\\AppData\\Local\\pnpm;;C:\\Users\\MrDollar\\.bun\\bin", PATHEXT: ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL", PNPM_HOME: "C:\\Users\\MrDollar\\AppData\\Local\\pnpm", PNPM_SCRIPT_SRC_DIR: "C:\\Users\\MrDollar\\project-avaxia\\eka2-fe", PROCESSOR_ARCHITECTURE: "AMD64", PROCESSOR_IDENTIFIER: "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel", PROCESSOR_LEVEL: "6", PROCESSOR_REVISION: "a502", ProgramData: "C:\\ProgramData", ProgramFiles: "C:\\Program Files", "ProgramFiles(x86)": "C:\\Program Files (x86)", ProgramW6432: "C:\\Program Files", PROMPT: "$P$G", PSModulePath: "C:\\Users\\MrDollar\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\", PSQL_HOME: "C:\\Program Files\\PostgreSQL\\13\\bin", PUBLIC: "C:\\Users\\Public", PYSPARK_DRIVER_PYTHON: "jupyter", PYSPARK_DRIVER_PYTHON_OPTS: "notebook", PYSPARK_PYTHON: "C:\\Users\\MrDollar\\anaconda3\\python.exe", REACT_APP_API_URL: "http://localhost:8000/", REACT_APP_SOCKET_ENDPOINT: "http://localhost:5000/", SESSIONNAME: "Console", SPARK_HOME: "C:\\spark", SystemDrive: "C:", SystemRoot: "C:\\WINDOWS", TEMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", TERM_PROGRAM: "vscode", TERM_PROGRAM_VERSION: "1.92.1", TMP: "C:\\Users\\MrDollar\\AppData\\Local\\Temp", USERDOMAIN: "FOUADKANZAOUI", USERDOMAIN_ROAMINGPROFILE: "FOUADKANZAOUI", USERNAME: "MrDollar", USERPROFILE: "C:\\Users\\MrDollar", VBOX_MSI_INSTALL_PATH: "C:\\Program Files\\Oracle\\VirtualBox\\", VSCODE_GIT_ASKPASS_EXTRA_ARGS: "", VSCODE_GIT_ASKPASS_MAIN: "c:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js", VSCODE_GIT_ASKPASS_NODE: "C:\\Users\\MrDollar\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe", VSCODE_GIT_IPC_HANDLE: "\\\\.\\pipe\\vscode-git-22e1f26324-sock", VSCODE_INJECTION: "1", windir: "C:\\WINDOWS", VITE_PORT: "3200", VITE_APP_NAME: "eka2" };
 const appName = define_process_env_default.VITE_APP_NAME;
 const config = loadConfig(appName);
 function App() {
