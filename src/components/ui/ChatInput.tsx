@@ -7,13 +7,10 @@ import {
   SendHorizontal,
   X,
   Paperclip,
-  PauseCircle,
-  XCircle,
 } from "lucide-react";
 import { Badge } from "./badge";
 import { Textarea } from "./textarea";
 import { useToast } from "./use-toast";
-import { Progress } from "./progress";
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -38,7 +35,6 @@ const ChatInput: React.FC<TextareaProps> = ({
   const [isDropped, setDropped] = useState(false);
   const [attachedFiles, setAttachedFiles] = useState<FilePros[]>([]);
   const { toast } = useToast();
-  const [progress, setProgress] = React.useState(0);
 
   const handleFileDrop = (files: FileList) => {
     const newFiles: FilePros[] = attachedFiles;
@@ -50,7 +46,6 @@ const ChatInput: React.FC<TextareaProps> = ({
       });
     }
     setAttachedFiles(newFiles);
-
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && submit && !e.shiftKey) {
@@ -63,25 +58,37 @@ const ChatInput: React.FC<TextareaProps> = ({
     event.stopPropagation();
     if (event.dataTransfer.files.length > 0) {
       handleFileDrop(event.dataTransfer.files);
-      toast({
-        title: "Uploading...",
-        description: (
-            <p className="opacity-40">{progress}% • 30 seconds remaining</p>
-        ),
-        action: (
-          <div className="flex flex-row gap-2">
-            <XCircle className="text-red-500" />
-            <PauseCircle className="text-blue-500" />
-          </div>
-        ),
-        footer:
-        <Progress value={progress} className="w-full mt-4 h-3" />
-      });
+      // toast({
+      //   title: "Uploading...",
+      //   description: (
+      //     <p className="opacity-40">
+      //     {Math.round(progress)}% • {Math.round((100 - progress) / 100 * 30)} seconds remaining
+      //   </p>
+      //   ),
+      //   action: (
+      //     <div className="flex flex-row gap-2">
+      //       <ToastAction
+      //         className="border-none hover:bg-transparent"
+      //         altText="Cancel"
+      //       >
+      //         <XCircle className="text-red-500" />
+      //       </ToastAction>
+      //       <ToastAction altText="Pause"  className="border-none hover:bg-transparent">
+      //         <PauseCircle className="text-blue-500" />
+      //       </ToastAction>
+      //     </div>
+      //   ),
+      //   footer: <Progress value={progress} className="w-full mt-4 h-3" />,
+      // });
     }
     setIsHovered(false);
     setDragOver(false);
     setDropped(true);
-    setProgress(100)
+    toast({
+      title: "Upload Complete",
+      description: `files has been successfully attached.`,
+      footer: null, // Optionally remove the progress bar on success
+    });
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -123,8 +130,14 @@ const ChatInput: React.FC<TextareaProps> = ({
       }
       setDropped(true);
       setAttachedFiles(newFiles);
+      toast({
+        title: "Upload Complete",
+        description: `files has been successfully attached.`,
+        footer: null, // Optionally remove the progress bar on success
+      });
     }
   };
+
   return (
     <Fragment>
       {isDropped && (
