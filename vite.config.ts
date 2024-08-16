@@ -43,7 +43,7 @@ export default ({ mode }: ConfigEnv) => {
         }, 
       })
     ],
-    base: `${process.env.VITE_APP_NAME}`,
+    base: `/EKA2-FE/`,
     server: {
       port: parseInt(process.env.VITE_PORT||"5173"),
     },
