@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import "./App.css";
 
 import loadConfig from "./lib/configLoader";
@@ -8,11 +8,9 @@ const appName = process.env.VITE_APP_NAME || "eka2"; // This should be set to 's
 const config = loadConfig(appName);
 import { Toaster } from "@/components/ui/toaster";
 import LoginPage from "./pages/auth/LoginPage";
-import { useMsalAuth } from "./pages/auth/core/hooks/auth";
 
 function App() {
-  const { isAuthenticated } = useMsalAuth();
-
+const [isAuthenticated, setisAuthenticated] = useState(false)
   return (
     <Fragment>
       {isAuthenticated ? (
@@ -21,7 +19,7 @@ function App() {
           <ChatPage config={config} appName={appName} />
         </ChatSessionProvider>
       ) : (
-        <LoginPage />
+        <LoginPage setisAuthenticated={setisAuthenticated}/>
       )}
     </Fragment>
   );

@@ -3,8 +3,12 @@ import { Button } from "@/components/ui/button";
 import Microsoft from "@/assets/microsoft.png";
 import LoginFig from "@/assets/component.png";
 import JeraLogo from "@/assets/jera_logo.svg";
+import { Dispatch, FC, SetStateAction } from "react";
+interface LoginPageProps {
+  setisAuthenticated:Dispatch<SetStateAction<boolean>>
+}
 
-function LoginPage() {
+const LoginPage: FC<LoginPageProps> =({setisAuthenticated}) =>{
   return (
     <div className="flex flex-col w-screen h-screen bg-[#334155]">
       <div className="w-screen h-screen flex justify-center items-center flex-col space-y-8">
@@ -13,7 +17,7 @@ function LoginPage() {
         <span className="text-white text-2xl text-center">
           Lorem ipsum dolor, sit amet consectetur elit. Delectus minus
         </span>
-        <Button type="button" className="space-x-2">
+        <Button type="button" className="space-x-2" onClick={()=>setisAuthenticated(true)}>
           <img src={Microsoft} alt="JERA Logo" className="size-5" />
           <span>sign in with Microsoft</span>
         </Button>
