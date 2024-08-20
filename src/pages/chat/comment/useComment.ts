@@ -9,7 +9,7 @@ export function useComment(){
     const [commentTabList,setCommentTabList] = useState(false)
     const options = ["Wrong information","Inappropriate answer","Difficult to read/understand","Other"]
 const toggleComment=(message:Message)=>{
-    if(message.thumbsDown || message.thumbsDown) setCommentTabList(!commentTabList)
+    if(message.thumbsUp || message.thumbsDown) setCommentTabList(!commentTabList)
 }
     return {
         commentType,

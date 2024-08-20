@@ -32,7 +32,8 @@ export function useChatSession() {
           if (message) {
             if (direction === "up") {
               message.thumbsUp = review;
-            } else if (direction === "down") {
+            }
+            if (direction === "down") {
               message.thumbsDown = review;
             }
           }
