@@ -27,8 +27,8 @@ const MessageMenu: FC<MessageMenuProps> = ({ message }) => {
         <CollapsibleTrigger className="flex flex-row hover:cursor-pointer space-x-2 p-2 hover:bg-gray-300 hover:rounded-md font-semibold">
           3 References <ChevronRight className="pt-[1.5px] size-5" />
         </CollapsibleTrigger>
-        <CollapsibleContent className="m-3">
-         <FileViewer />
+        <CollapsibleContent className="flex flex-wrap gap-1 ml-2">
+        <FileViewer />
         </CollapsibleContent>
       </Collapsible>
       <div className="relative right-0">

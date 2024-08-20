@@ -11,6 +11,7 @@ import {
 import { Badge } from "./badge";
 import { Textarea } from "./textarea";
 import { useToast } from "./use-toast";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -149,6 +150,7 @@ const ChatInput: React.FC<TextareaProps> = ({
                 className="relative bg-slate-600 font-bold p-1 w-fit rounded-full mb-1  ml-2 text-white"
               >
                 {file.name}
+               
               </span>
             ))}
           </div>
