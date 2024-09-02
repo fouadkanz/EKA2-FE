@@ -20,7 +20,7 @@ export interface Review {
 export interface Message {
   id: number;
   text: string;
-  sender: "user" | "ai";
+  sender: "user" | "Emily";
   thumbsDown?: Review;
   thumbsUp?: Review;
 }

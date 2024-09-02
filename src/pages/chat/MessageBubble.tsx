@@ -43,7 +43,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
             message.text
           ) : (
             <>
-              {message.sender === "ai" ? (
+              {message.sender === "Emily" ? (
                 <Typewriter
                   setLoading={setLoading}
                   text={message.text}

@@ -15,7 +15,7 @@ export function useChatSession() {
       {
         id: Date.now(),
         text: 'Hello {user}, how can I assist you today?',
-        sender: 'ai'
+        sender: 'Emily'
       }
     ]
   }]);
@@ -73,7 +73,7 @@ export function useChatSession() {
           {
             id: Date.now(),
             text: 'Hello {user}, how can I assist you today ?',
-            sender: 'ai'
+            sender: 'Emily'
           }
         ]
       };
@@ -101,7 +101,7 @@ export function useChatSession() {
 
     // Simulate AI response
     setTimeout(() => {
-      const aiMessage: Message = { id: Date.now(), text: 'AI response to: ' + text, sender: 'ai' };
+      const aiMessage: Message = { id: Date.now(), text: 'AI response to: ' + text, sender: 'Emily' };
       setSessions((prevSessions) =>
         prevSessions.map((session) =>
           session.id === activeSessionId
@@ -116,7 +116,7 @@ export function useChatSession() {
       id: Date.now(), messages: [{
         id: Date.now(),
         text: 'Hello {user}, how can I assist you today?',
-        sender: 'ai'
+        sender: 'Emily'
       }]
     };
     setSessions((prevSessions) => [...prevSessions, newSession]);

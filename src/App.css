@@ -4,6 +4,7 @@ body {
   
   #root {
     @apply flex flex-col min-h-screen;
+    
   }
 
   .message-input {

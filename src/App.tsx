@@ -10,7 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 import LoginPage from "./pages/auth/LoginPage";
 
 function App() {
-const [isAuthenticated, setisAuthenticated] = useState(false)
+  const [isAuthenticated, setisAuthenticated] = useState(false);
   return (
     <Fragment>
       {isAuthenticated ? (
@@ -19,7 +19,7 @@ const [isAuthenticated, setisAuthenticated] = useState(false)
           <ChatPage config={config} appName={appName} />
         </ChatSessionProvider>
       ) : (
-        <LoginPage setisAuthenticated={setisAuthenticated}/>
+        <LoginPage setisAuthenticated={setisAuthenticated} />
       )}
     </Fragment>
   );
