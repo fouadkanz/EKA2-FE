@@ -51,7 +51,7 @@ const MessageList:FC<MessageListProps> = ({activeSession}) => {
               <div className="flex items-center md:space-x-4 md:pl-4">
                 <Avatar className="w-10 h-10 bg-slate-900 rounded-s-md rounded-b-md">
                   <AvatarFallback className="text-slate-50 text-lg uppercase">
-                    {message.sender}
+                    {message.sender[0]}
                   </AvatarFallback>
                 </Avatar>
                 <TypewriterEffect

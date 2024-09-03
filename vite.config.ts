@@ -45,7 +45,7 @@ export default ({ mode }: ConfigEnv) => {
         }
       })
     ],
-    base: `/EKA2-FE/`,
+    base: `/`,
     server: {
       port: parseInt(process.env.VITE_PORT || "5173"),
     },

@@ -4,12 +4,14 @@ import ChatWindow from "./ChatWindow";
 import ChatSideMenu from "./ChatSessionList";
 import Sidebar from "@/components/ui/sidebar";
 import { Config } from "@/lib/configLoader";
+import { ChatSessionProvider } from "./core/context/MessageContext";
 interface ChatPageProps {
   config: Config;
   appName: string;
 }
 const ChatPage: FC<ChatPageProps> = ({ config, appName }) => {
   return (
+    <ChatSessionProvider>
     <div className="md:flex md:flex-grow">
       <nav className="hidden md:block">
         <Sidebar appName={appName} />
@@ -25,6 +27,7 @@ const ChatPage: FC<ChatPageProps> = ({ config, appName }) => {
         <ChatSideMenu config={config} />
       </aside>
     </div>
+    </ChatSessionProvider>
   );
 };
 

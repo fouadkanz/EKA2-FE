@@ -11,7 +11,6 @@ import {
 import { Badge } from "./badge";
 import { Textarea } from "./textarea";
 import { useToast } from "./use-toast";
-import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {

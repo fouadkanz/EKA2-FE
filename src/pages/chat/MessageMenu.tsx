@@ -6,9 +6,6 @@ import {
 import {
   ChevronDown,
   ChevronRight,
-  ChevronsRight,
-  ChevronsUp,
-  ChevronsUpDown,
   ThumbsDown,
   ThumbsUp,
   Volume2,

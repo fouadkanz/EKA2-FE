@@ -4,11 +4,12 @@ import Microsoft from "@/assets/microsoft.png";
 import LoginFig from "@/assets/component.png";
 import JeraLogo from "@/assets/jera_logo.svg";
 import { Dispatch, FC, SetStateAction } from "react";
+import {  useNavigate } from "react-router-dom";
 interface LoginPageProps {
   setisAuthenticated:Dispatch<SetStateAction<boolean>>
 }
-
-const LoginPage: FC<LoginPageProps> =({setisAuthenticated}) =>{
+const LoginPage: FC<LoginPageProps> =({}) =>{
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col w-screen h-screen bg-[#334155]">
       <div className="w-screen h-screen flex justify-center items-center flex-col space-y-8">
@@ -17,7 +18,7 @@ const LoginPage: FC<LoginPageProps> =({setisAuthenticated}) =>{
         <span className="text-white text-2xl text-center">
           Lorem ipsum dolor, sit amet consectetur elit. Delectus minus
         </span>
-        <Button type="button" className="space-x-2" onClick={()=>setisAuthenticated(true)}>
+        <Button type="button" className="space-x-2" onClick={()=>navigate('/')}>
           <img src={Microsoft} alt="JERA Logo" className="size-5" />
           <span>sign in with Microsoft</span>
         </Button>
